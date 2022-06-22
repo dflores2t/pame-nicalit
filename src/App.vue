@@ -1,21 +1,116 @@
-<script setup>
+<script>
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
+// import styles
+
+// import viws from from views folder
+import HeaderView from "./views/HeaderView.vue";
+import MainView from "./views/MainView.vue";
+import FooterView from "./views/FooterView.vue";
+
+export default {
+  components: {
+    HeaderView,
+    MainView,
+    FooterView,
+  },
+  
+};
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
+  <div class="container">
+    <HeaderView />
+    <MainView />
+    <FooterView />
+  </div>
 </template>
 
 <style>
+html,
+body {
+  margin: 0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  height: 100%;
+  width: 100%;
+  margin-top: 0px;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+.container {
+  height: 100vh;
+  background-color: #2e3842;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 15% 80% 5%;
+  grid-template-areas:
+    "h h h h h h h h h h h h"
+    "c c c c c c c c c c c c"
+    "f f f f f f f f f f f f";
+  gap: 3px/3px;
+
+  background-image: -moz-linear-gradient(
+      top,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("https://res.cloudinary.com/propositivapr/image/upload/e_improve,w_300,h_600,c_thumb,g_auto/v1655829943/pame-nicalit/bPortada_bovmvz.jpg");
+  background-image: -webkit-linear-gradient(
+      top,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("https://res.cloudinary.com/propositivapr/image/upload/e_improve,w_300,h_600,c_thumb,g_auto/v1655829943/pame-nicalit/bPortada_bovmvz.jpg");
+  background-image: -ms-linear-gradient(
+      top,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("https://res.cloudinary.com/propositivapr/image/upload/e_improve,w_300,h_600,c_thumb,g_auto/v1655829943/pame-nicalit/bPortada_bovmvz.jpg");
+  background-image: linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://res.cloudinary.com/propositivapr/image/upload/e_improve,w_300,h_600,c_thumb,g_auto/v1655829943/pame-nicalit/bPortada_bovmvz.jpg");
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 0;
+}
+
+@media screen and (min-width: 500px) {
+  .container {
+    background-image: -moz-linear-gradient(
+        top,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+      ),
+      url("https://res.cloudinary.com/propositivapr/image/upload/v1655829943/pame-nicalit/bPortada_bovmvz.jpg");
+    background-image: -webkit-linear-gradient(
+        top,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+      ),
+      url("https://res.cloudinary.com/propositivapr/image/upload/v1655829943/pame-nicalit/bPortada_bovmvz.jpg");
+    background-image: -ms-linear-gradient(
+        top,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+      ),
+      url("https://res.cloudinary.com/propositivapr/image/upload/v1655829943/pame-nicalit/bPortada_bovmvz.jpg");
+    background-image: linear-gradient(
+        top,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+      ),
+      url("https://res.cloudinary.com/propositivapr/image/upload/v1655829943/pame-nicalit/bPortada_bovmvz.jpg");
+  }
+}
+
+
 </style>

@@ -15,7 +15,9 @@
         </p>
       </div>
       <div class="bannerButton">
-        <button>Formatos de Solicitud.</button>
+        <router-link :to="{ name: 'solicitudcredito' }">
+          <button>Formatos de Solicitud.</button>
+        </router-link>
       </div>
       <div class="bannerFotter">
         <h5>SOBRE PAME</h5>

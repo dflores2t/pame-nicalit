@@ -2,26 +2,19 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 // import styles
-
-// import viws from from views folder
+import HomeViews from "./views/HomeViews.vue";
 import HeaderView from "./views/HeaderView.vue";
-import MainView from "./views/MainView.vue";
 import FooterView from "./views/FooterView.vue";
-
 export default {
-  components: {
-    HeaderView,
-    MainView,
-    FooterView,
-  },
-  
+  name: "app",
+  components: { HomeViews, HeaderView, FooterView },
 };
 </script>
 
 <template>
   <div class="container">
     <HeaderView />
-    <MainView />
+    <router-view></router-view>
     <FooterView />
   </div>
 </template>
@@ -69,7 +62,7 @@ body {
     ),
     url("https://res.cloudinary.com/propositivapr/image/upload/e_improve,w_300,h_600,c_thumb,g_auto/v1655829943/pame-nicalit/bPortada_bovmvz.jpg");
   background-image: -ms-linear-gradient(
-      top,
+      top,IXUIX BXD B B BB XBBB 
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
     ),
@@ -90,27 +83,25 @@ body {
         rgba(0, 0, 0, 0.5),
         rgba(0, 0, 0, 0.5)
       ),
-      url("https://res.cloudinary.com/propositivapr/image/upload/v1655829943/pame-nicalit/bPortada_bovmvz.jpg");
+      url("https://res.cloudinary.com/propositivapr/image/upload/v1655938065/pame-nicalit/bPortada_bovmvz_p8vflq.jpg");
     background-image: -webkit-linear-gradient(
         top,
         rgba(0, 0, 0, 0.5),
         rgba(0, 0, 0, 0.5)
       ),
-      url("https://res.cloudinary.com/propositivapr/image/upload/v1655829943/pame-nicalit/bPortada_bovmvz.jpg");
+      url("https://res.cloudinary.com/propositivapr/image/upload/v1655938065/pame-nicalit/bPortada_bovmvz_p8vflq.jpg");
     background-image: -ms-linear-gradient(
         top,
         rgba(0, 0, 0, 0.5),
         rgba(0, 0, 0, 0.5)
       ),
-      url("https://res.cloudinary.com/propositivapr/image/upload/v1655829943/pame-nicalit/bPortada_bovmvz.jpg");
+      url("https://res.cloudinary.com/propositivapr/image/upload/v1655938065/pame-nicalit/bPortada_bovmvz_p8vflq.jpg");
     background-image: linear-gradient(
         top,
         rgba(0, 0, 0, 0.5),
         rgba(0, 0, 0, 0.5)
       ),
-      url("https://res.cloudinary.com/propositivapr/image/upload/v1655829943/pame-nicalit/bPortada_bovmvz.jpg");
+      url("https://res.cloudinary.com/propositivapr/image/upload/v1655938065/pame-nicalit/bPortada_bovmvz_p8vflq.jpg");
   }
 }
-
-
 </style>

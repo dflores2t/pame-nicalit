@@ -4,7 +4,9 @@
       <div class="mobile">
         <div class="header">
           <div class="logo">
-            <img :src="logoTipo.img" :alt="logoTipo.alt" />
+            <router-link :to="{ name: 'Home' }">
+              <img :src="logoTipo.img" :alt="logoTipo.alt" />
+            </router-link>
           </div>
           <div class="more">
             <button id="bMore" @click="isCollapsed = !isCollapsed">
@@ -13,17 +15,19 @@
           </div>
         </div>
         <div id="mobileMenu" :class="{ collapsed: isCollapsed }">
-          <a href="#">Services</a>
+          <router-link :to="{ name: 'services' }">Services</router-link>
           <a href="#">About</a>
           <a href="#">Contact</a>
         </div>
       </div>
       <div class="desktop">
         <div class="logo">
-          <img :src="logoTipo.img" :alt="logoTipo.alt" />
+          <router-link :to="{ name: 'Home' }">
+            <img :src="logoTipo.img" :alt="logoTipo.alt" />
+          </router-link>
         </div>
         <div class="primary">
-          <a href="#">Services</a>
+          <router-link :to="{ name: 'services' }">Services</router-link>
           <a href="#">About</a>
           <a href="#">Contact</a>
         </div>
@@ -109,7 +113,8 @@ nav .mobile .header .more button {
 nav .logo {
   min-width: 200px;
 }
-nav a {
+nav #mobileMenu a,
+nav .desktop a {
   color: #fff;
   text-decoration: none;
   display: block;
@@ -118,9 +123,14 @@ nav a {
   letter-spacing: 0.2em;
   transition: all 0.8s ease;
 }
-nav a:hover {
+nav #mobileMenu a:hover,
+nav .desktop .primary a:hover {
   color: rgb(19, 124, 193);
   background-color: #d8e183;
+  border-radius: 5p;
+}
+nav .desktop .primary a:hover{
+  border-radius: 10px;
 }
 nav .desktop {
   display: flex;
@@ -140,7 +150,7 @@ nav .desktop .secondary.mini {
 
 @media screen and (max-width: 853px) {
   nav .logo {
-    min-width: 100px;
+    min-width: 170px;
   }
   nav .secondary.full {
     display: none;
@@ -167,6 +177,9 @@ nav .desktop .secondary.mini {
     display: block;
     position: relative;
     text-align: center;
+  }
+  nav .logo {
+    min-width: 100px;
   }
   #mobileMenu {
     background-color: rgb(19, 124, 193);

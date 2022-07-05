@@ -12,96 +12,58 @@ export default {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container-fluid">
     <HeaderView />
+    <main>
     <router-view></router-view>
+    </main>
     <FooterView />
   </div>
 </template>
 
 <style>
-html,
-body {
+/* Reset Global selectors */
+html {
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%;
+  word-break: normal;
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+
+*,
+::before,
+::after {
+  background-repeat: no-repeat;
+  box-sizing: inherit;
+}
+
+::before,
+::after {
+  text-decoration: inherit;
+  vertical-align: inherit;
+}
+
+* {
+  padding: 0;
   margin: 0;
+}
+
+button,
+input {
+  background-color: transparent;
+  border-style: none;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  height: 100%;
-  width: 100%;
-  margin-top: 0px;
+  margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  min-height: -webkit-fill-available;
 }
-
-.container {
-  height: 100vh;
-  background-color: #2e3842;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 15% 80% 5%;
-  grid-template-areas:
-    "h h h h h h h h h h h h"
-    "c c c c c c c c c c c c"
-    "f f f f f f f f f f f f";
-  gap: 3px/3px;
-
-  background-image: -moz-linear-gradient(
-      top,
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.5)
-    ),
-    url("https://res.cloudinary.com/propositivapr/image/upload/e_improve,w_300,h_600,c_thumb,g_auto/v1655829943/pame-nicalit/bPortada_bovmvz.jpg");
-  background-image: -webkit-linear-gradient(
-      top,
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.5)
-    ),
-    url("https://res.cloudinary.com/propositivapr/image/upload/e_improve,w_300,h_600,c_thumb,g_auto/v1655829943/pame-nicalit/bPortada_bovmvz.jpg");
-  background-image: -ms-linear-gradient(
-      top,IXUIX BXD B B BB XBBB 
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.5)
-    ),
-    url("https://res.cloudinary.com/propositivapr/image/upload/e_improve,w_300,h_600,c_thumb,g_auto/v1655829943/pame-nicalit/bPortada_bovmvz.jpg");
-  background-image: linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("https://res.cloudinary.com/propositivapr/image/upload/e_improve,w_300,h_600,c_thumb,g_auto/v1655829943/pame-nicalit/bPortada_bovmvz.jpg");
-  background-attachment: fixed;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding-top: 0;
-}
-
-@media screen and (min-width: 500px) {
-  .container {
-    background-image: -moz-linear-gradient(
-        top,
-        rgba(0, 0, 0, 0.5),
-        rgba(0, 0, 0, 0.5)
-      ),
-      url("https://res.cloudinary.com/propositivapr/image/upload/v1655938065/pame-nicalit/bPortada_bovmvz_p8vflq.jpg");
-    background-image: -webkit-linear-gradient(
-        top,
-        rgba(0, 0, 0, 0.5),
-        rgba(0, 0, 0, 0.5)
-      ),
-      url("https://res.cloudinary.com/propositivapr/image/upload/v1655938065/pame-nicalit/bPortada_bovmvz_p8vflq.jpg");
-    background-image: -ms-linear-gradient(
-        top,
-        rgba(0, 0, 0, 0.5),
-        rgba(0, 0, 0, 0.5)
-      ),
-      url("https://res.cloudinary.com/propositivapr/image/upload/v1655938065/pame-nicalit/bPortada_bovmvz_p8vflq.jpg");
-    background-image: linear-gradient(
-        top,
-        rgba(0, 0, 0, 0.5),
-        rgba(0, 0, 0, 0.5)
-      ),
-      url("https://res.cloudinary.com/propositivapr/image/upload/v1655938065/pame-nicalit/bPortada_bovmvz_p8vflq.jpg");
-  }
+main{
+  min-height: 90vh;
 }
 </style>

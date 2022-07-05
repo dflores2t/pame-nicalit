@@ -1,5 +1,7 @@
 <template>
-  <MainView />
+  <div class="home-view">
+    <MainView />
+  </div>
 </template>
 
 <script>
@@ -13,3 +15,8 @@ export default {
   },
 };
 </script>
+<style scopeh>
+.home-view {
+  height: 100vh;
+}
+</style>

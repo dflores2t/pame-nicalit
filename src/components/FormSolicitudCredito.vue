@@ -1,46 +1,119 @@
 <template>
   <div class="scredito">
     <h3>Solicitud de Credito y Plan de Negocio</h3>
-    <div class="tab">
-      <button class="tablinks" @click="openCity('London')">
-        Datos Personales.
-      </button>
-      <div id="London" class="tabcontent">
-        <h3>London</h3>
-        <p>London is the capital city of England.</p>
-      </div>
-      <button class="tablinks" @click="openCity('Paris')">Paso 2.</button>
-      <div id="Paris" class="tabcontent">
-        <h3>Paris</h3>
-        <p>Paris is the capital of France.</p>
-      </div>
-      <button class="tablinks" @click="openCity('Tokyo')">Paso 3.</button>
-      <div id="Tokyo" class="tabcontent">
-        <h3>Tokyo</h3>
-        <p>Tokyo is the capital of Japan.</p>
-      </div>
-    </div>
+    <!-- <div>
+      <article>
+        <section :class="animation">
+          <h2>{{ formGroup[formPosition].title }}</h2>
+          <div>
+            <div
+              v-for="(field, index) in formGroup[formPosition].fields"
+              :key="'field' + index"
+            >
+              <label>{{ field.label }}</label>
+              <input :type="field.type" v-model="field.value" required />
+            </div>
+          </div>
+          <div class="button">
+            <button
+              class="btn-primary"
+              v-if="formPosition < formGroup.length - 1"
+              @click="nextStep"
+            >
+              Siguiente
+            </button>
+            <button
+              class="btn-primary"
+              v-if="formPosition === formGroup.length - 1"
+            >
+              Enter
+            </button>
+          </div>
+        </section>
+      </article>
+    </div> -->
+  
+  
   </div>
 </template>
 
 <script>
 export default {
-  name: "formscredito",
   data() {
-    return {};
+    return {
+      formPosition: 0,
+      animation: "animate-in",
+      formGroup: [
+        {
+          title: "Datos Personales",
+          fields: [
+            { label: "Número de Cédula", value: "", type: "text" },
+            { label: "Nombre Completo", value: "", type: "text" },
+            { label: "Ex-trabajador Nicalit", value: "", type: "checkbox" },
+            {
+              label: "Familiar Ex-trabajador Nicalit",
+              value: "",
+              type: "checkbox",
+            },
+            {
+              label: "No es Ex-trabajador Nicalit",
+              value: "",
+              type: "checkbox",
+            },
+            {
+              label: "Nombre del Familiar Ex-trabajodor de nicalit",
+              value: "",
+              type: "text",
+            },
+          ],
+        },
+        {
+          title: "Datos Personales",
+          fields: [
+            { label: "Direccion Domiciliar", value: "", type: "text" },
+            { label: "Departamento", value: "", type: "text" },
+            { label: "Municipio", value: "", type: "text" },
+            { label: "Comarca", value: "", type: "text" },
+            { label: "Teléfono", value: "", type: "tel" },
+            { label: "Correo Electronico", value: "", type: "email" },
+          ],
+        },
+        {
+          title: "Datos Personales",
+          fields: [
+            { label: "Redes sociales que utiliza", value: "", type: "text" },
+            { label: "Numero de cuenta Bac", value: "", type: "text" },
+            { label: "Referencia Personal", value: "", type: "text" },
+            { label: "Teléfono Referencia Personal", value: "", type: "tel" },
+          ],
+        },
+        {
+          title: "Datos Del Negocio",
+          fields: [
+            { label: "City", value: "" },
+            { label: "Zip Code", value: "" },
+            { label: "County", value: "" },
+            { label: "State", value: "" },
+          ],
+        },
+        {
+          title: "Datos Del Prestamo",
+          fields: [
+            { label: "Academic qualification", value: "" },
+            { label: "College Attended", value: "" },
+            { label: "Year of completion", value: "" },
+          ],
+        },
+      ],
+    };
   },
   methods: {
-    openCity(cityName) {
-      var i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("tabcontent");
-      for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-      }
-      tablinks = document.getElementsByClassName("tablinks");
-      for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-      }
-      document.getElementById(cityName).style.display = "block";
+    nextStep() {
+      this.animation = "animate-out";
+      setTimeout(() => {
+        this.animation = "animate-in";
+        this.formPosition += 1;
+      }, 600);
     },
   },
 };
@@ -48,69 +121,32 @@ export default {
 <style scoped>
 .scredito {
   color: white;
-  text-align: center;
   width: 100vw;
 }
 /* Style the tab */
-.tab {
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+input[type="text"] {
+  width: 90%;
+  margin-top: 5px;
+  font-size: 1.3rem;
 }
-.tablinks {
-  color: white;
-  width: 100vw;
-  text-align: left;
+label {
+  width: 100%;
+  display: block;
+  text-align: center;
+  margin-bottom: 5px;
+  margin-top: 10px;
 }
-
-/* Style the buttons inside the tab */
-.tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-  font-size: 17px;
+.btn-primary {
+  color: blue;
+  font-size: 1.2rem;
+  margin-top: 10px;
 }
-
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #ddd;
+.scredito .animation-in {
+  transform-origin: left;
+  animation: in 0.6s ease-in-out;
 }
-
-/* Create an active/current tablink class */
-.tab button.active {
-  background-color: #ccc;
-}
-
-/* Style the tab content */
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
-  -webkit-animation: fadeEffect 1s;
-  animation: fadeEffect 1s;
-}
-
-/* Fade in tabs */
-@-webkit-keyframes fadeEffect {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeEffect {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.scredito .animation-out {
+  transform-origin: bottom left;
+  animation: out 0.6s ease-in-out;
 }
 </style>

@@ -1,40 +1,61 @@
 <template>
-  <div class="header-view">
-    <nav>
-      <div class="mobile">
-        <div class="header">
-          <div class="logo">
-            <router-link :to="{ name: 'Home' }">
-              <img :src="logoTipo.img" :alt="logoTipo.alt" />
-            </router-link>
-          </div>
-          <div class="more">
-            <button id="bMore" @click="isCollapsed = !isCollapsed">
-              <span class="material-icons">list</span>
-            </button>
-          </div>
-        </div>
-        <div id="mobileMenu" :class="{ collapsed: isCollapsed }">
-          <router-link :to="{ name: 'services' }">Services</router-link>
-          <a href="#">About</a>
-          <a href="#">Contact</a>
-        </div>
-      </div>
-      <div class="desktop">
-        <div class="logo">
+  <header>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
           <router-link :to="{ name: 'Home' }">
             <img :src="logoTipo.img" :alt="logoTipo.alt" />
           </router-link>
-        </div>
-        <div class="primary">
-          <router-link :to="{ name: 'services' }">Services</router-link>
-          <a href="#">About</a>
-          <a href="#">Contact</a>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarMobilContent"
+          aria-controls="navbarMobilContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMobilContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Dropdown
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled">Disabled</a>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
-    <!-- <BannerViews /> -->
-  </div>
+    <!-- Navbar -->
+  </header>
 </template>
 
 <script>
@@ -46,7 +67,7 @@ export default {
   },
   data() {
     return {
-      isCollapsed: true,
+      // isCollapsed: true,
       logoTipo: {
         img: "https://res.cloudinary.com/propositivapr/image/upload/v1655829964/pame-nicalit/bglogo_ji4hff.svg",
         alt: "pame-nicalit logo",
@@ -58,115 +79,57 @@ export default {
 </script>
 
 <style scoped>
-.header-view {
-  grid-area: h;
+header {
+  --colorLetraMenu: #ffffff;
+  --colorIconoMenu: #d8e193;
+  --colorFondoHoverAncor: var(--colorIconoMenu);
+  --fondoMenuMobil: rgb(19, 124, 193);
 }
-.material-icons {
-  font-family: "Material Icons";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 3.2rem; /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Support for IE. */
-  font-feature-settings: "liga";
+nav img {
+  min-width: 140px;
 }
-.collapsed {
-  display: none;
+nav button {
+  margin-right: 10px;
 }
-
-nav {
-  color: white;
-  width: 100%;
-}
-nav .mobile {
-  display: none;
-}
-nav .mobile .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-left: 10px;
-}
-nav .mobile .header .more button {
-  border: none;
-  background-color: transparent;
-  color: #d8e183;
-  padding: 15px;
-  cursor: pointer;
-}
-
-nav .logo {
-  min-width: 200px;
-}
-nav #mobileMenu a,
-nav .desktop a {
-  color: #fff;
-  text-decoration: none;
-  display: block;
-  padding: 20px 25px;
+.nav-link {
+  color: var(--colorLetraMenu);
   font-weight: bold;
-  letter-spacing: 0.2em;
-  transition: all 0.8s ease;
 }
-nav #mobileMenu a:hover,
-nav .desktop .primary a:hover {
-  color: rgb(19, 124, 193);
-  background-color: #d8e183;
-  border-radius: 5p;
-}
-nav .desktop .primary a:hover{
+.nav-link:hover {
+  color: var(--fondoMenuMobil);
+  background-color: var(--colorIconoMenu);
+  font-weight: bold;
   border-radius: 10px;
 }
-nav .desktop {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-}
-nav .desktop .primary,
-nav .desktop .secondary {
-  display: flex;
-}
-nav .desktop .secondary.mini {
-  display: none;
-}
-
 /* //media screen */
-
-@media screen and (max-width: 853px) {
-  nav .logo {
-    min-width: 170px;
+@media screen and (max-width: 991px) {
+  nav img {
+    min-width: 120px;
   }
-  nav .secondary.full {
-    display: none;
+  /*MENU ICON COLOR*/
+  .navbar-toggler {
+    background-color: var(--colorIconoMenu);
   }
-  nav .secondary.mini {
-    display: block !important;
+  .navbar-toggler:focus {
+    box-shadow: none;
   }
-  nav .secondary.mini .submenu {
-    background-color: black;
-    position: absolute;
-    display: none;
-    width: 200px;
-    right: 0;
+  .navbar-toggler i {
+    color: var(--colorLetraMenu);
+    font-size: 2.1rem;
   }
-  nav .secondary.mini:hover .submenu {
-    display: block;
+  .navbar-collapse {
+    background-color: var(--fondoMenuMobil);
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 1.4px;
+    border-radius: 10px;
+  }
+  #navbarMobilContent a.nav-link {
+    color: var(--colorLetraMenu);
+  }
+  #navbarMobilContent a.nav-link:hover {
+    background-color: var(--colorFondoHoverAncor);
+    color: var(--fondoMenuMobil);
   }
 }
 @media screen and (max-width: 500px) {
@@ -178,12 +141,8 @@ nav .desktop .secondary.mini {
     position: relative;
     text-align: center;
   }
-  nav .logo {
-    min-width: 100px;
-  }
-  #mobileMenu {
-    background-color: rgb(19, 124, 193);
-    transition: all 0.5s ease;
+  nav img {
+    min-width: 110px;
   }
 }
 nav a.router-link-exact-active {

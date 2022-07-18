@@ -24,7 +24,7 @@
             type="button"
             class="btn-primarys btn-next"
           >
-            {{ isLastStep ? `Submit` : `Next` }}
+            {{ isLastStep ? `Enviar` : `Sig.` }}
           </button>
 
           <button
@@ -33,7 +33,7 @@
             type="button"
             class="btn-secondarys btn-back"
           >
-            Back
+            Atras
           </button>
         </div>
       </div>

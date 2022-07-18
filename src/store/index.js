@@ -2,11 +2,12 @@ import { createStore } from "vuex";
 
 const getDefaultUser = () => {
   return {
-    fullName:'',
-    firstName: "",
-    lastName: "",
-    username: "",
-    email: "",
+    fullName: "",
+    nCedula: "",
+    exNicalit: false,
+    address: "",
+    depart: "",
+    bName: "",
     isagreeToTerms: false,
   };
 };
@@ -22,19 +23,21 @@ export default createStore({
     },
     updateFullName(state, payload) {
       state.user.fullName = payload;
-    }
-    ,
-    updateFirstName(state, payload) {
-      state.user.firstName = payload;
     },
-    updateLastName(state, payload) {
-      state.user.lastName = payload;
+    updatenCedula(state, payload) {
+      state.user.nCedula = payload;
     },
-    updateUsername(state, payload) {
-      state.user.username = payload;
+    updateExNicalit(state, payload) {
+      state.user.exNicalit = payload;
     },
-    updateEmail(state, payload) {
-      state.user.email = payload;
+    updateAddress(state, payload) {
+      state.user.address = payload;
+    },
+    updateDepart(state, payload) {
+      state.user.depart = payload;
+    },
+    updatebName(state, payload) {
+      state.user.bName = payload;
     },
     updateIsAgreeToTerms(state, payload) {
       state.user.isagreeToTerms = payload;

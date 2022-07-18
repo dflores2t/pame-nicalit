@@ -1,53 +1,75 @@
 <template>
-  <div class="step-title">Personal Info</div>
+  <div class="step-title">Datos Personales</div>
 
-  .<div class="form-input">
-    <label for="fullName">Nombre Completo</label>
-    <field :class="inputClassObject('fullName')"
-    type="text"
-    id="fullName"
-    name="fullName"
-    :rules="fullNameRules"
-    v-model.trim="fullName" autofocus/>
+  <div class="form-input">
+    <label for="fullName">Nombres y Apellidos</label>
+    <field class="text-uppercase"
+      :class="inputClassObject('fullName')"
+      type="text"
+      id="fullName"
+      name="fullName"
+      :rules="fullNameRules"
+      v-model.trim="fullName"
+      autofocus
+    />
   </div>
 
   <div class="form-input">
-    <label for="frist-name">First Name</label>
-    <Field
-      :class="inputClassObject('firstName')"
+    <label for="nCedula">N° de Cédula.</label>
+    <Field class="text-uppercase"
+      :class="inputClassObject('nCedula')"
       type="text"
-      id="frist-name"
-      name="firstName"
-      :rules="firstNameRules"
-      v-model.trim="firstName"
+      id="nCedula"
+      name="nCedula"
+      :rules="nCedulaRules"
+      v-model.trim="nCedula"
     />
-    <ErrorMessage class="input-error-msg" name="firstName" />
+    <ErrorMessage class="input-error-msg" name="nCedula" />
+  </div>
+  <div class="form-input">
+    <label for="exNicalit">Ex Trabajadore Nicalit.</label>
+    <Field
+      :class="inputClassObject('exNicalit')"
+      type="checkbox"
+      id="exNicalit"
+      name="exNicalit"
+      :rules="exNicalitRules"
+      :value="true"
+      v-model="exNicalit"
+    />
+    <ErrorMessage class="input-error-msg" name="nCedula" />
   </div>
 
   <div class="form-input">
-    <label for="last-name">Last Name</label>
-    <Field
-      :class="inputClassObject('lastName')"
+    <label for="address">Dirección</label>
+    <Field class="text-uppercase"
+      :class="inputClassObject('address')"
       type="text"
-      id="last-name"
-      name="lastName"
-      :rules="lastNameRules"
-      v-model.trim="lastName"
+      id="address"
+      name="address"
+      :rules="addressRules"
+      v-model.trim="address"
     />
-    <ErrorMessage class="input-error-msg" name="lastName" />
+    <ErrorMessage class="input-error-msg" name="address" />
   </div>
 
   <div class="form-input">
-    <label for="github-username">GitHub Username</label>
-    <Field
-      :class="inputClassObject('username')"
-      type="text"
-      id="username"
-      name="username"
-      :rules="usernameRules"
-      v-model.trim="username"
-    />
-    <ErrorMessage class="input-error-msg" name="username" />
+    <label for="depart">Departamento</label>
+    <br />
+    <Field class="text-uppercase"
+      :class="inputClassObject('depart')"
+      as="select"
+      id="depart"
+      name="depart"
+      :rules="departRules"
+      v-model="depart"
+    >
+      <option disabled value="">Departamento</option>
+      <option>Managua</option>
+      <option>Leon</option>
+      <option>Chinandega</option>
+    </Field>
+    <ErrorMessage class="input-error-msg" name="depart" />
   </div>
 </template>
 
@@ -69,9 +91,10 @@ export default {
   data() {
     return {
       fullNameRules: yup.string().trim().required(),
-      firstNameRules: yup.string().trim().required(),
-      lastNameRules: yup.string().trim().required(),
-      usernameRules: yup.string().trim().required(),
+      nCedulaRules: yup.string().trim().required(),
+      exNicalitRules:yup.bool().notRequired(),
+      addressRules: yup.string().trim().required(),
+      departRules: yup.string().trim().required(),
     };
   },
   computed: {
@@ -83,28 +106,36 @@ export default {
         this.$store.commit("updateFullName", value);
       },
     },
-    firstName: {
+    nCedula: {
       get() {
-        return this.$store.state.user.firstName;
+        return this.$store.state.user.nCedula;
       },
       set(value) {
-        this.$store.commit("updateFirstName", value);
+        this.$store.commit("updatenCedula", value);
       },
     },
-    lastName: {
+    exNicalit: {
       get() {
-        return this.$store.state.user.lastName;
+        return this.$store.state.user.exNicalit;
       },
       set(value) {
-        this.$store.commit("updateLastName", value);
+        this.$store.commit("updateExNicalit", value);
       },
     },
-    username: {
+    address: {
       get() {
-        return this.$store.state.user.username;
+        return this.$store.state.user.address;
       },
       set(value) {
-        this.$store.commit("updateUsername", value);
+        this.$store.commit("updateAddress", value);
+      },
+    },
+    depart: {
+      get() {
+        return this.$store.state.user.depart;
+      },
+      set(value) {
+        this.$store.commit("updateDepart", value);
       },
     },
   },

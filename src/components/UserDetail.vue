@@ -1,20 +1,24 @@
 <template>
   <div class="user-detail">
     <div class="header">
-      <div class="welcome">Welcome</div>
+      <div class="welcome">PAME-NICALIT .::. Solicitudo de Crédito</div>
       <div class="desc">
-        You are part of our connection in the Berlin GitHub Community.
+        Hemos enviado tu solicitud de crédito con la siguiente información.
       </div>
     </div>
 
     <div class="user-info">
-      <div>Nombre Completo: {{ user.fullName}}</div>
-      <div>Name: {{ user.firstName }} {{ user.lastName }}</div>
-      <div>Email: {{ user.email }}</div>
-      <div>Username: {{ user.username }}</div>
+      <div>Datos Personales</div>
+      <div>Nombre Completo: {{ user.fullName }}</div>
+      <div>N° Cedula: {{ user.nCedula }} {{ user.lastName }}</div>
+      <div>Trabajador Ex Nicalit: {{ user.exNicalit }}</div>
+      <div>Direccion: {{ user.address }}</div>
+      <div>Departamento: {{ user.depart }}</div>
+      <div>Datos del Negocio</div>
+      <div>Descripción del Negocio: {{ user.bName }}</div>
     </div>
 
-    <div class="github-info">
+    <!-- <div class="github-info">
       <div v-if="userHasData">
         <div>
           <img
@@ -36,7 +40,7 @@
       <div v-else class="github-error">
         Can't find your username in GitHub.
       </div>
-    </div>
+    </div> -->
 
     <div class="footer">
       <button
@@ -44,7 +48,7 @@
         type="button"
         class="btn-secondary"
       >
-        Back to Home
+        Regresar
       </button>
     </div>
   </div>
@@ -52,13 +56,16 @@
 
 <script>
 // import GitHubApi from '../services/GitHubApi'
+import emailjs from "emailjs-com";
 
 export default {
+  name: "userDetails",
+
   data() {
     return {
       user: this.$store.state.user,
       responseData: {},
-    }
+    };
   },
   created() {
     // GitHubApi()
@@ -69,13 +76,36 @@ export default {
     //   .catch((error) => {
     //     console.error(error)
     //   })
+    this.sendEmail();
+  },
+  methods: {
+    sendEmail() {
+      let templateParams = {
+        fullName: this.user.fullName,
+        nCedula: this.user.nCedula,
+        exNicalit: this.user.exNicalit,
+        address: this.user.address,
+        depart: this.user.depart,
+        bName: this.user.bName,
+      };
+      emailjs
+        .send("service_44fll2w", "template_j7jc8uq", templateParams, "SaaesCsoq4f8UPZ2F")
+        .then(
+          () => {
+            alert("Solicitud Enviada!");
+          },
+          (error) => {
+            alert("Solicitud no Enviada", error);
+          }
+        );
+    },
   },
   computed: {
     userHasData() {
-      return !(Object.keys(this.responseData).length === 0)
+      return !(Object.keys(this.responseData).length === 0);
     },
   },
-}
+};
 </script>
 
 <style>

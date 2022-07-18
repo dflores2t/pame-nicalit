@@ -1,18 +1,18 @@
 <template>
-  <div class="step-title">Almost there!</div>
+  <div class="step-title">Datos del Negocio</div>
 
   <div class="form-input">
-    <label for="email">User Email</label>
-    <Field
+    <label for="bName">Descripcion del Negocio</label>
+    <Field class="text-uppercase"
       :class="inputClassObject('email')"
-      type="email"
-      id="email"
-      name="email"
-      :rules="emailRules"
-      v-model="email"
+      type="text"
+      id="bName"
+      name="bName"
+      :rules="bNameRules"
+      v-model="bName"
       autofocus
     />
-    <ErrorMessage class="input-error-msg" name="email" />
+    <ErrorMessage class="input-error-msg" name="bName" />
   </div>
 
   <div class="form-input">
@@ -25,7 +25,7 @@
       :value="true"
       v-model="isAgreeToTerms"
     />
-    <label for="terms">Agree to Terms and Services</label>
+    <label for="terms">Acepto los terminos y condiciones</label>
     <ErrorMessage class="input-error-msg" name="terms" />
   </div>
 </template>
@@ -47,22 +47,21 @@ export default {
   },
   data() {
     return {
-      emailRules: yup
+      bNameRules: yup
         .string()
-        .required()
-        .email(),
+        .required(),
       termsRules: yup
         .boolean()
-        .required('You must agree to terms and services'),
+        .required('Deberia aceptar los terminos y condiciones'),
     }
   },
   computed: {
-    email: {
+    bName: {
       get() {
-        return this.$store.state.user.email
+        return this.$store.state.user.bName
       },
       set(value) {
-        this.$store.commit('updateEmail', value)
+        this.$store.commit('updatebName', value)
       },
     },
     isAgreeToTerms: {

@@ -7,4 +7,4 @@ import "@fortawesome/fontawesome-free/css/all.css";
 
 createApp(App).use(store).use(router).mount("#app");
 
-// import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";

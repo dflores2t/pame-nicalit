@@ -13,6 +13,7 @@
       v-model.trim="fullName"
       autofocus
     />
+    <ErrorMessage class="input-error-msg" name="fullName" />
   </div>
 
   <div class="form-input">
@@ -28,67 +29,65 @@
     />
     <ErrorMessage class="input-error-msg" name="nCedula" />
   </div>
-  <!-- <div class="form-input">
-    <label for="exNicalit">Ex Trabajadore Nicalit.</label>
-    <Field
-      :class="inputClassObject('exNicalit')"
-      type="checkbox"
-      id="exNicalit"
-      name="exNicalit"
-      :rules="exNicalitRules"
-      :value="true"
-      v-model="exNicalit"
-    />
-    <ErrorMessage class="input-error-msg" name="exNicalit" />
-  </div>-->
-  <div
-    class="btn-group"
-    role="group"
-    aria-label="Basic checkbox toggle button group"
-  >
-    <input
-      :class="inputClassObject('exNicalit')"
-      type="checkbox"
-      class="btn-check"
-      id="exNicalit"
-      autocomplete="off"
-      :rules="exNicalit"
-      :value="true"
-      v-model="exNicalit"
-    />
-    <label class="btn btn-outline-primary" for="exNicalit"
-      >Ex-Trabajador Nicalit</label
-    >
 
-    <input
-      :class="inputClassObject('famExTrabajador')"
-      type="checkbox"
-      class="btn-check"
-      id="famExTrabajador"
-      autocomplete="off"
-      :rules="famExTrabajador"
-      :value="true"
-      v-model="famExTrabajador"
-    />
-    <label class="btn btn-outline-primary" for="famExTrabajador"
-      >Familiar Ex Trabajador</label
-    >
-    <input
-      type="checkbox"
-      class="btn-check"
-      id="noExTrabajador"
-      autocomplete="off"
-      :rules="noExTrabajador"
-      :value="true"
-      v-model="noExTrabajador"
-    />
-    <label class="btn btn-outline-primary" for="noExTrabajador"
-      >No Ex-Trabajador</label
-    >
+  <div class="input-group mb-3">
+    <label class="form-control">Ex-Trabajador de Nicalit.</label>
+    <div class="input-group-text">
+      <input
+        :class="inputClassObject('exNicalit')"
+        class="form-check-input mt-0"
+        type="checkbox"
+        id="exNicalit"
+        :rules="exNicalitRules"
+        v-model="exNicalit"
+        aria-label="Checkbox for following label"
+      />
+    </div>
+  </div>
+  <div class="input-group mb-3">
+    <label class="form-control">Familiar de Ex-Trabajador.</label>
+    <div class="input-group-text">
+      <input
+        :class="inputClassObject('famExTrabajador')"
+        class="form-check-input mt-0"
+        type="checkbox"
+        id="famExTrabajador"
+        :rules="famExTrabajadorRules"
+        v-model="famExTrabajador"
+        aria-label="Checkbox for following label"
+      />
+    </div>
+  </div>
+  <div class="input-group mb-3">
+    <label class="form-control">No es Ex-Trabajador.</label>
+    <div class="input-group-text">
+      <input
+        :class="inputClassObject('noExTrabajador')"
+        class="form-check-input mt-0"
+        type="checkbox"
+        id="noExTrabajador"
+        :rules="noExTrabajadorRules"
+        v-model="noExTrabajador"
+        aria-label="Checkbox for following label"
+      />
+    </div>
   </div>
 
+  <div class="form-input" v-if="isChecked">
+    <label for="address">Nombre del Ex-Trabajador del que es Familiar:</label>
+    <Field
+      class="text-uppercase"
+      :class="inputClassObject('nameFamExTrabajador')"
+      type="text"
+      id="address"
+      name="address"
+      :rules="nameFamExTrabajadorRules"
+      v-model.trim="nameFamExTrabajador"
+    />
+    <ErrorMessage class="input-error-msg" name="nameFamExTrabajador" />
+  </div>
   <div class="form-input">
-    <label for="address">Dirección</label>
+    <label for="nameFamExTrabajador">Dirección Domiciliar</label>
     <Field
       class="text-uppercase"
       :class="inputClassObject('address')"
@@ -120,6 +119,44 @@
     </Field>
     <ErrorMessage class="input-error-msg" name="depart" />
   </div>
+  <div class="form-input">
+    <label for="municipio">Municipio</label>
+    <br />
+    <Field
+      class="text-uppercase"
+      :class="inputClassObject('municipio')"
+      as="select"
+      id="municipio"
+      name="municipio"
+      :rules="municipioRules"
+      v-model="municipio"
+    >
+      <option disabled value="">Municipio</option>
+      <option>San Rafael</option>
+      <option>San 1</option>
+      <option>San 2</option>
+    </Field>
+    <ErrorMessage class="input-error-msg" name="Municipio" />
+  </div>
+  <div class="form-input">
+    <label for="comunidad">Comunidad</label>
+    <br />
+    <Field
+      class="text-uppercase"
+      :class="inputClassObject('comunidad')"
+      as="select"
+      id="comunidad"
+      name="comunidad"
+      :rules="comunidadRules"
+      v-model="comunidad"
+    >
+      <option disabled value="">Comunidad</option>
+      <option>El Salto</option>
+      <option>Las Manos</option>
+      <option>Los Chils</option>
+    </Field>
+    <ErrorMessage class="input-error-msg" name="depart" />
+  </div>
 </template>
 
 <script>
@@ -139,13 +176,29 @@ export default {
   },
   data() {
     return {
-      fullNameRules: yup.string().trim().required(),
-      nCedulaRules: yup.string().trim().required(),
-      exNicalitRules: yup.bool().notRequired(),
-      famExTrabajador: yup.bool().notRequired(),
-      noExTrabajador: yup.bool().notRequired(),
-      addressRules: yup.string().trim().required(),
-      departRules: yup.string().trim().required(),
+      fullNameRules: yup
+        .string()
+        .trim()
+        .required("Debe escribir su nombre completo!"),
+      nCedulaRules: yup
+        .string()
+        .trim()
+        .required("La Identificacion no es valida"),
+      exNicalitRules: yup.string().trim().notRequired(),
+      famExTrabajadorRules: yup.string().trim().notRequired(),
+      noExTrabajadorRules: yup.string().trim().notRequired(),
+      nameFamExTrabajadorRules: yup.string().trim().notRequired(),
+      addressRules: yup
+        .string()
+        .trim()
+        .required("Debe escribir su direccion domiciliar"),
+      departRules: yup.string().trim().required("Debe escojer un deparamento"),
+      municipioRules: yup.string().trim().required("Debe escojer un Municipio"),
+      comunidadRules: yup
+        .string()
+        .trim()
+        .required("Debe escojer una comunidad"),
+      isChecked: false,
     };
   },
   computed: {
@@ -178,15 +231,24 @@ export default {
         return this.$store.state.user.famExTrabajador;
       },
       set(value) {
+        this.isChecked = value === true ? true : false;
         this.$store.commit("updateFamExTrabajador", value);
       },
     },
     noExTrabajador: {
       get() {
-        this.$store.state.user.noExTrabajador;
+        return this.$store.state.user.noExTrabajador;
       },
       set(value) {
-        this.$store.commit("noExtrabajador");
+        this.$store.commit("updateNoExTrabajador", value);
+      },
+    },
+    nameFamExTrabajador: {
+      get() {
+        return this.$store.state.user.nameFamExTrabajador;
+      },
+      set(value) {
+        this.$store.commit("updateNameFamExTrabajador", value);
       },
     },
     address: {
@@ -203,6 +265,22 @@ export default {
       },
       set(value) {
         this.$store.commit("updateDepart", value);
+      },
+    },
+    municipio: {
+      get() {
+        return this.$store.state.user.municipio;
+      },
+      set(value) {
+        this.$store.commit("updateMunicipio", value);
+      },
+    },
+    comunidad: {
+      get() {
+        return this.$store.state.user.comunidad;
+      },
+      set(value) {
+        this.$store.commit("updateComunidad", value);
       },
     },
   },

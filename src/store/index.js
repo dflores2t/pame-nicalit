@@ -6,9 +6,12 @@ const getDefaultUser = () => {
     nCedula: "",
     exNicalit: false,
     famExTrabajador: false,
-    noExTrabajador:false,
+    noExTrabajador: false,
+    nameFamExTrabajador: "",
     address: "",
     depart: "",
+    municipio: "",
+    comunidad:"",
     bName: "",
     isagreeToTerms: false,
   };
@@ -35,14 +38,24 @@ export default createStore({
     updateFamExTrabajador(state, payload) {
       state.user.famExTrabajador = payload;
     },
-    updatenoExTrabajador(state, payload) {
-      state.user.noExTrabajador = payload
+    updateNoExTrabajador(state, payload) {
+      state.user.noExTrabajador = payload;
+    },
+    updateNameFamExTrabajador(state, payload) {
+      state.user.nameFamExTrabajador = payload;
     },
     updateAddress(state, payload) {
+      console.log(payload);
       state.user.address = payload;
     },
     updateDepart(state, payload) {
       state.user.depart = payload;
+    },
+    updateMunicipio(state, payload) {
+      state.user.municipio = payload;
+    },
+    updateComunidad(state, payload) {
+      state.user.comunidad = payload;
     },
     updatebName(state, payload) {
       state.user.bName = payload;

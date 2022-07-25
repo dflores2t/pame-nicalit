@@ -5,6 +5,8 @@ const getDefaultUser = () => {
     fullName: "",
     nCedula: "",
     exNicalit: false,
+    famExTrabajador: false,
+    noExTrabajador:false,
     address: "",
     depart: "",
     bName: "",
@@ -29,6 +31,12 @@ export default createStore({
     },
     updateExNicalit(state, payload) {
       state.user.exNicalit = payload;
+    },
+    updateFamExTrabajador(state, payload) {
+      state.user.famExTrabajador = payload;
+    },
+    updatenoExTrabajador(state, payload) {
+      state.user.noExTrabajador = payload
     },
     updateAddress(state, payload) {
       state.user.address = payload;

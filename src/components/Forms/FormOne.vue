@@ -11,6 +11,7 @@
       :rules="fullNameRules"
       v-model.trim="fullName"
       autofocus
+      placeholder="Nombre Completo"
     />
     <label for="fullName">Nombres y Apellidos</label>
     <ErrorMessage class="text-danger" name="fullName" />
@@ -25,6 +26,7 @@
       name="nCedula"
       :rules="nCedulaRules"
       v-model.trim="nCedula"
+      placeholder="Numero identificacion"
     />
     <label for="nCedula">N° de Cédula.</label>
     <ErrorMessage class="text-danger" name="nCedula" />
@@ -76,8 +78,9 @@
       name="address"
       :rules="nameFamExTrabajadorRules"
       v-model.trim="nameFamExTrabajador"
+      placeholder="Nombre Familiar"
     />
-    <label for="address">Nombre del Ex-Trabajador del que es Familiar:</label>
+    <label for="address">Nombre del familiar Ex-Trabajador</label>
     <ErrorMessage class="text-danger" name="nameFamExTrabajador" />
   </div>
   <div class="form-floating mb-3 mt-3">
@@ -89,18 +92,13 @@
       name="address"
       :rules="addressRules"
       v-model.trim="address"
+      placeholder="Direccion Domiciliar"
     />
     <label for="nameFamExTrabajador">Dirección Domiciliar</label>
     <ErrorMessage class="text-danger" name="address" />
   </div>
 
-  <select class="form-select" aria-label="Disabled select example" disabled>
-    <option selected>Open this select menu</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </select>
-  <div class="form-input">
+  <div class="input-group mb-3">
     <Field
       class="form-select"
       :class="inputClassObject('depart')"
@@ -110,18 +108,16 @@
       :rules="departRules"
       v-model="depart"
     >
-      <option disabled value="">Departamento</option>
+      <option disabled value="">Elija un Departamento</option>
       <option>Managua</option>
       <option>Leon</option>
       <option>Chinandega</option>
     </Field>
-    <ErrorMessage class="input-error-msg" name="depart" />
   </div>
-  <div class="form-input">
-    <label for="municipio">Municipio</label>
-    <br />
+  <ErrorMessage class="text-danger" name="depart" />
+  <div class="input-group mb-3">
     <Field
-      class="text-uppercase"
+      class="form-select"
       :class="inputClassObject('municipio')"
       as="select"
       id="municipio"
@@ -129,18 +125,16 @@
       :rules="municipioRules"
       v-model="municipio"
     >
-      <option disabled value="">Municipio</option>
+      <option disabled value="">Elija un Municipio</option>
       <option>San Rafael</option>
       <option>San 1</option>
       <option>San 2</option>
     </Field>
-    <ErrorMessage class="input-error-msg" name="Municipio" />
   </div>
-  <div class="form-input">
-    <label for="comunidad">Comunidad</label>
-    <br />
+  <ErrorMessage class="text-danger" name="municipio" />
+  <div class="input-group mb-3">
     <Field
-      class="text-uppercase"
+      class="form-select"
       :class="inputClassObject('comunidad')"
       as="select"
       id="comunidad"
@@ -148,16 +142,15 @@
       :rules="comunidadRules"
       v-model="comunidad"
     >
-      <option disabled value="">Comunidad</option>
+      <option disabled value="">Elija una Comunidad</option>
       <option>El Salto</option>
       <option>Las Manos</option>
       <option>Los Chils</option>
     </Field>
-    <ErrorMessage class="input-error-msg" name="depart" />
   </div>
+  <ErrorMessage class="text-danger" name="comunidad" />
 
-  <div class="form-input">
-    <label for="telephone1">Telefono Casa</label>
+  <div class="form-floating mb-3 mt-3">
     <Field
       :class="inputClassObject('telephone1')"
       type="tel"
@@ -166,11 +159,12 @@
       :rules="telephone1Rules"
       v-model.trim="telephone1"
       class="form-control"
+      placeholder="4444-2222"
     />
-    <ErrorMessage class="input-error-msg" name="telephone1" />
+    <label for="telephone1">Telefono Casa</label>
+    <ErrorMessage class="text-danger" name="telephone1" />
   </div>
-  <div class="form-input">
-    <label for="telephone2">Telefono Celular</label>
+  <div class="form-floating mb-3 mt-3">
     <Field
       :class="inputClassObject('telephone2')"
       type="tel"
@@ -179,11 +173,12 @@
       :rules="telephone2Rules"
       v-model.trim="telephone2"
       class="form-control"
+      placeholder="2222-4444"
     />
-    <ErrorMessage class="input-error-msg" name="telephone2" />
+    <label for="telephone2">Telefono Celular</label>
+    <ErrorMessage class="text-danger" name="telephone2" />
   </div>
-  <div class="form-input">
-    <label for="email">Correo Electronico</label>
+  <div class="form-floating mb-3 mt-3">
     <Field
       :class="inputClassObject('email')"
       type="email"
@@ -192,10 +187,13 @@
       :rules="emailRules"
       v-model.trim="email"
       class="form-control"
+      placeholder="nicapame@gmail.com"
     />
-    <ErrorMessage class="input-error-msg" name="email" />
+    <label for="email">Correo Electronico</label>
+    <ErrorMessage class="text-danger" name="email" />
   </div>
 
+  <label for="">Que Redes Sociales utiliza su Negocio:</label>
   <div class="form-check">
     <label class="form-check-label"
       ><i class="fa-brands fa-whatsapp-square"></i>Whatsapp</label
@@ -238,6 +236,62 @@
       v-model="none"
       aria-label="Marcar la casilla Ninguno"
     />
+  </div>
+  <div class="form-floating mb-3 mt-3">
+    <Field
+      :class="inputClassObject('otrarrss')"
+      type="text"
+      id="otrarrss"
+      name="otrarrss"
+      :rules="otrarrssRules"
+      v-model.trim="otrarrs"
+      class="form-control"
+      placeholder="otra redes sociales"
+    />
+    <label for="email">Otra Redes Sociales`</label>
+    <ErrorMessage class="text-danger" name="otrarrss" />
+  </div>
+  <div class="form-floating mb-3 mt-3">
+    <Field
+      :class="inputClassObject('cuentaBac')"
+      type="text"
+      id="cuentaBac"
+      name="cuentaBac"
+      :rules="cuentaBacRules"
+      v-model.trim="cuentaBac"
+      class="form-control"
+      placeholder="Cuenta Bancaria Bac"
+    />
+    <label for="email">Numero de Cuenta Bac</label>
+    <ErrorMessage class="text-danger" name="cuentaBac" />
+  </div>
+  <div class="form-floating mb-3 mt-3">
+    <Field
+      :class="inputClassObject('referenciaPersonal')"
+      type="text"
+      id="referenciaPersonal"
+      name="referenciaPersonal"
+      :rules="referenciaPersonalRules"
+      v-model.trim="referenciaPersonal"
+      class="form-control"
+      placeholder="referencia personales"
+    />
+    <label for="referenciaPersonal">Referencia Personales</label>
+    <ErrorMessage class="text-danger" name="referenciaPersonal" />
+  </div>
+  <div class="form-floating mb-3 mt-3">
+    <Field
+      :class="inputClassObject('referenciaPhone')"
+      type="tel"
+      id="referenciaPhone"
+      name="referenciaPhone"
+      :rules="referenciaPhoneRules"
+      v-model.trim="referenciaPhone"
+      class="form-control"
+      placeholder="4444-2222"
+    />
+    <label for="telephone1">Telefono Referencia</label>
+    <ErrorMessage class="text-danger" name="referenciaPhone" />
   </div>
 </template>
 

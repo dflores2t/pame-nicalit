@@ -1,10 +1,9 @@
 <template>
   <div class="step-title">Datos Personales</div>
 
-  <div class="form-input">
-    <label for="fullName">Nombres y Apellidos</label>
+  <div class="form-floating mb-3 mt-3">
     <field
-      class="text-uppercase"
+      class="text-uppercase form-control"
       :class="inputClassObject('fullName')"
       type="text"
       id="fullName"
@@ -13,13 +12,13 @@
       v-model.trim="fullName"
       autofocus
     />
-    <ErrorMessage class="input-error-msg" name="fullName" />
+    <label for="fullName">Nombres y Apellidos</label>
+    <ErrorMessage class="text-danger" name="fullName" />
   </div>
 
-  <div class="form-input">
-    <label for="nCedula">N° de Cédula.</label>
+  <div class="form-floating mb-3 mt-3">
     <Field
-      class="text-uppercase"
+      class="text-uppercase form-control"
       :class="inputClassObject('nCedula')"
       type="text"
       id="nCedula"
@@ -27,56 +26,50 @@
       :rules="nCedulaRules"
       v-model.trim="nCedula"
     />
-    <ErrorMessage class="input-error-msg" name="nCedula" />
+    <label for="nCedula">N° de Cédula.</label>
+    <ErrorMessage class="text-danger" name="nCedula" />
   </div>
 
-  <div class="input-group mb-3">
-    <label class="form-control">Ex-Trabajador de Nicalit.</label>
-    <div class="input-group-text">
-      <input
-        :class="inputClassObject('exNicalit')"
-        class="form-check-input mt-0"
-        type="checkbox"
-        id="exNicalit"
-        :rules="exNicalitRules"
-        v-model="exNicalit"
-        aria-label="Checkbox for following label"
-      />
-    </div>
+  <div class="form-check">
+    <label class="form-check-label">Ex-Trabajador de Nicalit.</label>
+    <input
+      :class="inputClassObject('exNicalit')"
+      class="form-check-input"
+      type="checkbox"
+      id="exNicalit"
+      :rules="exNicalitRules"
+      v-model="exNicalit"
+      aria-label="Checkbox for following label"
+    />
   </div>
-  <div class="input-group mb-3">
-    <label class="form-control">Familiar de Ex-Trabajador.</label>
-    <div class="input-group-text">
-      <input
-        :class="inputClassObject('famExTrabajador')"
-        class="form-check-input mt-0"
-        type="checkbox"
-        id="famExTrabajador"
-        :rules="famExTrabajadorRules"
-        v-model="famExTrabajador"
-        aria-label="Checkbox for following label"
-      />
-    </div>
+  <div class="form-check">
+    <label class="form-check-label">Familiar de Ex-Trabajador.</label>
+    <input
+      :class="inputClassObject('famExTrabajador')"
+      class="form-check-input"
+      type="checkbox"
+      id="famExTrabajador"
+      :rules="famExTrabajadorRules"
+      v-model="famExTrabajador"
+      aria-label="Checkbox for following label"
+    />
   </div>
-  <div class="input-group mb-3">
-    <label class="form-control">No es Ex-Trabajador.</label>
-    <div class="input-group-text">
-      <input
-        :class="inputClassObject('noExTrabajador')"
-        class="form-check-input mt-0"
-        type="checkbox"
-        id="noExTrabajador"
-        :rules="noExTrabajadorRules"
-        v-model="noExTrabajador"
-        aria-label="Checkbox for following label"
-      />
-    </div>
+  <div class="form-check">
+    <label class="form-check-label">No es Ex-Trabajador.</label>
+    <input
+      :class="inputClassObject('noExTrabajador')"
+      class="form-check-input"
+      type="checkbox"
+      id="noExTrabajador"
+      :rules="noExTrabajadorRules"
+      v-model="noExTrabajador"
+      aria-label="Checkbox for following label"
+    />
   </div>
 
-  <div class="form-input" v-if="isChecked">
-    <label for="address">Nombre del Ex-Trabajador del que es Familiar:</label>
+  <div class="form-floating mb-3 mt-3" v-if="isChecked">
     <Field
-      class="text-uppercase"
+      class="text-uppercase form-control"
       :class="inputClassObject('nameFamExTrabajador')"
       type="text"
       id="address"
@@ -84,12 +77,12 @@
       :rules="nameFamExTrabajadorRules"
       v-model.trim="nameFamExTrabajador"
     />
-    <ErrorMessage class="input-error-msg" name="nameFamExTrabajador" />
+    <label for="address">Nombre del Ex-Trabajador del que es Familiar:</label>
+    <ErrorMessage class="text-danger" name="nameFamExTrabajador" />
   </div>
-  <div class="form-input">
-    <label for="nameFamExTrabajador">Dirección Domiciliar</label>
+  <div class="form-floating mb-3 mt-3">
     <Field
-      class="text-uppercase"
+      class="text-uppercase form-control"
       :class="inputClassObject('address')"
       type="text"
       id="address"
@@ -97,14 +90,19 @@
       :rules="addressRules"
       v-model.trim="address"
     />
-    <ErrorMessage class="input-error-msg" name="address" />
+    <label for="nameFamExTrabajador">Dirección Domiciliar</label>
+    <ErrorMessage class="text-danger" name="address" />
   </div>
 
+  <select class="form-select" aria-label="Disabled select example" disabled>
+    <option selected>Open this select menu</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
   <div class="form-input">
-    <label for="depart">Departamento</label>
-    <br />
     <Field
-      class="text-uppercase"
+      class="form-select"
       :class="inputClassObject('depart')"
       as="select"
       id="depart"
@@ -157,6 +155,90 @@
     </Field>
     <ErrorMessage class="input-error-msg" name="depart" />
   </div>
+
+  <div class="form-input">
+    <label for="telephone1">Telefono Casa</label>
+    <Field
+      :class="inputClassObject('telephone1')"
+      type="tel"
+      id="telephone1"
+      name="telephone1"
+      :rules="telephone1Rules"
+      v-model.trim="telephone1"
+      class="form-control"
+    />
+    <ErrorMessage class="input-error-msg" name="telephone1" />
+  </div>
+  <div class="form-input">
+    <label for="telephone2">Telefono Celular</label>
+    <Field
+      :class="inputClassObject('telephone2')"
+      type="tel"
+      id="telephone2"
+      name="telephone2"
+      :rules="telephone2Rules"
+      v-model.trim="telephone2"
+      class="form-control"
+    />
+    <ErrorMessage class="input-error-msg" name="telephone2" />
+  </div>
+  <div class="form-input">
+    <label for="email">Correo Electronico</label>
+    <Field
+      :class="inputClassObject('email')"
+      type="email"
+      id="email"
+      name="email"
+      :rules="emailRules"
+      v-model.trim="email"
+      class="form-control"
+    />
+    <ErrorMessage class="input-error-msg" name="email" />
+  </div>
+
+  <div class="form-check">
+    <label class="form-check-label"
+      ><i class="fa-brands fa-whatsapp-square"></i>Whatsapp</label
+    >
+    <input
+      :class="inputClassObject('whatsapp')"
+      class="form-check-input"
+      type="checkbox"
+      id="whatsapp"
+      name="whatsapp"
+      :rules="whatsappRules"
+      v-model="whatsapp"
+      aria-label="Marcar la casilla de whatsapp"
+    />
+  </div>
+  <div class="form-check">
+    <label class="form-check-label"
+      ><i class="fa-brands fa-facebook-square"></i>Facebook</label
+    >
+    <input
+      :class="inputClassObject('facebook')"
+      class="form-check-input"
+      type="checkbox"
+      id="facebook"
+      name="facebook"
+      :rules="facebookRules"
+      v-model="facebook"
+      aria-label="Marcar la casilla de Facebook"
+    />
+  </div>
+  <div class="form-check">
+    <label class="form-check-label">ninguno</label>
+    <input
+      :class="inputClassObject('none')"
+      class="form-check-input"
+      type="checkbox"
+      id="none"
+      name="none"
+      :rules="noneRules"
+      v-model="none"
+      aria-label="Marcar la casilla Ninguno"
+    />
+  </div>
 </template>
 
 <script>
@@ -198,6 +280,9 @@ export default {
         .string()
         .trim()
         .required("Debe escojer una comunidad"),
+      telephone1Rules: yup.number().required(),
+      telephone2Rules: yup.number().required(),
+      emailRules: yup.string().trim().required(),
       isChecked: false,
     };
   },
@@ -281,6 +366,30 @@ export default {
       },
       set(value) {
         this.$store.commit("updateComunidad", value);
+      },
+    },
+    telephone1: {
+      get() {
+        return this.$store.state.user.telephone1;
+      },
+      set(value) {
+        this.$store.commit("updateTelephone1");
+      },
+    },
+    telephone2: {
+      get() {
+        return this.$store.state.user.telephone2;
+      },
+      set(value) {
+        this.$store.commit("updateTelephone2");
+      },
+    },
+    email: {
+      get() {
+        return this.$store.state.user.email;
+      },
+      set(value) {
+        this.$store.commit("updateEmail");
       },
     },
   },

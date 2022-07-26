@@ -14,6 +14,9 @@ const getDefaultUser = () => {
     comunidad:"",
     bName: "",
     isagreeToTerms: false,
+    telephone1: 0,
+    telephone2: 0,
+    email:'',
   };
 };
 

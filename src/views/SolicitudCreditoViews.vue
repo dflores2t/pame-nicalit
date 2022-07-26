@@ -196,13 +196,20 @@ export default {
   margin-bottom: 15px;
 }
 
-.form-input label {
+.form-input label,label {
   font-weight: 600;
+  color: rgb(19, 124, 193);
+  font-size: 0.8rem;
+}
+option,
+.form-select {
+  color: rgb(19, 124, 193) !important;
+  font-size: 0.8rem !important;
 }
 
 .form-input span {
   color: #ff2626;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   display: block;
 }
 

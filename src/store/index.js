@@ -4,19 +4,25 @@ const getDefaultUser = () => {
   return {
     fullName: "",
     nCedula: "",
-    exNicalit: false,
-    famExTrabajador: false,
-    noExTrabajador: false,
+    exNicalit: '',
+    famExTrabajador: '',
+    noExTrabajador: '',
     nameFamExTrabajador: "",
     address: "",
     depart: "",
     municipio: "",
-    comunidad:"",
-    bName: "",
-    isagreeToTerms: false,
-    telephone1: 0,
-    telephone2: 0,
-    email:'',
+    comunidad: "",
+    isagreeToTerms: '',
+    phoneHome: "",
+    phoneMovil: "",
+    email: "",
+    rsWhatsapp: '',
+    rsFacebook: '',
+    none: '',
+    otrarrss: "",
+    cuentaBac: "",
+    referenciaPersonal: "",
+    referenciaPhone: "",
   };
 };
 
@@ -48,7 +54,6 @@ export default createStore({
       state.user.nameFamExTrabajador = payload;
     },
     updateAddress(state, payload) {
-      console.log(payload);
       state.user.address = payload;
     },
     updateDepart(state, payload) {
@@ -60,8 +65,35 @@ export default createStore({
     updateComunidad(state, payload) {
       state.user.comunidad = payload;
     },
-    updatebName(state, payload) {
-      state.user.bName = payload;
+    updatePhoneHome(state, payload) {
+      state.user.phoneHome = payload;
+    },
+    updatePhoneMovil(state, payload) {
+      state.user.phoneMovil = payload;
+    },
+    updateEmail(state, payload) {
+      state.user.email = payload;
+    },
+    updateRsWhatsapp(state, payload) {
+      state.user.rsWhatsapp = payload;
+    },
+    updateRsFacebook(state, payload) {
+      state.user.rsFacebook = payload;
+    },
+    updateNone(state, payload) {
+      state.user.none = payload;
+    },
+    updateOtrarrss(state, payload) {
+      state.user.otrarrss = payload;
+    },
+    updateCuentaBac(state, payload) {
+      state.user.cuentaBac = payload;
+    },
+    updateReferenciaPersonal(state, payload) {
+      state.user.referenciaPersonal = payload;
+    },
+    updateReferenciaPhone(state, payload) {
+      state.user.referenciaPhone = payload;
     },
     updateIsAgreeToTerms(state, payload) {
       state.user.isagreeToTerms = payload;

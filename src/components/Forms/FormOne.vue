@@ -1,7 +1,7 @@
 <template>
   <div class="step-title">Datos Personales</div>
 
-  <div class="form-floating mb-3 mt-3">
+  <div class="form-floating mb-3 mt-3 form-input">
     <field
       class="text-uppercase form-control"
       :class="inputClassObject('fullName')"
@@ -13,11 +13,13 @@
       autofocus
       placeholder="Nombre Completo"
     />
-    <label for="fullName">Nombres y Apellidos</label>
+    <label for="fullName"
+      ><i class="fa-solid fa-signature"></i> Nombres y Apellidos</label
+    >
     <ErrorMessage class="text-danger" name="fullName" />
   </div>
 
-  <div class="form-floating mb-3 mt-3">
+  <div class="form-floating mb-3 mt-3 form-input">
     <Field
       class="text-uppercase form-control"
       :class="inputClassObject('nCedula')"
@@ -28,12 +30,16 @@
       v-model.trim="nCedula"
       placeholder="Numero identificacion"
     />
-    <label for="nCedula">N° de Cédula.</label>
+    <label for="nCedula"
+      ><i class="fa-solid fa-id-card"></i> N° de Cédula.</label
+    >
     <ErrorMessage class="text-danger" name="nCedula" />
   </div>
 
-  <div class="form-check">
-    <label class="form-check-label">Ex-Trabajador de Nicalit.</label>
+  <div class="form-check form-input">
+    <label for="exNicalit" class="form-check-label">
+      <i class="fa-solid fa-square-check"></i> Ex-Trabajador de Nicalit.</label
+    >
     <input
       :class="inputClassObject('exNicalit')"
       class="form-check-input"
@@ -44,8 +50,10 @@
       aria-label="Checkbox for following label"
     />
   </div>
-  <div class="form-check">
-    <label class="form-check-label">Familiar de Ex-Trabajador.</label>
+  <div class="form-check form-input">
+    <label for="famExTrabajador" class="form-check-label">
+      <i class="fa-solid fa-square-check"></i> Familiar de Ex-Trabajador.</label
+    >
     <input
       :class="inputClassObject('famExTrabajador')"
       class="form-check-input"
@@ -56,8 +64,10 @@
       aria-label="Checkbox for following label"
     />
   </div>
-  <div class="form-check">
-    <label class="form-check-label">No es Ex-Trabajador.</label>
+  <div class="form-check form-input">
+    <label for="noExTrabajador" class="form-check-label"
+      ><i class="fa-solid fa-square-check"></i> No es Ex-Trabajador.</label
+    >
     <input
       :class="inputClassObject('noExTrabajador')"
       class="form-check-input"
@@ -69,21 +79,24 @@
     />
   </div>
 
-  <div class="form-floating mb-3 mt-3" v-if="isChecked">
+  <div class="form-floating mb-3 mt-3 form-input" v-if="isChecked">
     <Field
       class="text-uppercase form-control"
       :class="inputClassObject('nameFamExTrabajador')"
       type="text"
-      id="address"
-      name="address"
+      id="nameFamExTrabajador"
+      name="nameFamExTrabajador"
       :rules="nameFamExTrabajadorRules"
       v-model.trim="nameFamExTrabajador"
       placeholder="Nombre Familiar"
     />
-    <label for="address">Nombre del familiar Ex-Trabajador</label>
+    <label for="nameFamExTrabajador"
+      ><i class="fa-solid fa-people-group"></i> Nombre del familiar
+      Ex-Trabajador</label
+    >
     <ErrorMessage class="text-danger" name="nameFamExTrabajador" />
   </div>
-  <div class="form-floating mb-3 mt-3">
+  <div class="form-floating mb-3 mt-3 form-input">
     <Field
       class="text-uppercase form-control"
       :class="inputClassObject('address')"
@@ -94,11 +107,13 @@
       v-model.trim="address"
       placeholder="Direccion Domiciliar"
     />
-    <label for="nameFamExTrabajador">Dirección Domiciliar</label>
+    <label for="nameFamExTrabajador"
+      ><i class="fa-solid fa-map-location-dot"></i> Dirección Domiciliar</label
+    >
     <ErrorMessage class="text-danger" name="address" />
   </div>
 
-  <div class="input-group mb-3">
+  <div class="input-group mb-3 form-input">
     <Field
       class="form-select"
       :class="inputClassObject('depart')"
@@ -115,7 +130,7 @@
     </Field>
   </div>
   <ErrorMessage class="text-danger" name="depart" />
-  <div class="input-group mb-3">
+  <div class="input-group mb-3 form-input">
     <Field
       class="form-select"
       :class="inputClassObject('municipio')"
@@ -132,7 +147,7 @@
     </Field>
   </div>
   <ErrorMessage class="text-danger" name="municipio" />
-  <div class="input-group mb-3">
+  <div class="input-group mb-3 form-input">
     <Field
       class="form-select"
       :class="inputClassObject('comunidad')"
@@ -150,35 +165,39 @@
   </div>
   <ErrorMessage class="text-danger" name="comunidad" />
 
-  <div class="form-floating mb-3 mt-3">
+  <div class="form-floating mb-3 mt-3 form-input">
     <Field
-      :class="inputClassObject('telephone1')"
+      :class="inputClassObject('phoneHome')"
       type="tel"
-      id="telephone1"
-      name="telephone1"
-      :rules="telephone1Rules"
-      v-model.trim="telephone1"
+      id="phoneHome"
+      name="phoneHome"
+      :rules="phoneHomeRules"
+      v-model.trim="phoneHome"
       class="form-control"
       placeholder="4444-2222"
     />
-    <label for="telephone1">Telefono Casa</label>
-    <ErrorMessage class="text-danger" name="telephone1" />
+    <label for="telephone1"
+      ><i class="fa-solid fa-phone"></i> Teléfono Casa</label
+    >
+    <ErrorMessage class="text-danger" name="phoneHome" />
   </div>
-  <div class="form-floating mb-3 mt-3">
+  <div class="form-floating mb-3 mt-3 form-input">
     <Field
-      :class="inputClassObject('telephone2')"
+      :class="inputClassObject('phoneMovil')"
       type="tel"
-      id="telephone2"
-      name="telephone2"
-      :rules="telephone2Rules"
-      v-model.trim="telephone2"
+      id="phoneMovil"
+      name="phoneMovil"
+      :rules="phoneMovilRules"
+      v-model.trim="phoneMovil"
       class="form-control"
       placeholder="2222-4444"
     />
-    <label for="telephone2">Telefono Celular</label>
-    <ErrorMessage class="text-danger" name="telephone2" />
+    <label for="telephone2"
+      ><i class="fa-solid fa-mobile-screen-button"></i> Teléfono Celular</label
+    >
+    <ErrorMessage class="text-danger" name="phoneMovil" />
   </div>
-  <div class="form-floating mb-3 mt-3">
+  <div class="form-floating mb-3 mt-3 form-input">
     <Field
       :class="inputClassObject('email')"
       type="email"
@@ -189,43 +208,50 @@
       class="form-control"
       placeholder="nicapame@gmail.com"
     />
-    <label for="email">Correo Electronico</label>
+    <label for="email"
+      ><i class="fa-solid fa-envelope"></i> Correo Electrónico</label
+    >
     <ErrorMessage class="text-danger" name="email" />
   </div>
 
-  <label for="">Que Redes Sociales utiliza su Negocio:</label>
-  <div class="form-check">
-    <label class="form-check-label"
-      ><i class="fa-brands fa-whatsapp-square"></i>Whatsapp</label
+  <label class=""
+    ><i class="fa-solid fa-rss"></i> Que Redes Sociales utiliza su
+    Negocio:</label
+  >
+  <div class="form-check form-input">
+    <label for="rsWhatsapp" class="form-check-label"
+      ><i class="fa-brands fa-whatsapp-square"></i> Whatsapp</label
     >
     <input
-      :class="inputClassObject('whatsapp')"
+      :class="inputClassObject('rsWhatsapp')"
       class="form-check-input"
       type="checkbox"
-      id="whatsapp"
-      name="whatsapp"
-      :rules="whatsappRules"
-      v-model="whatsapp"
+      id="rsWhatsapp"
+      name="rsWhatsapp"
+      :rules="rsWhatsappRules"
+      v-model="rsWhatsapp"
       aria-label="Marcar la casilla de whatsapp"
     />
   </div>
-  <div class="form-check">
-    <label class="form-check-label"
-      ><i class="fa-brands fa-facebook-square"></i>Facebook</label
+  <div class="form-check form-input">
+    <label for="rsFacebook" class="form-check-label"
+      ><i class="fa-brands fa-facebook-square"> </i> Facebook</label
     >
     <input
-      :class="inputClassObject('facebook')"
+      :class="inputClassObject('rsFacebook')"
       class="form-check-input"
       type="checkbox"
-      id="facebook"
-      name="facebook"
-      :rules="facebookRules"
-      v-model="facebook"
+      id="rsFacebook"
+      name="rsFacebook"
+      :rules="rsFacebookRules"
+      v-model="rsFacebook"
       aria-label="Marcar la casilla de Facebook"
     />
   </div>
-  <div class="form-check">
-    <label class="form-check-label">ninguno</label>
+  <div class="form-check form-input">
+    <label for="none" class="form-check-label"
+      ><i class="fa-solid fa-battery-empty"></i> ninguno</label
+    >
     <input
       :class="inputClassObject('none')"
       class="form-check-input"
@@ -235,23 +261,33 @@
       :rules="noneRules"
       v-model="none"
       aria-label="Marcar la casilla Ninguno"
+      @click="IsChecked"
     />
   </div>
-  <div class="form-floating mb-3 mt-3">
+  <div class="mb-3 mt-3 form-input" v-if="!nonersChecked">
+    <label for="otrarrss"
+      ><i class="fa-solid fa-rss"></i> Otra Redes Sociales</label
+    >
     <Field
       :class="inputClassObject('otrarrss')"
-      type="text"
+      as="select"
       id="otrarrss"
       name="otrarrss"
       :rules="otrarrssRules"
-      v-model.trim="otrarrs"
-      class="form-control"
-      placeholder="otra redes sociales"
-    />
-    <label for="email">Otra Redes Sociales`</label>
+      v-model="otrarrss"
+      class="form-select"
+    >
+      <option disabled value="">Seleccione las Redes Sociales</option>
+      <option><i class="fa-solid fa-rss"></i>Twitter</option>
+      <option>Instagram</option>
+      <option>Youtube</option>
+      <option>Linkedln</option>
+      <option>TikTok</option>
+      <option>Quora</option>
+    </Field>
     <ErrorMessage class="text-danger" name="otrarrss" />
   </div>
-  <div class="form-floating mb-3 mt-3">
+  <div class="form-floating mb-3 mt-3 form-input">
     <Field
       :class="inputClassObject('cuentaBac')"
       type="text"
@@ -262,10 +298,12 @@
       class="form-control"
       placeholder="Cuenta Bancaria Bac"
     />
-    <label for="email">Numero de Cuenta Bac</label>
+    <label for="email"
+      ><i class="fa-solid fa-building-columns"></i> Cuenta Bancaria</label
+    >
     <ErrorMessage class="text-danger" name="cuentaBac" />
   </div>
-  <div class="form-floating mb-3 mt-3">
+  <div class="form-floating mb-3 mt-3 form-input">
     <Field
       :class="inputClassObject('referenciaPersonal')"
       type="text"
@@ -276,10 +314,12 @@
       class="form-control"
       placeholder="referencia personales"
     />
-    <label for="referenciaPersonal">Referencia Personales</label>
+    <label for="referenciaPersonal"
+      ><i class="fa-solid fa-file-pen"></i> Referencia Personales</label
+    >
     <ErrorMessage class="text-danger" name="referenciaPersonal" />
   </div>
-  <div class="form-floating mb-3 mt-3">
+  <div class="form-floating mb-3 mt-3 form-input">
     <Field
       :class="inputClassObject('referenciaPhone')"
       type="tel"
@@ -290,7 +330,9 @@
       class="form-control"
       placeholder="4444-2222"
     />
-    <label for="telephone1">Telefono Referencia</label>
+    <label for="telephone1"
+      ><i class="fa-solid fa-phone"></i> Teléfono Referencia</label
+    >
     <ErrorMessage class="text-danger" name="referenciaPhone" />
   </div>
 </template>
@@ -319,25 +361,39 @@ export default {
       nCedulaRules: yup
         .string()
         .trim()
-        .required("La Identificacion no es valida"),
-      exNicalitRules: yup.string().trim().notRequired(),
-      famExTrabajadorRules: yup.string().trim().notRequired(),
-      noExTrabajadorRules: yup.string().trim().notRequired(),
+        .matches(
+          /^(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[0-2])\d{2}$/,
+          "Identificación no valida"
+        )
+        .required("Este campo es requerido"),
+      exNicalitRules: yup.boolean().notRequired(),
+      famExTrabajadorRules: yup.boolean().notRequired(),
+      noExTrabajadorRules: yup.boolean().notRequired(),
       nameFamExTrabajadorRules: yup.string().trim().notRequired(),
       addressRules: yup
         .string()
         .trim()
         .required("Debe escribir su direccion domiciliar"),
-      departRules: yup.string().trim().required("Debe escojer un deparamento"),
+      departRules: yup.string().required("Debe escojer un departamento"),
       municipioRules: yup.string().trim().required("Debe escojer un Municipio"),
       comunidadRules: yup
         .string()
         .trim()
         .required("Debe escojer una comunidad"),
-      telephone1Rules: yup.number().required(),
-      telephone2Rules: yup.number().required(),
-      emailRules: yup.string().trim().required(),
+      phoneHomeRules: yup.number().notRequired(),
+      phoneMovilRules: yup.number().notRequired(),
+      rsWhatsappRules: yup.number().notRequired(),
+      rsFacebookRules: yup.number().notRequired(),
+      emailRules: yup.string().trim().email("Correo no valido").notRequired(),
+      rsWhatsappRules: yup.boolean().notRequired(),
+      rsFacebookRules: yup.boolean().notRequired(),
+      noneRules: yup.string().notRequired(),
+      otrarrssRules: yup.string().notRequired(),
+      cuentaBacRules: yup.number().notRequired(),
+      referenciaPersonalRules: yup.string().trim().notRequired(),
+      referenciaPhoneRules: yup.number().notRequired(),
       isChecked: false,
+      nonersChecked: false,
     };
   },
   computed: {
@@ -370,7 +426,7 @@ export default {
         return this.$store.state.user.famExTrabajador;
       },
       set(value) {
-        this.isChecked = value === true ? true : false;
+        this.isChecked = value;
         this.$store.commit("updateFamExTrabajador", value);
       },
     },
@@ -422,20 +478,20 @@ export default {
         this.$store.commit("updateComunidad", value);
       },
     },
-    telephone1: {
+    phoneHome: {
       get() {
-        return this.$store.state.user.telephone1;
+        return this.$store.state.user.phoneHome;
       },
       set(value) {
-        this.$store.commit("updateTelephone1");
+        this.$store.commit("updatePhoneHome", value);
       },
     },
-    telephone2: {
+    phoneMovil: {
       get() {
-        return this.$store.state.user.telephone2;
+        return this.$store.state.user.phoneMovil;
       },
       set(value) {
-        this.$store.commit("updateTelephone2");
+        this.$store.commit("updatePhoneMovil", value);
       },
     },
     email: {
@@ -443,7 +499,64 @@ export default {
         return this.$store.state.user.email;
       },
       set(value) {
-        this.$store.commit("updateEmail");
+        this.$store.commit("updateEmail", value);
+      },
+    },
+    rsWhatsapp: {
+      get() {
+        return this.$store.state.user.rsWhatsapp;
+      },
+      set(value) {
+        this.$store.commit("updaterRsWhatsapp", value);
+      },
+    },
+    rsFacebook: {
+      get() {
+        return this.$store.state.user.rsFacebook;
+      },
+      set(value) {
+        this.$store.commit("updateRsFacebook", value);
+      },
+    },
+    none: {
+      get() {
+        return this.$store.state.user.none;
+      },
+      set(value) {
+        this.nonersChecked = value;
+        this.$store.commit("updateNone", value);
+      },
+    },
+    otrarrss: {
+      get() {
+        return this.$store.state.user.otrarrss;
+      },
+      set(value) {
+        this.$store.commit("updateOtrarrss", value);
+      },
+    },
+    cuentaBac: {
+      get() {
+        return this.$store.state.user.cuentaBac;
+      },
+      set(value) {
+        this.$store.commit("updateCuentaBac", value);
+      },
+    },
+    referenciaPersonal: {
+      get() {
+        return this.$store.state.user.referenciaPersonal;
+      },
+      set(value) {
+        this.$store.commit("updateReferenciaPersonal", value);
+      },
+    },
+    referenciaPhone: {
+      get() {
+        return this.$store.state.user.referenciaPhone;
+      },
+      set(value) {
+        this.$store.commit("updateReferenciaPhone", value);
       },
     },
   },
@@ -457,3 +570,5 @@ export default {
   },
 };
 </script>
+
+<!-- /^(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[0-2])\d{4}$/ -->

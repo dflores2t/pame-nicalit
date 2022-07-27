@@ -354,32 +354,27 @@ export default {
   },
   data() {
     return {
-      fullNameRules: yup
-        .string()
-        .trim()
-        .required("Debe escribir su nombre completo!"),
-      nCedulaRules: yup
-        .string()
-        .trim()
-        .matches(
-          /^\d{3}(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[0-2])\d{6}[a-zA-Z]$/,
-          "Identificación no valida"
-        )
-        .required("Este campo es requerido"),
+      fullNameRules: yup.string().trim().notRequired(),
+      // .notrequired("Debe escribir su nombre completo!"),
+      nCedulaRules: yup.string().trim().notRequired(),
+      // .matches(
+      //   /^\d{3}(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[0-2])\d{6}[a-zA-Z]$/,
+      //   "Identificación no valida"
+      // )
+      // .notRequired(),
+      // .notRequired("Este campo es requerido"),
       exNicalitRules: yup.boolean().notRequired(),
       famExTrabajadorRules: yup.boolean().notRequired(),
       noExTrabajadorRules: yup.boolean().notRequired(),
       nameFamExTrabajadorRules: yup.string().trim().notRequired(),
-      addressRules: yup
-        .string()
-        .trim()
-        .required("Debe escribir su direccion domiciliar"),
-      departRules: yup.string().required("Debe escojer un departamento"),
-      municipioRules: yup.string().trim().required("Debe escojer un Municipio"),
-      comunidadRules: yup
-        .string()
-        .trim()
-        .required("Debe escojer una comunidad"),
+      addressRules: yup.string().trim().notRequired(),
+      // .notRequired("Debe escribir su direccion domiciliar"),
+      departRules: yup.string().notRequired(),
+      // .notRequired("Debe escojer un departamento"),
+      municipioRules: yup.string().trim().notRequired(),
+      // .notRequired("Debe escojer un Municipio"),
+      comunidadRules: yup.string().trim().notRequired(),
+      // .notRequired("Debe escojer una comunidad"),
       phoneHomeRules: yup
         .string()
         .trim()
@@ -391,8 +386,8 @@ export default {
       rsWhatsappRules: yup.boolean().notRequired(),
       rsFacebookRules: yup.boolean().notRequired(),
       emailRules: yup.string().trim().email("Correo no valido").notRequired(),
-      noneRules: yup.string().notRequired(),
-      otrarrssRules: yup.string().notRequired(),
+      noneRules: yup.string().trim().notRequired(),
+      otrarrssRules: yup.string().trim().notRequired(),
       cuentaBacRules: yup
         .string()
         .trim()

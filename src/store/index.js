@@ -4,25 +4,28 @@ const getDefaultUser = () => {
   return {
     fullName: "",
     nCedula: "",
-    exNicalit: '',
-    famExTrabajador: '',
-    noExTrabajador: '',
+    exNicalit: "",
+    famExTrabajador: "",
+    noExTrabajador: "",
     nameFamExTrabajador: "",
     address: "",
     depart: "",
     municipio: "",
     comunidad: "",
-    isagreeToTerms: '',
     phoneHome: "",
     phoneMovil: "",
     email: "",
-    rsWhatsapp: '',
-    rsFacebook: '',
-    none: '',
+    rsWhatsapp: "",
+    rsFacebook: "",
+    none: "",
     otrarrss: "",
     cuentaBac: "",
     referenciaPersonal: "",
     referenciaPhone: "",
+    mPrestamo: "",
+    plazoPrestamo: "",
+    cuotaPrestamo: "",
+    iCrediticia: "",
   };
 };
 
@@ -95,8 +98,17 @@ export default createStore({
     updateReferenciaPhone(state, payload) {
       state.user.referenciaPhone = payload;
     },
-    updateIsAgreeToTerms(state, payload) {
-      state.user.isagreeToTerms = payload;
+    updateMprestamo(state, payload) {
+      state.user.mPrestamo = payload;
+    },
+    updatePlazoPrestamo(state, payload) {
+      state.user.plazoPrestamo = payload;
+    },
+    updateCuotaPrestamo(state, payload) {
+      state.user.cuotaPrestamo = payload;
+    },
+    updateInformationCrediticia(state, payload) {
+      state.user.iCrediticia = payload;
     },
   },
   actions: {

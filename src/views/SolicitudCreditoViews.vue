@@ -196,7 +196,8 @@ export default {
   margin-bottom: 15px;
 }
 
-.form-input label,label {
+.form-input label,
+label {
   font-weight: 600;
   color: rgb(19, 124, 193);
   font-size: 0.8rem;
@@ -214,7 +215,8 @@ option,
 }
 
 .form-input .input-control[type="text"],
-.form-input .input-control[type="email"] {
+.form-input .input-control[type="email"],
+.form-input .input-control[type="tel"] {
   height: 45px;
   padding: 10px;
   width: 100%;

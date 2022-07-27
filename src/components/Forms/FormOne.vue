@@ -296,7 +296,7 @@
       :rules="cuentaBacRules"
       v-model.trim="cuentaBac"
       class="form-control"
-      placeholder="Cuenta Bancaria Bac"
+      placeholder="123-444-333"
     />
     <label for="email"
       ><i class="fa-solid fa-building-columns"></i> Cuenta Bancaria</label
@@ -380,18 +380,30 @@ export default {
         .string()
         .trim()
         .required("Debe escojer una comunidad"),
-      phoneHomeRules: yup.number().notRequired(),
-      phoneMovilRules: yup.number().notRequired(),
-      rsWhatsappRules: yup.number().notRequired(),
-      rsFacebookRules: yup.number().notRequired(),
-      emailRules: yup.string().trim().email("Correo no valido").notRequired(),
+      phoneHomeRules: yup
+        .string()
+        .trim()
+        .matches(/^\d{4}\d{4}$/, "Número de Teléfono no valido")
+        .notRequired(),
+      phoneMovilRules: yup
+        .string()
+        .matches(/^\d{4}\d{4}$/, "Número de Celular no valido"),
       rsWhatsappRules: yup.boolean().notRequired(),
       rsFacebookRules: yup.boolean().notRequired(),
+      emailRules: yup.string().trim().email("Correo no valido").notRequired(),
       noneRules: yup.string().notRequired(),
       otrarrssRules: yup.string().notRequired(),
-      cuentaBacRules: yup.number().notRequired(),
+      cuentaBacRules: yup
+        .string()
+        .trim()
+        .matches(/^\d{3}\d{3}\d{3}$/, "Número de cuenta no valido")
+        .notRequired(),
       referenciaPersonalRules: yup.string().trim().notRequired(),
-      referenciaPhoneRules: yup.number().notRequired(),
+      referenciaPhoneRules: yup
+        .string()
+        .trim()
+        .matches(/^\d{4}\d{4}$/, "Número de Teléfono no valido")
+        .notRequired(),
       isChecked: false,
       nonersChecked: false,
     };
@@ -507,7 +519,7 @@ export default {
         return this.$store.state.user.rsWhatsapp;
       },
       set(value) {
-        this.$store.commit("updaterRsWhatsapp", value);
+        this.$store.commit("updateRsWhatsapp", value);
       },
     },
     rsFacebook: {
@@ -570,5 +582,3 @@ export default {
   },
 };
 </script>
-
-

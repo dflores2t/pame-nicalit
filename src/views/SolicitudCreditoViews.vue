@@ -18,9 +18,6 @@
 
           <button
             @click="isLastStep ? finalSubmit() : handleSubmit($event, toNext)"
-            :disabled="
-              isFirstStep ? false : !validateCurrentStep(values, errors)
-            "
             type="button"
             class="btn-primarys btn-next"
           >

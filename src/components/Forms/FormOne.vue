@@ -278,7 +278,7 @@
       class="form-select"
     >
       <option disabled value="">Seleccione las Redes Sociales</option>
-      <option><i class="fa-solid fa-rss"></i>Twitter</option>
+      <option>Twitter</option>
       <option>Instagram</option>
       <option>Youtube</option>
       <option>Linkedln</option>
@@ -375,30 +375,24 @@ export default {
       // .notRequired("Debe escojer un Municipio"),
       comunidadRules: yup.string().trim().notRequired(),
       // .notRequired("Debe escojer una comunidad"),
-      phoneHomeRules: yup
-        .string()
-        .trim()
-        .matches(/^\d{4}\d{4}$/, "Número de Teléfono no valido")
-        .notRequired(),
+      phoneHomeRules: yup.string().trim(),
+      // .matches(/^\d{4}\d{4}$/, "Número de Teléfono no valido")
+      // .notRequired(),
       phoneMovilRules: yup
-        .string()
-        .matches(/^\d{4}\d{4}$/, "Número de Celular no valido"),
+        .string(),
+        // .matches(/^\d{4}\d{4}$/, "Número de Celular no valido"),
       rsWhatsappRules: yup.boolean().notRequired(),
       rsFacebookRules: yup.boolean().notRequired(),
       emailRules: yup.string().trim().email("Correo no valido").notRequired(),
       noneRules: yup.string().trim().notRequired(),
       otrarrssRules: yup.string().trim().notRequired(),
-      cuentaBacRules: yup
-        .string()
-        .trim()
-        .matches(/^\d{3}\d{3}\d{3}$/, "Número de cuenta no valido")
-        .notRequired(),
+      cuentaBacRules: yup.string().trim(),
+      // .matches(/^\d{3}\d{3}\d{3}$/, "Número de cuenta no valido")
+      // .notRequired(),
       referenciaPersonalRules: yup.string().trim().notRequired(),
-      referenciaPhoneRules: yup
-        .string()
-        .trim()
-        .matches(/^\d{4}\d{4}$/, "Número de Teléfono no valido")
-        .notRequired(),
+      referenciaPhoneRules: yup.string().trim(),
+      // .matches(/^\d{4}\d{4}$/, "Número de Teléfono no valido")
+      // .notRequired(),
       isChecked: false,
       nonersChecked: false,
     };

@@ -18,23 +18,29 @@
     >
     <ErrorMessage class="text-danger" name="mPrestamo" />
   </div>
-  <div class="form-floating mb-3 mt-3 form-input">
-    <field
-      class="text-uppercase form-control"
+
+  <div class="mb-3 mt-3 form-input">
+    <label for="plazoPrestamo"> Plazo del Préstamo</label>
+    <Field
       :class="inputClassObject('plazoPrestamo')"
-      type="text"
+      as="select"
       id="plazoPrestamo"
       name="plazoPrestamo"
       :rules="plazoPrestamoRules"
-      v-model.trim="plazoPrestamo"
-      autofocus
-      placeholder="Plazo del prestamo"
-    />
-    <label for="plazoPrestamo"
-      ><i class="fa-solid fa-money-bill-1"></i> plazo Del Préstamo</label
+      v-model="plazoPrestamo"
+      class="form-select"
     >
-    <ErrorMessage class="text-danger" name="plazoPrestamo" />
+      <option disabled value="">Plazo del Préstamo</option>
+      <option>12 Meses</option>
+      <option>18 Meses</option>
+      <option>24 Meses</option>
+      <option>36 Meses</option>
+      <option>48 meses</option>
+      <option>60 Meses</option>
+    </Field>
+    <ErrorMessage class="text-danger" name="otrarrss" />
   </div>
+
   <div class="form-floating mb-3 mt-3 form-input">
     <field
       class="text-uppercase form-control"
@@ -54,17 +60,19 @@
     <ErrorMessage class="text-danger" name="cuotaPrestamo" />
   </div>
 
-  <div class="form-input">
-    <label for="iCrediticia"
+  <div class="form-check form-input">
+    <label for="iCrediticia" class="form-check-label"
       >Autorización para Consultar Información Crediticia.</label
     >
-    <Field
+    <input
       :class="inputClassObject('iCrediticia')"
+      class="form-check-input"
       type="checkbox"
       id="iCrediticia"
       name="iCrediticia"
       :rules="iCrediticiaRules"
       v-model="iCrediticia"
+      aria-label="Marcar la casilla de whatsapp"
     />
     <ErrorMessage class="input-error-msg" name="iCrediticia" />
   </div>
@@ -89,7 +97,7 @@ export default {
     return {
       mPrestamoRules: yup.string().required("Este campo es requerido"),
       plazoPrestamoRules: yup.string().required("Este campo es requerido"),
-      cuotaPagarRules: yup.string().required("Este campo es requerido"),
+      cuotaPrestamoRules: yup.string().required("Este campo es requerido"),
       iCrediticiaRules: yup
         .boolean()
         .required("Deberia aceptar la consulta crediticia."),
@@ -140,4 +148,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+select span {
+  font-family: "FontAwesome";
+  background-color: red;
+}
+</style>

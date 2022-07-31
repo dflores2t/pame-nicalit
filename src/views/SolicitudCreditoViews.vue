@@ -47,15 +47,24 @@ import HeaderForm from "../components/HeaderForm.vue";
 import FormIntro from "../components/Forms/FormIntro.vue";
 import FormOne from "../components/Forms/FormOne.vue";
 import FormTwo from "../components/Forms/FormTwo.vue";
+import FormTree from "../components/Forms/FormTree.vue";
 import UserDetail from "../components/UserDetail.vue";
 
 export default {
   name: "SolicitudDeCreditoViews",
-  components: { Form, HeaderForm, FormIntro, FormOne, FormTwo, UserDetail },
+  components: {
+    Form,
+    HeaderForm,
+    FormIntro,
+    FormOne,
+    FormTwo,
+    FormTree,
+    UserDetail,
+  },
   data() {
     return {
       currentStep: 0,
-      stepsList: ["FormIntro", "FormOne", "FormTwo"],
+      stepsList: ["FormIntro", "FormOne", "FormTwo", "FormTree"],
       showUserDetail: false,
     };
   },

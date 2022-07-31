@@ -88,16 +88,16 @@ export default {
         depart: this.user.depart,
         bName: this.user.bName,
       };
-      emailjs
-        .send("service_44fll2w", "template_j7jc8uq", templateParams, "SaaesCsoq4f8UPZ2F")
-        .then(
-          () => {
-            alert("Solicitud Enviada!");
-          },
-          (error) => {
-            alert("Solicitud no Enviada", error);
-          }
-        );
+      // emailjs
+      //   .send("service_44fll2w", "template_j7jc8uq", templateParams, "SaaesCsoq4f8UPZ2F")
+      //   .then(
+      //     () => {
+      //       alert("Solicitud Enviada!");
+      //     },
+      //     (error) => {
+      //       alert("Solicitud no Enviada", error);
+      //     }
+      //   );
     },
   },
   computed: {

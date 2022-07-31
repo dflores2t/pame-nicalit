@@ -22,6 +22,15 @@ const getDefaultUser = () => {
     cuentaBac: "",
     referenciaPersonal: "",
     referenciaPhone: "",
+    aSolicitado: "",
+    dNegocio: "",
+    dirNegocio: "",
+    departn: "",
+    municipion: "",
+    comunidadn: "",
+    bDirecto: "",
+    eGenerado: "",
+    fOperaciones: "",
     mPrestamo: "",
     plazoPrestamo: "",
     cuotaPrestamo: "",
@@ -97,6 +106,36 @@ export default createStore({
     },
     updateReferenciaPhone(state, payload) {
       state.user.referenciaPhone = payload;
+    },
+    updateAsolicitado(state, payload) {
+      state.user.aSolicitado = payload;
+    },
+    updateDnegocio(state, payload) {
+      state.user.dNegocio = payload;
+    },
+    updateAeconomica(state, payload) {
+      state.user.aEconomica = payload;
+    },
+    updateDirNegocio(state, payload) {
+      state.user.dirNegocio = payload;
+    },
+    updateDepartN(state, payload) {
+      state.user.departn = payload;
+    },
+    updateMunicipioN(state, payload) {
+      state.user.municipion = payload;
+    },
+    updateComunidadN(state, payload) {
+      state.user.comunidadn = payload;
+    },
+    updateBdirecto(state, payload) {
+      state.user.bDirecto = payload;
+    },
+    updateEgenerado(state, payload) {
+      state.user.eGenerado = payload;
+    },
+    updateFoperaciones(state, payload) {
+      state.user.fOperaciones = payload;
     },
     updateMprestamo(state, payload) {
       state.user.mPrestamo = payload;

@@ -47,7 +47,7 @@ import HeaderForm from "../components/HeaderForm.vue";
 import FormIntro from "../components/Forms/FormIntro.vue";
 import FormOne from "../components/Forms/FormOne.vue";
 import FormTwo from "../components/Forms/FormTwo.vue";
-import FormTree from "../components/Forms/FormTree.vue";
+import FormThree from "../components/Forms/FormThree.vue";
 import UserDetail from "../components/UserDetail.vue";
 
 export default {
@@ -58,13 +58,13 @@ export default {
     FormIntro,
     FormOne,
     FormTwo,
-    FormTree,
+    FormThree,
     UserDetail,
   },
   data() {
     return {
       currentStep: 0,
-      stepsList: ["FormIntro", "FormOne", "FormTwo", "FormTree"],
+      stepsList: ["FormIntro", "FormOne", "FormTwo", "FormThree"],
       showUserDetail: false,
     };
   },

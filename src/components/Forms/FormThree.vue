@@ -1,6 +1,73 @@
 <template>
   <div class="step-title">PLAN DE INVERSION</div>
-  <table class="table table-responsive table-striped table-bordered">
+
+  <form>
+    <div v-for="(product, index) in products">
+      <fieldset>
+        <legend>Datos del Producto:</legend>
+
+        <div class="mb-3">
+          <label for="txtDescription">Descripción Del Producto</label>
+          <input
+            type="text"
+            class="form-control"
+            v-model="product.description"
+            id="txtDescription"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="textUnidadMedida">Unidad Medida</label>
+          <input
+            type="text"
+            class="form-control"
+            v-model="product.unit"
+            id="textUnidadMedida"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="textCantidad">Cantidad</label>
+          <input
+            type="text"
+            class="form-control"
+            v-model="product.quantity"
+            id="textCantidad"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="textCostoUnitario">Costo Unitario</label>
+          <input
+            type="text"
+            class="form-control"
+            v-model="product.cu"
+            id="textCostoUnitario"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="textCostoTotal">Costo Total</label>
+          <input
+            type="text"
+            class="form-control"
+            v-model="product.ct"
+            id="textCostoTotal"
+          />
+        </div>
+        <a class="text-end d-block"
+          ><i
+            class="fa-solid fa-delete-left btn btn-danger"
+            @click="deleteRow"
+          ></i
+        ></a>
+      </fieldset>
+    </div>
+  </form>
+  <div class="mb-3">
+    <a class="btn btn-info" @click="addRows"
+      >Agregar <i class="fa-solid fa-cart-plus"></i
+    ></a>
+  </div>
+  <!-- <table class="table table-responsive table-striped table-bordered">
     <thead>
       <tr>
         <th>Descripcion</th>
@@ -39,7 +106,7 @@
         <td>xxx</td>
       </tr>
     </tfoot>
-  </table>
+  </table> -->
 </template>
 
 <script>
@@ -59,10 +126,24 @@ export default {
   },
   data() {
     return {
-      products: [{ description: "", unit: "", quantity: "", cu: "", ct: "" }],
+      products: [
+        { description: "", unit: "", quantity: "", cu: "", ct: "" },
+      ],
+      productsRules: yup.object(),
+      count: 1,
     };
   },
-  computed: {},
+  computed: {
+    productsList: {
+      get() {
+        return this.$store.state.products;
+      },
+      set(value) {
+        console.log(value);
+        this.$store.commit("updateProduct", value);
+      },
+    },
+  },
   methods: {
     inputClassObject(name) {
       return {
@@ -70,7 +151,7 @@ export default {
         "has-error": this.errors.hasOwnProperty(name),
       };
     },
-    addRows() {     
+    addRows() {
       this.products.push({
         description: "",
         unit: "",

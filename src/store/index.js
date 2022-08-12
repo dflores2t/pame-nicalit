@@ -1,4 +1,4 @@
-import { createStore } from "vuex";
+import { createLogger, createStore } from "vuex";
 
 const getDefaultUser = () => {
   return {
@@ -42,6 +42,11 @@ export default createStore({
   strict: process.env.NODE_ENV !== "production",
   state: {
     user: getDefaultUser(),
+    products: [{ description: "1" }, { description: "2" }],
+  },
+  getters: {
+    getProductDescription: (state) =>
+      state.products.filter((des) => des.description),
   },
   mutations: {
     resetUserState(state) {
@@ -149,10 +154,14 @@ export default createStore({
     updateInformationCrediticia(state, payload) {
       state.user.iCrediticia = payload;
     },
+    updateProduct(state, payload) {
+      state.products.push({ payload });
+    },
   },
   actions: {
     resetUserState({ commit }) {
       commit("resetUserState");
     },
   },
+  plugins: [createLogger()],
 });

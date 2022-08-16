@@ -10,7 +10,6 @@
       name="fullName"
       :rules="fullNameRules"
       v-model.trim="fullName"
-      autofocus
       placeholder="Nombre Completo"
     />
     <label for="fullName"

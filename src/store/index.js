@@ -1,4 +1,4 @@
-import { createLogger, createStore } from "vuex";
+import { createStore } from "vuex";
 
 const getDefaultUser = () => {
   return {
@@ -35,6 +35,7 @@ const getDefaultUser = () => {
     plazoPrestamo: "",
     cuotaPrestamo: "",
     iCrediticia: "",
+    products: [],
   };
 };
 
@@ -42,11 +43,6 @@ export default createStore({
   strict: process.env.NODE_ENV !== "production",
   state: {
     user: getDefaultUser(),
-    products: [{ description: "1" }, { description: "2" }],
-  },
-  getters: {
-    getProductDescription: (state) =>
-      state.products.filter((des) => des.description),
   },
   mutations: {
     resetUserState(state) {
@@ -154,8 +150,13 @@ export default createStore({
     updateInformationCrediticia(state, payload) {
       state.user.iCrediticia = payload;
     },
-    updateProduct(state, payload) {
-      state.products.push({ payload });
+    updateProducts(state, payload) {
+      let { description, unit, quantity, cu, ct } = payload;
+      ct = cu * quantity;
+      state.user.products.push({ description, unit, quantity, cu, ct });
+    },
+    deleteProducts(state, payload) {
+      state.user.products.splice(payload, 1);
     },
   },
   actions: {
@@ -163,5 +164,4 @@ export default createStore({
       commit("resetUserState");
     },
   },
-  plugins: [createLogger()],
 });

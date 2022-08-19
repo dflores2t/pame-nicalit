@@ -41,7 +41,6 @@
             id="textCostoUnitario"
           />
         </div>
-     
       </fieldset>
     </div>
     <div class="mb-3">
@@ -60,7 +59,7 @@
         Producto: {{ index + 1 }}
         <i
           class="fa-solid fa-delete-left text-end btn btn-danger btn-sm"
-          @click="deleteRow(prouct)"
+          @click="deleteRow(index)"
         ></i>
       </legend>
       <label class="fs-6 d-block">Descripcion: {{ product.description }}</label>
@@ -92,10 +91,7 @@ export default {
       products: this.$store.state.user.products,
     };
   },
-  computed: {
-    
-  }
-  ,
+  computed: {},
   methods: {
     inputClassObject(name) {
       return {

@@ -36,6 +36,7 @@ const getDefaultUser = () => {
     cuotaPrestamo: "",
     iCrediticia: "",
     products: [],
+    gprendaria: [],
   };
 };
 
@@ -157,6 +158,15 @@ export default createStore({
     },
     deleteProducts(state, payload) {
       state.user.products.splice(payload, 1);
+    },
+    addGprendaria(state, payload) {
+      let { description, brand, model, serie, color, auso, vcompra } = payload;
+      state.user.gprendaria.push({
+        description,brand,model,serie,color,auso,vcompra
+      });
+    },
+    deleteGprendaria(state, payload) {
+      state.user.gprendaria.splice(payload, 1);
     },
   },
   actions: {

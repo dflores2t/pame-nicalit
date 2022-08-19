@@ -48,6 +48,7 @@ import FormIntro from "../components/Forms/FormIntro.vue";
 import FormOne from "../components/Forms/FormOne.vue";
 import FormTwo from "../components/Forms/FormTwo.vue";
 import FormThree from "../components/Forms/FormThree.vue";
+import FormFour from "../components/Forms/FormFour.vue";
 import UserDetail from "../components/UserDetail.vue";
 
 export default {
@@ -59,12 +60,13 @@ export default {
     FormOne,
     FormTwo,
     FormThree,
+    FormFour,
     UserDetail,
   },
   data() {
     return {
       currentStep: 0,
-      stepsList: ["FormIntro", "FormOne", "FormTwo", "FormThree"],
+      stepsList: ["FormIntro", "FormOne", "FormTwo", "FormThree",'FormFour'],
       showUserDetail: false,
     };
   },

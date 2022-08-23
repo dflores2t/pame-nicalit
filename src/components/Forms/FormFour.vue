@@ -10,6 +10,7 @@
             class="text-uppercase form-control"
             :class="inputClassObject('description')"
             type="text"
+            maxlength="100"
             id="description"
             name="description"
             :rules="descriptionRules"
@@ -26,7 +27,7 @@
           <field
             class="text-uppercase form-control"
             :class="inputClassObject('brand')"
-            type="text"
+            type="text" maxlength="30"
             id="brand"
             name="brand"
             :rules="brandRules"
@@ -41,7 +42,7 @@
           <field
             class="text-uppercase form-control"
             :class="inputClassObject('model')"
-            type="text"
+            type="text" maxlength="30"
             id="model"
             name="model"
             :rules="modelRules"
@@ -58,7 +59,7 @@
           <field
             class="text-uppercase form-control"
             :class="inputClassObject('serie')"
-            type="text"
+            type="text" maxlength="30"
             id="serie"
             name="serie"
             :rules="serieRules"
@@ -74,6 +75,7 @@
             class="text-uppercase form-control"
             :class="inputClassObject('color')"
             type="text"
+            maxlength="20"
             id="color"
             name="color"
             :rules="colorRules"
@@ -88,7 +90,7 @@
           <field
             class="text-uppercase form-control"
             :class="inputClassObject('auso')"
-            type="text"
+            type="number"
             id="auso"
             name="auso"
             :rules="ausoRules"
@@ -105,7 +107,7 @@
           <field
             class="text-uppercase form-control"
             :class="inputClassObject('vcompra')"
-            type="text"
+            type="number"
             id="vcompra"
             name="vcompra"
             :rules="vcompraRules"
@@ -122,7 +124,7 @@
           <field
             class="text-uppercase form-control"
             :class="inputClassObject('vactual')"
-            type="text"
+            type="number"
             id="vactual"
             name="vactual"
             :rules="vactualRules"
@@ -134,7 +136,6 @@
           >
           <ErrorMessage class="text-danger" name="vactual" />
         </div>
-
       </fieldset>
     </div>
     <div class="mb-3">
@@ -156,7 +157,9 @@
           @click="deleteRow(index)"
         ></i>
       </legend>
-      <label class="fs-6 d-block">Descripción: {{ articulo.description }}</label>
+      <label class="fs-6 d-block"
+        >Descripción: {{ articulo.description }}</label
+      >
       <label class="fs-6 d-block">Marca: {{ articulo.brand }}</label>
       <label class="fs-6 d-block">Modelo: {{ articulo.model }}</label>
       <label class="fs-6 d-block">Serie: {{ articulo.serie }}</label>
@@ -183,14 +186,14 @@ export default {
   },
   data() {
     return {
-      descriptionRules: yup.string().trim().notRequired(),
-      brandRules: yup.string().trim().notRequired(),
-      modelRules: yup.string().trim().notRequired(),
-      serieRules: yup.string().trim().notRequired(),
-      colorRules: yup.string().trim().notRequired(),
+      descriptionRules: yup.string().trim().length(100).notRequired(),
+      brandRules: yup.string().trim().length(30).notRequired(),
+      modelRules: yup.string().trim().length(30).notRequired(),
+      serieRules: yup.string().trim().length(30).notRequired(),
+      colorRules: yup.string().trim().length(20,'20 maximo de caracteres permitidos').notRequired(),
       ausoRules: yup.string().trim().notRequired(),
-      vcompraRules: yup.string().trim().notRequired(),
-      vactualRules: yup.string().trim().notRequired(),
+      vcompraRules: yup.number().notRequired(),
+      vactualRules: yup.number().notRequired(),
       gPrendariaInput: [],
       gPrendaria: this.$store.state.user.gprendaria,
     };

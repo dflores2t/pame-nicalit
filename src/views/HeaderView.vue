@@ -59,11 +59,10 @@
 </template>
 
 <script>
-import BannerViews from "./BannerViews.vue";
+
 
 export default {
   components: {
-    BannerViews,
   },
   data() {
     return {

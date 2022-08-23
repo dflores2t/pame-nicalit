@@ -50,7 +50,7 @@ import FormTwo from "../components/Forms/FormTwo.vue";
 import FormThree from "../components/Forms/FormThree.vue";
 import FormFour from "../components/Forms/FormFour.vue";
 import UserDetail from "../components/UserDetail.vue";
-
+// stepsList: ["FormIntro", "FormOne", "FormTwo", "FormThree",'FormFour'],
 export default {
   name: "SolicitudDeCreditoViews",
   components: {
@@ -66,7 +66,7 @@ export default {
   data() {
     return {
       currentStep: 0,
-      stepsList: ["FormIntro", "FormOne", "FormTwo", "FormThree",'FormFour'],
+      stepsList: ["FormTwo"],
       showUserDetail: false,
     };
   },

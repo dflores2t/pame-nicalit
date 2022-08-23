@@ -39,6 +39,7 @@
       class="text-uppercase form-control"
       :class="inputClassObject('dNegocio')"
       type="text"
+      maxlength="100"
       id="dNegocio"
       name="dNegocio"
       :rules="dNegocioRules"
@@ -47,7 +48,7 @@
       placeholder="Descripción del negocio"
     />
     <label for="dNegocio"
-      ><i class="fa-solid fa-money-bill-1"></i> Descripción del Negocio</label
+      ><i class="fa-solid fa-signature"></i> Descripción del Negocio</label
     >
     <ErrorMessage class="text-danger" name="dNegocio" />
   </div>
@@ -130,6 +131,7 @@
       class="text-uppercase form-control"
       :class="inputClassObject('dirNegocio')"
       type="text"
+      maxlength="100"
       id="dirNegocio"
       name="dirNegocio"
       :rules="dirNegocioRules"
@@ -138,7 +140,7 @@
       placeholder="Deirección del negocio"
     />
     <label for="dirNegocio"
-      ><i class="fa-solid fa-money-bill-1"></i> Dirección del Negocio</label
+      ><i class="fa-solid fa-signature"></i> Dirección del Negocio</label
     >
     <ErrorMessage class="text-danger" name="dirNegocio" />
   </div>
@@ -205,7 +207,7 @@
       placeholder="Descripción del negocio"
     />
     <label for="bDirecto"
-      ><i class="fa-solid fa-money-bill-1"></i> Beneficiarios Directos</label
+      ><i class="fa-solid fa-signature"></i> Beneficiarios Directos</label
     >
     <ErrorMessage class="text-danger" name="bdirecto" />
   </div>
@@ -221,7 +223,7 @@
       v-model="fOperaciones"
     />
     <label for="eGenerado"
-      ><i class="fa-solid fa-money-bill-1"></i> Fecha Inició/Inicará
+      ><i class="fa-solid fa-calendar-days"></i> Fecha Inició/Inicará
       Operaciones</label
     >
     <ErrorMessage class="text-danger" name="bdirecto" />
@@ -238,7 +240,7 @@
       placeholder="Descripción del negocio"
     />
     <label for="eGenerado"
-      ><i class="fa-solid fa-money-bill-1"></i> Empleados Generados</label
+      ><i class="fa-solid fa-signature"></i> Empleados Generados</label
     >
     <ErrorMessage class="text-danger" name="bdirecto" />
   </div>
@@ -340,10 +342,18 @@ export default {
   data() {
     return {
       aSolicitadoRules: yup.string().notRequired(),
-      dNegocioRules: yup.string().notRequired(),
+      dNegocioRules: yup
+        .string()
+        .trim()
+        .length(100, "Maximo de caracteres 100")
+        .notRequired(),
       aEconomicaRules: yup.string().notRequired(),
       mPrestamoRules: yup.string().notRequired(),
-      dirNegocioRules: yup.string().notRequired(),
+      dirNegocioRules: yup
+        .string()
+        .trim()
+        .length(100, "maximo de caracteres 100")
+        .notRequired(),
       departnRules: yup.string().notRequired(),
       // .notRequired("Debe escojer un departamento"),
       municipionRules: yup.string().trim().notRequired(),

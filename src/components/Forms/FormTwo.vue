@@ -7,10 +7,11 @@
       <input
         :class="inputClassObject('aSolicitado')"
         class="form-check-input"
+        maxlength="100"
         type="radio"
         id="iNegocio"
         name="aSolicitado"
-        value="Inicio De Negocio"
+        value="Inicio de Negocio"
         :rules="aSolicitadoRules"
         v-model="aSolicitado"
         aria-label="Marcar la casilla de whatsapp"
@@ -26,7 +27,7 @@
         type="radio"
         id="cNegocio"
         name="aSolicitado"
-        value="Continuidad Del Negocio"
+        value="Continuidad del Negocio"
         :rules="aSolicitadoRules"
         v-model="aSolicitado"
         aria-label="Marcar la casilla de whatsapp"
@@ -44,7 +45,6 @@
       name="dNegocio"
       :rules="dNegocioRules"
       v-model.trim="dNegocio"
-      autofocus
       placeholder="Descripción del negocio"
     />
     <label for="dNegocio"
@@ -136,7 +136,6 @@
       name="dirNegocio"
       :rules="dirNegocioRules"
       v-model.trim="dirNegocio"
-      autofocus
       placeholder="Deirección del negocio"
     />
     <label for="dirNegocio"
@@ -255,7 +254,6 @@
       name="mPrestamo"
       :rules="mPrestamoRules"
       v-model.trim="mPrestamo"
-      autofocus
       placeholder="Monto del prestamo"
     />
     <label for="mPrestamo"
@@ -295,7 +293,6 @@
       name="cuotaPrestamo"
       :rules="cuotaPrestamoRules"
       v-model.trim="cuotaPrestamo"
-      autofocus
       placeholder="Cuota Mensual que Puede Pagar"
     />
     <label for="cuotaPrestamo"
@@ -344,15 +341,15 @@ export default {
       aSolicitadoRules: yup.string().notRequired(),
       dNegocioRules: yup
         .string()
+        .max(100, "Maximo de caracteres 100")
         .trim()
-        .length(100, "Maximo de caracteres 100")
         .notRequired(),
       aEconomicaRules: yup.string().notRequired(),
       mPrestamoRules: yup.string().notRequired(),
       dirNegocioRules: yup
         .string()
         .trim()
-        .length(100, "maximo de caracteres 100")
+        .max(100, "maximo de caracteres 100")
         .notRequired(),
       departnRules: yup.string().notRequired(),
       // .notRequired("Debe escojer un departamento"),

@@ -10,6 +10,7 @@
             class="text-uppercase form-control"
             :class="inputClassObject('txtDescription')"
             type="text"
+            autofocus
             maxlength="100"
             id="txtDescription"
             name="txtDescription"
@@ -127,15 +128,23 @@ export default {
       txtDescriptionRules: yup
         .string()
         .trim()
-        .length(100, "100 maximo de caracteres")
+        .max(100, "100 maximo de caracteres")
         .notRequired(),
       txtUnidadMedidaRules: yup
         .string()
         .trim()
-        .length(20, "20 caracteres maximos")
+        .max(20, "20 caracteres maximos")
         .notRequired(),
-      txtCantidadRules: yup.number().notRequired(),
-      txtCostoUnitarioRules: yup.number().notRequired(),
+      txtCantidadRules: yup
+        .string()
+        .trim()
+        .max(10, "Maximo 10 digitos")
+        .notRequired(),
+      txtCostoUnitarioRules: yup
+        .string()
+        .trim()
+        .max(10, "Maximo 10 digitos")
+        .notRequired(),
       productsInput: [],
       products: this.$store.state.user.products,
       costoTotal: 0,

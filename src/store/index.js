@@ -2,8 +2,8 @@ import { createStore } from "vuex";
 
 const getDefaultUser = () => {
   return {
-    fullName: "",
-    nCedula: "",
+    fullName: "DANIEL ENIRQUE FLORES GARCIA",
+    nCedula: "2011210820002W",
     exNicalit: "",
     famExTrabajador: "",
     noExTrabajador: "",
@@ -24,6 +24,7 @@ const getDefaultUser = () => {
     referenciaPhone: "",
     aSolicitado: "",
     dNegocio: "",
+    aEconomica: "",
     dirNegocio: "",
     departn: "",
     municipion: "",
@@ -56,13 +57,13 @@ export default createStore({
       state.user.nCedula = payload;
     },
     updateExNicalit(state, payload) {
-      state.user.exNicalit = payload;
+      state.user.exNicalit = payload == true ? "&#10003;" : "No";
     },
     updateFamExTrabajador(state, payload) {
-      state.user.famExTrabajador = payload;
+      state.user.famExTrabajador = payload == true ? "&#10003;" : "No";
     },
     updateNoExTrabajador(state, payload) {
-      state.user.noExTrabajador = payload;
+      state.user.noExTrabajador = payload == true ? "&#10003;" : "No";
     },
     updateNameFamExTrabajador(state, payload) {
       state.user.nameFamExTrabajador = payload;
@@ -89,13 +90,13 @@ export default createStore({
       state.user.email = payload;
     },
     updateRsWhatsapp(state, payload) {
-      state.user.rsWhatsapp = payload;
+      state.user.rsWhatsapp = payload == true ? "&#10003;" : "No";
     },
     updateRsFacebook(state, payload) {
-      state.user.rsFacebook = payload;
+      state.user.rsFacebook = payload == true ? "&#10003;" : "No";
     },
     updateNone(state, payload) {
-      state.user.none = payload;
+      state.user.none = payload == true ? "&#10003;" : "No";
     },
     updateOtrarrss(state, payload) {
       state.user.otrarrss = payload;
@@ -149,7 +150,7 @@ export default createStore({
       state.user.cuotaPrestamo = payload;
     },
     updateInformationCrediticia(state, payload) {
-      state.user.iCrediticia = payload;
+      state.user.iCrediticia = payload == true ? "&#10003;" : "No";
     },
     updateProducts(state, payload) {
       let { description, unit, quantity, cu, ct } = payload;
@@ -162,7 +163,13 @@ export default createStore({
     addGprendaria(state, payload) {
       let { description, brand, model, serie, color, auso, vcompra } = payload;
       state.user.gprendaria.push({
-        description,brand,model,serie,color,auso,vcompra
+        description,
+        brand,
+        model,
+        serie,
+        color,
+        auso,
+        vcompra,
       });
     },
     deleteGprendaria(state, payload) {

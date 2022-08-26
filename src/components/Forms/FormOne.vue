@@ -10,6 +10,7 @@
       name="fullName"
       :rules="fullNameRules"
       v-model.trim="fullName"
+      autofocus
       placeholder="Nombre Completo"
     />
     <label for="fullName"
@@ -377,9 +378,8 @@ export default {
       phoneHomeRules: yup.string().trim(),
       // .matches(/^\d{4}\d{4}$/, "Número de Teléfono no valido")
       // .notRequired(),
-      phoneMovilRules: yup
-        .string(),
-        // .matches(/^\d{4}\d{4}$/, "Número de Celular no valido"),
+      phoneMovilRules: yup.string(),
+      // .matches(/^\d{4}\d{4}$/, "Número de Celular no valido"),
       rsWhatsappRules: yup.boolean().notRequired(),
       rsFacebookRules: yup.boolean().notRequired(),
       emailRules: yup.string().trim().email("Correo no valido").notRequired(),

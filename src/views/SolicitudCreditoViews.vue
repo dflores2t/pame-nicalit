@@ -66,7 +66,7 @@ export default {
   data() {
     return {
       currentStep: 0,
-      stepsList: ["FormTwo"],
+      stepsList: ["FormThree"],
       showUserDetail: false,
     };
   },

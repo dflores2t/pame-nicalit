@@ -27,7 +27,8 @@
           <field
             class="text-uppercase form-control"
             :class="inputClassObject('brand')"
-            type="text" maxlength="30"
+            type="text"
+            maxlength="30"
             id="brand"
             name="brand"
             :rules="brandRules"
@@ -42,7 +43,8 @@
           <field
             class="text-uppercase form-control"
             :class="inputClassObject('model')"
-            type="text" maxlength="30"
+            type="text"
+            maxlength="30"
             id="model"
             name="model"
             :rules="modelRules"
@@ -59,7 +61,8 @@
           <field
             class="text-uppercase form-control"
             :class="inputClassObject('serie')"
-            type="text" maxlength="30"
+            type="text"
+            maxlength="30"
             id="serie"
             name="serie"
             :rules="serieRules"
@@ -186,14 +189,18 @@ export default {
   },
   data() {
     return {
-      descriptionRules: yup.string().trim().length(100).notRequired(),
-      brandRules: yup.string().trim().length(30).notRequired(),
-      modelRules: yup.string().trim().length(30).notRequired(),
-      serieRules: yup.string().trim().length(30).notRequired(),
-      colorRules: yup.string().trim().length(20,'20 maximo de caracteres permitidos').notRequired(),
+      descriptionRules: yup.string().trim().max(100).notRequired(),
+      brandRules: yup.string().trim().max(30).notRequired(),
+      modelRules: yup.string().trim().max(30).notRequired(),
+      serieRules: yup.string().trim().max(30).notRequired(),
+      colorRules: yup
+        .string()
+        .trim()
+        .max(20, "20 maximo de caracteres permitidos")
+        .notRequired(),
       ausoRules: yup.string().trim().notRequired(),
-      vcompraRules: yup.number().notRequired(),
-      vactualRules: yup.number().notRequired(),
+      vcompraRules: yup.string().notRequired(),
+      vactualRules: yup.string().notRequired(),
       gPrendariaInput: [],
       gPrendaria: this.$store.state.user.gprendaria,
     };

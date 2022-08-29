@@ -2,8 +2,8 @@ import { createStore } from "vuex";
 
 const getDefaultUser = () => {
   return {
-    fullName: "DANIEL ENIRQUE FLORES GARCIA",
-    nCedula: "2011210820002W",
+    fullName: "",
+    nCedula: "",
     exNicalit: "",
     famExTrabajador: "",
     noExTrabajador: "",

@@ -3,27 +3,25 @@
     <div class="header">
       <div class="welcome">PAME-NICALIT .::. Solicitudo de Crédito</div>
       <div class="desc">
-        Hemos enviado tu solicitud de crédito con la siguiente información.
+        Hemos enviado tu solicitud de crédito con tu información.
       </div>
     </div>
 
     <div class="footer">
-      <!-- <button
+      <button
         @click="this.$emit('toRestart')"
         type="button"
         class="btn-secondary"
       >
         Regresar
-      </button> -->
-      <br />
-      <button @click="exportToPdf" type="button" class="btn-secondary">
-        PDF
       </button>
+      <br />
     </div>
   </div>
 </template>
 
 <script>
+import { parse } from "@babel/parser";
 import emailjs from "emailjs-com";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
@@ -41,20 +39,24 @@ export default {
     };
   },
   created() {
-    // this.sendEmail();
+    this.sendEmail();
   },
   methods: {
     sendEmail() {
       emailjs
-        .send("service_44fll2w", "template_9uxf4jj", user, "SaaesCsoq4f8UPZ2F")
-        .then(
-          () => {
-            console.log("Solicitud Enviada!", test);
-          },
-          (error) => {
-            console.log("Solicitud no Enviada", error);
-          }
-        );
+        .send(
+          "service_44fll2w",
+          "template_9uxf4jj",
+          this.user,
+          "SaaesCsoq4f8UPZ2F"
+        )
+        .then(() => {
+          console.log("Solicitud Enviada!");
+        })
+        .then(() => {
+          this.exportToPdf();
+        })
+        .catch((err) => console.log(err));
     },
     exportToPdf() {
       let desc = [],
@@ -70,26 +72,32 @@ export default {
         auso = [],
         vcompra = [];
       let cTotal = 0;
+      let vTotal = 0;
       this.user.products.forEach((element) => {
         desc.push(element.description);
         um.push(element.unit);
         c.push(element.quantity);
         cu.push(element.cu);
         ct.push(element.ct);
-        cTotal += element.ct;
+        cTotal += parseFloat(element.ct);
       });
 
       this.user.gprendaria.forEach((element) => {
         description.push(element.description);
-        brand.push(elment.brand);
+        brand.push(element.brand);
         model.push(element.model);
         serie.push(element.serie);
         color.push(element.color);
         auso.push(element.auso);
         vcompra.push(element.vcompra);
+        vTotal += parseFloat(element.vcompra);
       });
 
       let docDefinition = {
+        info: {
+          title: "Solicitud de Credito",
+          author: "PropositivaPR",
+        },
         pageSize: "A4",
         pageOrientation: "portrait",
         pageMargins: [40, 100, 40, 60],
@@ -469,7 +477,7 @@ export default {
                   "",
                   "",
                   "",
-                  `C$${cTotal}`,
+                  `C$${vTotal}`,
                 ],
               ],
             },
@@ -482,7 +490,7 @@ export default {
           },
         },
       };
-      const pdf = pdfMake.createPdf(docDefinition).open();
+      const pdf = pdfMake.createPdf(docDefinition).download(this.user.nCedula);
     },
   },
   computed: {

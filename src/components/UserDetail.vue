@@ -23,8 +23,8 @@
 <script>
 import emailjs from "emailjs-com";
 import pdfMake from "pdfmake/build/pdfmake";
-import "pdfmake/build/vfs_fonts";
-// pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import pdfFonts from "pdfmake/build/vfs_fonts";
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export default {
   name: "userDetails",
@@ -38,7 +38,8 @@ export default {
     };
   },
   created() {
-    this.sendEmail();
+    // this.sendEmail();
+    this.exportToPdf();
   },
   methods: {
     sendEmail() {

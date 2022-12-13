@@ -54,77 +54,26 @@
   </div>
   <fieldset>
     <legend>Actividad Económica.</legend>
-    <div class="form-check form-input">
-      <label for="comercio" class="form-check-label">Comercio:</label>
-      <input
-        :class="inputClassObject('aEconomica')"
-        class="form-check-input"
-        type="radio"
-        id="comercio"
+    <div class="input-group mb-3 form-input">
+      <Field
+        class="form-select"
+        :class="inputClassObject('depart')"
+        as="select"
+        id="aEconomica"
         name="aEconomica"
-        value="Comercio"
         :rules="aEconomicaRules"
         v-model="aEconomica"
-        aria-label="Marcar la casilla de Comercio"
-      />
+      >
+        <option disabled value="">Elija una Actividad</option>
+        <option>Comercio</option>
+        <option>Servicio</option>
+        <option>Peq. Industria</option>
+        <option>Agropecuario</option>
+        <option>Pesca</option>
+        <option>Otro</option>
+      </Field>
     </div>
-    <div class="form-check form-input">
-      <label for="servicio" class="form-check-label">Servicio:</label>
-      <input
-        :class="inputClassObject('aEconomica')"
-        class="form-check-input"
-        type="radio"
-        id="servicio"
-        name="aEconomica"
-        value="Servicio"
-        :rules="aEconomicaRules"
-        v-model="aEconomica"
-        aria-label="Marcar la casilla servicio"
-      />
-    </div>
-    <div class="form-check form-input">
-      <label for="pIndustria" class="form-check-label">Peq. Industria:</label>
-      <input
-        :class="inputClassObject('aEconomica')"
-        class="form-check-input"
-        type="radio"
-        id="pIndustria"
-        name="aEconomica"
-        value="Peq. Industria"
-        :rules="aEconomicaRules"
-        v-model="aEconomica"
-        aria-label="Marcar la casilla Pequeña Industria"
-      />
-    </div>
-    <div class="form-check form-input">
-      <label for="agropecuario" class="form-check-label">Agropecuario:</label>
-      <input
-        :class="inputClassObject('aEconomica')"
-        class="form-check-input"
-        type="radio"
-        id="agropecuario"
-        name="aEconomica"
-        value="Agropecuario"
-        :rules="aEconomicaRules"
-        v-model="aEconomica"
-        aria-label="Marcar la casilla Agropecuario"
-      />
-    </div>
-    <div class="form-check form-input">
-      <label for="pesca" class="form-check-label">Pesca:</label>
-      <input
-        :class="inputClassObject('aEconomica')"
-        class="form-check-input"
-        type="radio"
-        id="pesca"
-        name="aEconomica"
-        value="Pesca"
-        :rules="aEconomicaRules"
-        v-model="aEconomica"
-        aria-label="Marcar la casilla pesca"
-      />
-    </div>
-    <ErrorMessage class="input-error-msg" name="" />
+    <ErrorMessage class="text-danger" name="aEconomica" />
   </fieldset>
   <div class="form-floating mb-3 mt-3 form-input">
     <field

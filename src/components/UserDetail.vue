@@ -357,7 +357,7 @@ export default {
                 ],
                 [
                   {
-                    text: "Cualquier información comunicarse con Melina Zepeda Tel: 8239-6873 o Roger Gómez 8206-1406",
+                    text: "Cualquier información comunicarse con Melina Zamora Tel: 8239-6873 o Roger Gómez 8206-1406",
                     colSpan: 3,
                     alignment: "center",
                     marginTop: 15,

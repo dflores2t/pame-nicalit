@@ -47,7 +47,7 @@
       id="exNicalit"
       :rules="exNicalitRules"
       v-model="exNicalit"
-      aria-label="Checkbox for following label"
+      aria-label="Checkbox for exNicalit label"
     />
   </div>
   <div class="form-check form-input">

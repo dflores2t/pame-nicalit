@@ -101,11 +101,16 @@
       name="departn"
       :rules="departnRules"
       v-model="departn"
+      @change="onChange"
     >
       <option disabled value="">Elija un Departamento</option>
-      <option>Managua</option>
-      <option>Leon</option>
-      <option>Chinandega</option>
+      <option
+        v-for="(dpto, index) in departamento"
+        :key="index"
+        :value="dpto.value"
+      >
+        {{ dpto.text }}
+      </option>
     </Field>
   </div>
   <ErrorMessage class="text-danger" name="departn" />
@@ -118,11 +123,12 @@
       name="municipion"
       :rules="municipionRules"
       v-model="municipion"
+      @change="onChangeMunicipio"
     >
       <option disabled value="">Elija un Municipio</option>
-      <option>San Rafael</option>
-      <option>San 1</option>
-      <option>San 2</option>
+      <option v-for="(muni, index) in options" :key="index" :value="muni.value">
+        {{ muni.text }}
+      </option>
     </Field>
   </div>
   <ErrorMessage class="text-danger" name="municipion" />
@@ -137,9 +143,9 @@
       v-model="comunidadn"
     >
       <option disabled value="">Elija una Comunidad</option>
-      <option>El Salto</option>
-      <option>Las Manos</option>
-      <option>Los Chils</option>
+      <option v-for="(c, index) in cOptions" :key="index" :value="c.value">
+        {{ c.text }}
+      </option>
     </Field>
   </div>
   <ErrorMessage class="text-danger" name="comunidadn" />
@@ -273,6 +279,11 @@
 import { get, set } from "lodash";
 import { Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
+import {
+  Departamento,
+  Municipios,
+  Comarcas,
+} from "../../services/PameServices";
 
 export default {
   name: "FormTwo",
@@ -312,6 +323,9 @@ export default {
       plazoPrestamoRules: yup.string().notRequired(),
       cuotaPrestamoRules: yup.string().notRequired(),
       iCrediticiaRules: yup.boolean().notRequired(),
+      departamento: Departamento,
+      mp: Municipios,
+      comarcas: Comarcas,
     };
   },
   computed: {
@@ -427,6 +441,45 @@ export default {
         this.$store.commit("updateInformationCrediticia", value);
       },
     },
+    options() {
+      let option = "";
+      switch (this.departn) {
+        case "MANAGUA":
+          option = this.mp.MANAGUA;
+          break;
+        case "CARAZO":
+          option = this.mp.CARAZO;
+          break;
+        case "MASAYA":
+          option = this.mp.MASAYA;
+          break;
+        default:
+          option = this.mp.MANAGUA;
+          break;
+      }
+      return option;
+    },
+    cOptions() {
+      let option = "";
+      switch (this.municipion) {
+        case "MANAGUA":
+          option = this.comarcas.MANAGUA;
+          break;
+        case "SAN RAFAEL DEL SUR":
+          option = this.comarcas["SAN RAFAEL DEL SUR"];
+          break;
+        case "JINOTEPE":
+          option = this.comarcas.JINOTEPE;
+          break;
+        case "MASATEPE":
+          option = this.comarcas.MASATEPE;
+          break;
+        default:
+          option = this.comarcas.MANAGUA;
+          break;
+      }
+      return option;
+    },
   },
   methods: {
     inputClassObject(name) {
@@ -434,6 +487,12 @@ export default {
         "input-control": true,
         "has-error": this.errors.hasOwnProperty(name),
       };
+    },
+    onChange() {
+      this.options;
+    },
+    onChangeMunicipio() {
+      this.cOptions;
     },
   },
 };

@@ -168,7 +168,7 @@ export default {
                   "",
                 ],
                 [
-                  `Departamento: ${this.user.dpart}`,
+                  `Departamento: ${this.user.depart}`,
                   `Municipio: ${this.user.municipio}`,
                   `Comuninidad: ${this.user.comunidad}`,
                 ],

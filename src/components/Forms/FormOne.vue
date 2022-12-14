@@ -122,11 +122,16 @@
       name="depart"
       :rules="departRules"
       v-model="depart"
+      @change="onChange"
     >
       <option disabled value="">Elija un Departamento</option>
-      <option>Managua</option>
-      <option>Leon</option>
-      <option>Chinandega</option>
+      <option
+        v-for="(dpto, index) in departamento"
+        :key="index"
+        :value="dpto.value"
+      >
+        {{ dpto.text }}
+      </option>
     </Field>
   </div>
   <ErrorMessage class="text-danger" name="depart" />
@@ -139,11 +144,12 @@
       name="municipio"
       :rules="municipioRules"
       v-model="municipio"
+      @change="onChangeMunicipio"
     >
       <option disabled value="">Elija un Municipio</option>
-      <option>San Rafael</option>
-      <option>San 1</option>
-      <option>San 2</option>
+      <option v-for="(muni, index) in options" :key="index" :value="muni.value">
+        {{ muni.text }}
+      </option>
     </Field>
   </div>
   <ErrorMessage class="text-danger" name="municipio" />
@@ -158,9 +164,9 @@
       v-model="comunidad"
     >
       <option disabled value="">Elija una Comunidad</option>
-      <option>El Salto</option>
-      <option>Las Manos</option>
-      <option>Los Chils</option>
+      <option v-for="(c, index) in cOptions" :key="index" :value="c.value">
+        {{ c.text }}
+      </option>
     </Field>
   </div>
   <ErrorMessage class="text-danger" name="comunidad" />
@@ -340,6 +346,11 @@
 <script>
 import { Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
+import {
+  Departamento,
+  Municipios,
+  Comarcas,
+} from "../../services/PameServices";
 
 export default {
   name: "FormOne",
@@ -394,6 +405,9 @@ export default {
       // .notRequired(),
       isChecked: false,
       nonersChecked: false,
+      departamento: Departamento,
+      mp: Municipios,
+      comarcas: Comarcas,
     };
   },
   computed: {
@@ -559,6 +573,45 @@ export default {
         this.$store.commit("updateReferenciaPhone", value);
       },
     },
+    options() {
+      let option = "";
+      switch (this.depart) {
+        case "MANAGUA":
+          option = this.mp.MANAGUA;
+          break;
+        case "CARAZO":
+          option = this.mp.CARAZO;
+          break;
+        case "MASAYA":
+          option = this.mp.MASAYA;
+          break;
+        default:
+          option = this.mp.MANAGUA;
+          break;
+      }
+      return option;
+    },
+    cOptions() {
+      let option = "";
+      switch (this.municipio) {
+        case "MANAGUA":
+          option = this.comarcas.MANAGUA;
+          break;
+        case "SAN RAFAEL DEL SUR":
+          option = this.comarcas["SAN RAFAEL DEL SUR"];
+          break;
+        case "JINOTEPE":
+          option = this.comarcas.JINOTEPE;
+          break;
+        case "MASATEPE":
+          option = this.comarcas.MASATEPE;
+          break;
+        default:
+          option = this.comarcas.MANAGUA;
+          break;
+      }
+      return option;
+    },
   },
   methods: {
     inputClassObject(name) {
@@ -566,6 +619,12 @@ export default {
         "input-control": true,
         "has-error": this.errors.hasOwnProperty(name),
       };
+    },
+    onChange() {
+      this.options;
+    },
+    onChangeMunicipio() {
+      this.cOptions;
     },
   },
 };

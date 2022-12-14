@@ -1,5 +1,5 @@
 <template>
-  <div class="step-title">GARANTIA PRENDARIAS</div>
+  <div class="step-title">GARANTIAS MOBILIRIAS</div>
 
   <form>
     <div>

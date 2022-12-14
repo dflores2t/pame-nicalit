@@ -24,24 +24,23 @@
           >
           <ErrorMessage class="text-danger" name="txtDescription" />
         </div>
-
-        <div class="form-floating mb-3 mt-3 form-input">
-          <field
-            class="text-uppercase form-control"
-            :class="inputClassObject('txtUnidadMedida')"
-            type="text"
-            maxlength="20"
+        <div class="input-group mb-3 form-input">
+          <Field
+            class="form-select"
+            :class="inputClassObject('depart')"
+            as="select"
             id="txtUnidadMedida"
-            name="txtUniadMedida"
+            name="txtUnidadMedia"
             :rules="txtUnidadMedidaRules"
-            v-model.trim="productsInput.unit"
-            placeholder="Uniad de Medida"
-          />
-          <label for="txtUnidadMedida"
-            ><i class="fa-solid fa-signature"></i> Unidad Medida</label
+            v-model="productsInput.unit"
           >
-          <ErrorMessage class="text-danger" name="txtUnidadMedida" />
+            <option disabled value="">Elija una Medida</option>
+            <option v-for="un in unit" :value="un">
+              {{ un }}
+            </option>
+          </Field>
         </div>
+        <ErrorMessage class="text-danger" name="txtunidadMedida" />
 
         <div class="form-floating mb-3 mt-3 form-input">
           <field
@@ -112,6 +111,7 @@
 <script>
 import { Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
+import { UnitM } from "../../services/PameServices";
 export default {
   name: "FormThree",
   components: {
@@ -148,6 +148,7 @@ export default {
       productsInput: [],
       products: this.$store.state.user.products,
       costoTotal: 0,
+      unit: UnitM,
     };
   },
   computed: {

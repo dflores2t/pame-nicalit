@@ -43,5 +43,21 @@ export const Comarcas = {
   JINOTEPE: [{ text: "sin data", value: "sin data" }],
   MASATEPE: [{ text: "sin data", value: "sin data" }],
 };
+// LOAN DETAILS-> MONTH OF PAYMENT
+export const DatosPrestamo = ["6 Meses", "12 Meses", "18 Meses", "24 Meses"];
 
-export const DatosPrestamo = ['6 Meses', '12 Meses','18 Meses','24 Meses']
+//UNIT INFORMATION
+export const UnitM = [
+  "UNIDAD",
+  "GALON",
+  "BOLSON",
+  "DOCENA",
+  "QUINTAL",
+  "SACO",
+  "CAJA",
+  "FLETE",
+  "MARCA",
+  "PULGADAS",
+  "LIBRAS",
+  "METROS",
+];

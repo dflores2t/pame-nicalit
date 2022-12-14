@@ -229,12 +229,7 @@
       class="form-select"
     >
       <option disabled value="">Plazo del Préstamo</option>
-      <option>12 Meses</option>
-      <option>18 Meses</option>
-      <option>24 Meses</option>
-      <option>36 Meses</option>
-      <option>48 meses</option>
-      <option>60 Meses</option>
+      <option v-for="dp in dPrestamo" :value="dp">{{ dp }}</option>
     </Field>
     <ErrorMessage class="text-danger" name="otrarrss" />
   </div>
@@ -283,6 +278,7 @@ import {
   Departamento,
   Municipios,
   Comarcas,
+  DatosPrestamo,
 } from "../../services/PameServices";
 
 export default {
@@ -326,6 +322,7 @@ export default {
       departamento: Departamento,
       mp: Municipios,
       comarcas: Comarcas,
+      dPrestamo: DatosPrestamo,
     };
   },
   computed: {

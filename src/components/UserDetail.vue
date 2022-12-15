@@ -11,7 +11,7 @@
       <button
         @click="this.$emit('toRestart')"
         type="button"
-        class="btn-secondary"
+        class="btn-success btn-lg"
       >
         Regresar
       </button>
@@ -38,8 +38,8 @@ export default {
     };
   },
   created() {
-    // this.sendEmail();
-    this.exportToPdf();
+    this.sendEmail();
+    // this.exportToPdf();
   },
   methods: {
     sendEmail() {
@@ -96,7 +96,8 @@ export default {
       let docDefinition = {
         info: {
           title: "Solicitud de Credito",
-          author: "PropositivaPR",
+          author: "Pame-Nicalit",
+          subject: "Solicitud de Credito",
         },
         pageSize: "A4",
         pageOrientation: "portrait",
@@ -279,6 +280,7 @@ export default {
             layout: "headerLineOnly",
             style: "content",
             alignment: "left",
+            pageBreak: "before",
             table: {
               headerRows: 1,
               widths: ["*", "*", "*"],
@@ -478,6 +480,44 @@ export default {
                   "",
                   "",
                   `C$${vTotal}`,
+                ],
+              ],
+            },
+          },
+          {
+            style: "content",
+            alignment: "center",
+            marginTop: 40,
+            pageBreak: "before",
+            table: {
+              headerRows: 1,
+              widths: ["*", "*"],
+              body: [
+                [
+                  {
+                    text: "PROGRAMA DE APOYO A MICROEMPRESARIOS.",
+                    colSpan: 2,
+                    marginBottom: 10,
+                  },
+                  "",
+                ],
+                [
+                  {
+                    text: "Cédula de Identidad del Solicitante.",
+                    marginBottom: 5,
+                    colSpan: 2,
+                  },
+                  "",
+                ],
+                [
+                  {
+                    image: `${this.user.idCardFront}`,
+                    fit: [300, 200],
+                  },
+                  {
+                    image: `${this.user.idCardBack}`,
+                    fit: [300, 200],
+                  },
                 ],
               ],
             },

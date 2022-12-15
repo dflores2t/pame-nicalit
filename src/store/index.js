@@ -38,6 +38,8 @@ const getDefaultUser = () => {
     iCrediticia: "",
     products: [],
     gprendaria: [],
+    idCardFront: "",
+    idCardBack: "",
   };
 };
 
@@ -174,6 +176,12 @@ export default createStore({
     },
     deleteGprendaria(state, payload) {
       state.user.gprendaria.splice(payload, 1);
+    },
+    updateIdCardFront(state, payload) {
+      state.user.idCardFront = payload;
+    },
+    updateIdCardBack(state, payload) {
+      state.user.idCardBack = payload;
     },
   },
   actions: {

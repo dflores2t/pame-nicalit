@@ -508,28 +508,28 @@ export default {
                   },
                   "",
                 ],
-                [
-                  {
-                    image: await PameServices.getBase64ImageFromURL(
-                      this.user.idCardFront
-                    ),
-                    colSpan: 2,
-                    margin: [5, 5],
-                    fit: [350, 200],
-                  },
-                  "",
-                ],
-                [
-                  {
-                    image: await PameServices.getBase64ImageFromURL(
-                      this.user.idCardBack
-                    ),
-                    colSpan: 2,
-                    margin: [5, 5],
-                    fit: [350, 200],
-                  },
-                  "",
-                ],
+                // [
+                //   {
+                //     image: await PameServices.getBase64ImageFromURL(
+                //       this.user.idCardFront
+                //     ),
+                //     colSpan: 2,
+                //     margin: [5, 5],
+                //     fit: [350, 200],
+                //   },
+                //   "",
+                // ],
+                // [
+                //   {
+                //     image: await PameServices.getBase64ImageFromURL(
+                //       this.user.idCardBack
+                //     ),
+                //     colSpan: 2,
+                //     margin: [5, 5],
+                //     fit: [350, 200],
+                //   },
+                //   "",
+                // ],
               ],
             },
           },

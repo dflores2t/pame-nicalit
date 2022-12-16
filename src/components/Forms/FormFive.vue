@@ -23,6 +23,7 @@
           type="file"
           id="idCardFront"
           name="idCardFront"
+          :rules="idCardFrontRules"
           @change="handleImageFront"
         />
         <label class="input-group-text" for="idCardFront"
@@ -53,6 +54,7 @@
           type="file"
           id="idCardBack"
           name="idCardBack"
+          :rules="idCardBackRules"
           @change="handleImageBack"
         />
         <label class="input-group-text" for="idCardBack"
@@ -83,6 +85,14 @@ export default {
     return {
       imageFront: defaultImage,
       imageBack: defaultImage,
+      idCardFrontRules: yup
+        .string()
+        .trim()
+        .required("Debe subir la foto frontal de la identificacion"),
+      idCardBackRules: yup
+        .string()
+        .trim(0)
+        .required("Suba la foto del reverso de su identificación"),
     };
   },
   computed: {

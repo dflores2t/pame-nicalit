@@ -365,8 +365,10 @@ export default {
   },
   data() {
     return {
-      fullNameRules: yup.string().trim().notRequired(),
-      // .notrequired("Debe escribir su nombre completo!"),
+      fullNameRules: yup
+        .string()
+        .trim()
+        .required("Debe escribir su nombre completo!"),
       nCedulaRules: yup.string().trim().notRequired(),
       // .matches(
       //   /^\d{3}(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[0-2])\d{6}[a-zA-Z]$/,

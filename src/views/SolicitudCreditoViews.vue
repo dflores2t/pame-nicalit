@@ -18,6 +18,9 @@
 
           <button
             @click="isLastStep ? finalSubmit() : handleSubmit($event, toNext)"
+            :disabled="
+              isFirstStep ? false : !validateCurrentStep(values, errors)
+            "
             type="button"
             class="btn-primarys btn-next"
           >
@@ -67,7 +70,7 @@ export default {
   data() {
     return {
       currentStep: 0,
-      stepsList: ["FormFive"],
+      stepsList: ["FormOne"],
       showUserDetail: false,
     };
   },

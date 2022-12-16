@@ -1,3 +1,6 @@
+import store from "../store";
+import axios from "axios";
+
 export const Departamento = [
   { text: "MANAGUA", value: "MANAGUA" },
   { text: "CARAZO", value: "CARAZO" },
@@ -61,3 +64,53 @@ export const UnitM = [
   "LIBRAS",
   "METROS",
 ];
+
+//api cloudinary
+const CLOUDINARY_UPLOAD_PRESET = "zfv3t0br";
+const apiClient = axios.create({
+  baseURL: "https://api.cloudinary.com/v1_1/propositivapr/image/upload",
+  withCredentials: false,
+  headers: {
+    Accept: "multipart/form-data",
+    "Content-Type": "multipart/form-data",
+  },
+});
+const config = {
+  onUploadProgress: (event) => {
+    store.commit("updateProgress", (event.loaded * 100) / event.total);
+  },
+};
+
+export default {
+  uploadId(image) {
+    const formData = new FormData(); //creacion objeto form
+    formData.append("file", image); //creacion control tipo file
+    formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET); //creacion control con el misma variable de cloudinary
+    return apiClient.post("", formData, config);
+  },
+  getBase64ImageFromURL(url) {
+    return new Promise((resolve, reject) => {
+      var img = new Image();
+      img.setAttribute("crossOrigin", "anonymous");
+
+      img.onload = () => {
+        var canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+
+        var dataURL = canvas.toDataURL("image/png");
+
+        resolve(dataURL);
+      };
+
+      img.onerror = (error) => {
+        reject(error);
+      };
+
+      img.src = url;
+    });
+  },
+};

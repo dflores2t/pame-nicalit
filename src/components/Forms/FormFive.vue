@@ -8,6 +8,14 @@
         alt="Front"
         class="card-img-top img-fluid img-thumbnail rounded mx-auto d-block"
       />
+      <div class="progress">
+        <progress
+          id="progress"
+          :value="Progress"
+          max="100"
+          style="width: 100%; margin: 10px 0"
+        ></progress>
+      </div>
       <div class="input-group mb-3 mt-1">
         <field
           class="form-control"
@@ -30,6 +38,14 @@
         alt="Back"
         class="card-img-top img-fluid img-thumbnail rounded mx-auto d-block"
       />
+      <div class="progress">
+        <progress
+          id="progress"
+          :value="Progress"
+          max="100"
+          style="width: 100%; margin: 10px 0"
+        ></progress>
+      </div>
       <div class="input-group mb-3 mt-1">
         <field
           class="form-control"
@@ -48,10 +64,10 @@
 </template>
 
 <script>
-import { isGeneratorFunction } from "pdfmake/build/pdfmake";
 import { Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
 import defaultImage from "../../assets/img/idcard.jpg";
+import PameServices from "../../services/PameServices";
 export default {
   name: "FormFive",
   components: {
@@ -86,6 +102,9 @@ export default {
         this.$store.commit("updateIdCardBack", value);
       },
     },
+    Progress() {
+      return this.$store.state.user.progressStatus;
+    },
   },
   methods: {
     inputClassObject(name) {
@@ -94,26 +113,15 @@ export default {
         "has-error": this.errors.hasOwnProperty(name),
       };
     },
-    handleImageFront(e) {
-      const selectedImageFront = e.target.files[0];
-      this.createBase64Image(selectedImageFront, e.target.name);
+    async handleImageFront(e) {
+      const res = await PameServices.uploadId(e.target.files[0]);
+      this.imageFront = res.data.secure_url;
+      this.idCardFront = this.imageFront;
     },
-    handleImageBack(e) {
-      const selectedImageBack = e.target.files[0];
-      this.createBase64Image(selectedImageBack, e.target.name);
-    },
-    createBase64Image(fileObject, controlName) {
-      const picture = new FileReader();
-      picture.onload = (event) => {
-        if (controlName === "idCardFront") {
-          this.imageFront = event.target.result;
-          this.idCardFront = this.imageFront;
-        } else {
-          this.imageBack = event.target.result;
-          this.idCardBack = this.imageBack;
-        }
-      };
-      picture.readAsDataURL(fileObject);
+    async handleImageBack(e) {
+      const res = await PameServices.uploadId(e.target.files[0]);
+      this.imageBack = res.data.secure_url;
+      this.idCardBack = this.imageBack;
     },
   },
 };

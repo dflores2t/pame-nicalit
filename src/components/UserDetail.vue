@@ -25,6 +25,7 @@ import emailjs from "emailjs-com";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import PameServices from "../services/PameServices";
 
 export default {
   name: "userDetails",
@@ -38,8 +39,8 @@ export default {
     };
   },
   created() {
-    this.sendEmail();
-    // this.exportToPdf();
+    // this.sendEmail();
+    this.exportToPdf();
   },
   methods: {
     sendEmail() {
@@ -51,14 +52,12 @@ export default {
           "SaaesCsoq4f8UPZ2F"
         )
         .then(() => {
-          console.log("Solicitud Enviada!");
-        })
-        .then(() => {
           this.exportToPdf();
         })
         .catch((err) => console.log(err));
     },
-    exportToPdf() {
+
+    async exportToPdf() {
       let desc = [],
         um = [],
         c = [],
@@ -511,13 +510,25 @@ export default {
                 ],
                 [
                   {
-                    image: `${this.user.idCardFront}`,
-                    fit: [300, 200],
+                    image: await PameServices.getBase64ImageFromURL(
+                      this.user.idCardFront
+                    ),
+                    colSpan: 2,
+                    margin: [5, 5],
+                    fit: [350, 200],
                   },
+                  "",
+                ],
+                [
                   {
-                    image: `${this.user.idCardBack}`,
-                    fit: [300, 200],
+                    image: await PameServices.getBase64ImageFromURL(
+                      this.user.idCardBack
+                    ),
+                    colSpan: 2,
+                    margin: [5, 5],
+                    fit: [350, 200],
                   },
+                  "",
                 ],
               ],
             },

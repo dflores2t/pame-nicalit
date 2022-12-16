@@ -40,6 +40,7 @@ const getDefaultUser = () => {
     gprendaria: [],
     idCardFront: "",
     idCardBack: "",
+    progressStatus: 0,
   };
 };
 
@@ -182,6 +183,9 @@ export default createStore({
     },
     updateIdCardBack(state, payload) {
       state.user.idCardBack = payload;
+    },
+    updateProgress(state, payload) {
+      state.user.progressStatus = payload;
     },
   },
   actions: {

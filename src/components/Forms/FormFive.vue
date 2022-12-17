@@ -30,6 +30,7 @@
           ><i class="fa-regular fa-id-card"></i
         ></label>
       </div>
+      <!-- <ErrorMessage class="text-danger" name="idCardFront" /> -->
     </div>
   </div>
   <div class="container mt-3">
@@ -61,6 +62,7 @@
           ><i class="fa-regular fa-id-card"></i
         ></label>
       </div>
+      <!-- <ErrorMessage class="text-danger" name="idCardBack" /> -->
     </div>
   </div>
 </template>
@@ -85,14 +87,12 @@ export default {
     return {
       imageFront: defaultImage,
       imageBack: defaultImage,
-      idCardFrontRules: yup
-        .string()
-        .trim()
-        .required("Debe subir la foto frontal de la identificacion"),
-      idCardBackRules: yup
-        .string()
-        .trim(0)
-        .required("Suba la foto del reverso de su identificación"),
+      // idCardFrontRules: yup
+      //   .string().notRequired(),
+      //   // .required("Debe subir la foto frontal de la identificacion"),
+      // idCardBackRules: yup
+      //   .string().notRequired(),
+      //   // .required("Suba la foto del reverso de su identificación"),
     };
   },
   computed: {

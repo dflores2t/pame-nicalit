@@ -70,7 +70,14 @@ export default {
   data() {
     return {
       currentStep: 0,
-      stepsList: ["FormOne"],
+      stepsList: [
+        "FormIntro",
+        "FormOne",
+        "FormTwo",
+        "FormThree",
+        "FormFour",
+        "FormFive",
+      ],
       showUserDetail: false,
     };
   },

@@ -60,13 +60,13 @@ export default createStore({
       state.user.nCedula = payload;
     },
     updateExNicalit(state, payload) {
-      state.user.exNicalit = payload == true ? "&#10003;" : "No";
+      state.user.exNicalit = payload;
     },
     updateFamExTrabajador(state, payload) {
-      state.user.famExTrabajador = payload == true ? "&#10003;" : "No";
+      state.user.famExTrabajador = payload
     },
     updateNoExTrabajador(state, payload) {
-      state.user.noExTrabajador = payload == true ? "&#10003;" : "No";
+      state.user.noExTrabajador = payload
     },
     updateNameFamExTrabajador(state, payload) {
       state.user.nameFamExTrabajador = payload;
@@ -93,13 +93,13 @@ export default createStore({
       state.user.email = payload;
     },
     updateRsWhatsapp(state, payload) {
-      state.user.rsWhatsapp = payload == true ? "&#10003;" : "No";
+      state.user.rsWhatsapp = payload;
     },
     updateRsFacebook(state, payload) {
-      state.user.rsFacebook = payload == true ? "&#10003;" : "No";
+      state.user.rsFacebook = payload
     },
     updateNone(state, payload) {
-      state.user.none = payload == true ? "&#10003;" : "No";
+      state.user.none = payload;
     },
     updateOtrarrss(state, payload) {
       state.user.otrarrss = payload;
@@ -153,7 +153,7 @@ export default createStore({
       state.user.cuotaPrestamo = payload;
     },
     updateInformationCrediticia(state, payload) {
-      state.user.iCrediticia = payload == true ? "&#10003;" : "No";
+      state.user.iCrediticia = payload;
     },
     updateProducts(state, payload) {
       let { description, unit, quantity, cu, ct } = payload;

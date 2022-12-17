@@ -118,27 +118,26 @@
             placeholder="Valor de Compra"
           />
           <label for="vcompra"
-            ><i class="fa-solid fa-signature"></i> Volor De Compra</label
+            ><i class="fa-solid fa-signature"></i> Valor De Compra</label
           >
           <ErrorMessage class="text-danger" name="vcompra" />
         </div>
 
-        <div class="form-floating mb-3 mt-3 form-input d-none">
+        <!-- <div class="form-floating mb-3 mt-3 form-input d-none">
           <field
             class="text-uppercase form-control"
             :class="inputClassObject('vactual')"
             type="number"
             id="vactual"
             name="vactual"
-            :rules="vactualRules"
             v-model.trim="gPrendariaInput.vactual"
             placeholder="Valor de Actual"
           />
           <label for="vactual"
-            ><i class="fa-solid fa-signature"></i> Volor Actual</label
+            ><i class="fa-solid fa-signature"></i> Valor Actual</label
           >
           <ErrorMessage class="text-danger" name="vactual" />
-        </div>
+        </div> -->
       </fieldset>
     </div>
     <div class="mb-3">
@@ -189,18 +188,33 @@ export default {
   },
   data() {
     return {
-      descriptionRules: yup.string().trim().max(100).notRequired(),
-      brandRules: yup.string().trim().max(30).notRequired(),
-      modelRules: yup.string().trim().max(30).notRequired(),
-      serieRules: yup.string().trim().max(30).notRequired(),
+      descriptionRules: yup
+        .string()
+        .trim()
+        .max(100)
+        .notRequired("La descripción es requerido."),
+      brandRules: yup
+        .string()
+        .trim()
+        .max(30)
+        .notRequired("La Marca es requerido."),
+      modelRules: yup
+        .string()
+        .trim()
+        .max(30)
+        .notRequired("El Modelo es requerido."),
+      serieRules: yup
+        .string()
+        .trim()
+        .max(30)
+        .notRequired("Serie es requerido."),
       colorRules: yup
         .string()
         .trim()
         .max(20, "20 maximo de caracteres permitidos")
-        .notRequired(),
-      ausoRules: yup.string().trim().notRequired(),
-      vcompraRules: yup.string().notRequired(),
-      vactualRules: yup.string().notRequired(),
+        .notRequired("Color es requerido."),
+      ausoRules: yup.string().trim().notRequired("Años de uso es requerido."),
+      vcompraRules: yup.string().notRequired("Valor de compra es requerido."),
       gPrendariaInput: [],
       gPrendaria: this.$store.state.user.gprendaria,
     };

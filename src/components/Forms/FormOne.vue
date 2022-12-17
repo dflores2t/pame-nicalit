@@ -43,7 +43,8 @@
     <input
       :class="inputClassObject('exNicalit')"
       class="form-check-input"
-      type="checkbox"
+      type="radio"
+      value="Si"
       id="exNicalit"
       :rules="exNicalitRules"
       v-model="exNicalit"
@@ -52,12 +53,13 @@
   </div>
   <div class="form-check form-input">
     <label for="famExTrabajador" class="form-check-label">
-      <i class="fa-solid fa-square-check"></i> Familiar de Ex-Trabajador.</label
+      <i class="fa-solid fa-square-check"></i> Familiar de Ex-Trabajador?</label
     >
     <input
       :class="inputClassObject('famExTrabajador')"
       class="form-check-input"
-      type="checkbox"
+      type="radio"
+      value="Si"
       id="famExTrabajador"
       :rules="famExTrabajadorRules"
       v-model="famExTrabajador"
@@ -66,12 +68,13 @@
   </div>
   <div class="form-check form-input">
     <label for="noExTrabajador" class="form-check-label"
-      ><i class="fa-solid fa-square-check"></i> No es Ex-Trabajador.</label
+      ><i class="fa-solid fa-square-check"></i>No es Ex-Trabajador?</label
     >
     <input
       :class="inputClassObject('noExTrabajador')"
       class="form-check-input"
-      type="checkbox"
+      type="radio"
+      value="No"
       id="noExTrabajador"
       :rules="noExTrabajadorRules"
       v-model="noExTrabajador"
@@ -231,7 +234,7 @@
     <input
       :class="inputClassObject('rsWhatsapp')"
       class="form-check-input"
-      type="checkbox"
+      type="radio" value="Si"
       id="rsWhatsapp"
       name="rsWhatsapp"
       :rules="rsWhatsappRules"
@@ -246,7 +249,7 @@
     <input
       :class="inputClassObject('rsFacebook')"
       class="form-check-input"
-      type="checkbox"
+      type="radio" value="Si"
       id="rsFacebook"
       name="rsFacebook"
       :rules="rsFacebookRules"
@@ -261,7 +264,7 @@
     <input
       :class="inputClassObject('none')"
       class="form-check-input"
-      type="checkbox"
+      type="radio" value="X"
       id="none"
       name="none"
       :rules="noneRules"
@@ -369,42 +372,57 @@ export default {
         .string()
         .trim()
         .required("Debe escribir su nombre completo!"),
-      nCedulaRules: yup.string().trim().notRequired(),
-      // .matches(
-      //   /^\d{3}(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[0-2])\d{6}[a-zA-Z]$/,
-      //   "Identificación no valida"
-      // )
-      // .notRequired(),
-      // .notRequired("Este campo es requerido"),
+      nCedulaRules: yup
+        .string()
+        .trim()
+        .matches(
+          /^\d{3}(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[0-2])\d{6}[a-zA-Z]$/,
+          "Identificación no valida"
+        )
+        .required("Este campo es requerido"),
       exNicalitRules: yup.boolean().notRequired(),
       famExTrabajadorRules: yup.boolean().notRequired(),
       noExTrabajadorRules: yup.boolean().notRequired(),
       nameFamExTrabajadorRules: yup.string().trim().notRequired(),
-      addressRules: yup.string().trim().notRequired(),
-      // .notRequired("Debe escribir su direccion domiciliar"),
-      departRules: yup.string().notRequired(),
-      // .notRequired("Debe escojer un departamento"),
-      municipioRules: yup.string().trim().notRequired(),
-      // .notRequired("Debe escojer un Municipio"),
-      comunidadRules: yup.string().trim().notRequired(),
-      // .notRequired("Debe escojer una comunidad"),
-      phoneHomeRules: yup.string().trim(),
-      // .matches(/^\d{4}\d{4}$/, "Número de Teléfono no valido")
-      // .notRequired(),
-      phoneMovilRules: yup.string(),
-      // .matches(/^\d{4}\d{4}$/, "Número de Celular no valido"),
+      addressRules: yup
+        .string()
+        .trim()
+        .required("Debe escribir su direccion domiciliar"),
+      departRules: yup.string().required("Debe escojer un departamento"),
+      municipioRules: yup.string().trim().required("Debe escojer un Municipio"),
+      comunidadRules: yup
+        .string()
+        .trim()
+        .required("Debe escojer una comunidad"),
+      phoneHomeRules: yup
+        .string()
+        .trim()
+        .matches(/^\d{4}\d{4}$/, "Número de Teléfono no valido")
+        .notRequired(),
+      phoneMovilRules: yup
+        .string()
+        .trim()
+        .matches(/^\d{4}\d{4}$/, "Número de Celular no valido")
+        .required("Número de Celular no valido es requerido"),
       rsWhatsappRules: yup.boolean().notRequired(),
       rsFacebookRules: yup.boolean().notRequired(),
       emailRules: yup.string().trim().email("Correo no valido").notRequired(),
       noneRules: yup.string().trim().notRequired(),
       otrarrssRules: yup.string().trim().notRequired(),
-      cuentaBacRules: yup.string().trim(),
-      // .matches(/^\d{3}\d{3}\d{3}$/, "Número de cuenta no valido")
-      // .notRequired(),
-      referenciaPersonalRules: yup.string().trim().notRequired(),
-      referenciaPhoneRules: yup.string().trim(),
-      // .matches(/^\d{4}\d{4}$/, "Número de Teléfono no valido")
-      // .notRequired(),
+      cuentaBacRules: yup
+        .string()
+        .trim()
+        .matches(/^\d{3}\d{3}\d{3}$/, "Número de cuenta no valido")
+        .required("Número de cuenta es requerido"),
+      referenciaPersonalRules: yup
+        .string()
+        .trim()
+        .required("Un Nombre como referencia personal es requerido"),
+      referenciaPhoneRules: yup
+        .string()
+        .trim()
+        .matches(/^\d{4}\d{4}$/, "Número de Teléfono no valido")
+        .required("Un número de teléfono es requerido."),
       isChecked: false,
       nonersChecked: false,
       departamento: Departamento,

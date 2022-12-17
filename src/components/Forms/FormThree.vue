@@ -27,10 +27,10 @@
         <div class="input-group mb-3 form-input">
           <Field
             class="form-select"
-            :class="inputClassObject('depart')"
+            :class="inputClassObject('txtUnidadMedida')"
             as="select"
             id="txtUnidadMedida"
-            name="txtUnidadMedia"
+            name="txtUnidadMedida"
             :rules="txtUnidadMedidaRules"
             v-model="productsInput.unit"
           >
@@ -40,7 +40,7 @@
             </option>
           </Field>
         </div>
-        <ErrorMessage class="text-danger" name="txtunidadMedida" />
+        <ErrorMessage class="text-danger" name="txtUnidadMedida" />
 
         <div class="form-floating mb-3 mt-3 form-input">
           <field
@@ -129,22 +129,20 @@ export default {
         .string()
         .trim()
         .max(100, "100 maximo de caracteres")
-        .notRequired(),
+        .notRequired("Descripción del producto es requerido."),
       txtUnidadMedidaRules: yup
         .string()
-        .trim()
-        .max(20, "20 caracteres maximos")
-        .notRequired(),
+        .notRequired("Unidad de medida es requerido."),
       txtCantidadRules: yup
         .string()
         .trim()
         .max(10, "Maximo 10 digitos")
-        .notRequired(),
+        .notRequired("Cantidad es requerido."),
       txtCostoUnitarioRules: yup
         .string()
         .trim()
         .max(10, "Maximo 10 digitos")
-        .notRequired(),
+        .notRequired("Costo unitario es requerido."),
       productsInput: [],
       products: this.$store.state.user.products,
       costoTotal: 0,

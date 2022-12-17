@@ -33,7 +33,7 @@
         aria-label="Marcar la casilla de whatsapp"
       />
     </div>
-    <ErrorMessage class="input-error-msg" name="iCrediticia" />
+    <ErrorMessage class="input-error-msg" name="aSolicitado" />
   </fieldset>
   <div class="form-floating mb-3 mt-3 form-input">
     <field
@@ -57,7 +57,7 @@
     <div class="input-group mb-3 form-input">
       <Field
         class="form-select"
-        :class="inputClassObject('depart')"
+        :class="inputClassObject('aEconomica')"
         as="select"
         id="aEconomica"
         name="aEconomica"
@@ -259,19 +259,18 @@
     <input
       :class="inputClassObject('iCrediticia')"
       class="form-check-input"
-      type="checkbox"
+      type="radio" value="Si"
       id="iCrediticia"
       name="iCrediticia"
       :rules="iCrediticiaRules"
       v-model="iCrediticia"
-      aria-label="Marcar la casilla de whatsapp"
+      aria-label="Marcar la casilla aceptar"
     />
     <ErrorMessage class="input-error-msg" name="iCrediticia" />
   </div>
 </template>
 
 <script>
-import { get, set } from "lodash";
 import { Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
 import {
@@ -294,31 +293,40 @@ export default {
   },
   data() {
     return {
-      aSolicitadoRules: yup.string().notRequired(),
+      aSolicitadoRules: yup.string().trim().required(),
       dNegocioRules: yup
         .string()
         .max(100, "Maximo de caracteres 100")
         .trim()
-        .notRequired(),
-      aEconomicaRules: yup.string().notRequired(),
-      mPrestamoRules: yup.string().notRequired(),
+        .required("Descripción del negocio es requerido."),
+      aEconomicaRules: yup.string().required("Actividad Economica requerido."),
       dirNegocioRules: yup
         .string()
         .trim()
         .max(100, "maximo de caracteres 100")
-        .notRequired(),
-      departnRules: yup.string().notRequired(),
-      // .notRequired("Debe escojer un departamento"),
-      municipionRules: yup.string().trim().notRequired(),
-      // .notRequired("Debe escojer un Municipio"),
-      comunidadnRules: yup.string().trim().notRequired(),
-      // .notRequired("Debe escojer una comunidad"),
-      bDirectoRules: yup.string().notRequired(),
-      eGeneradoRules: yup.string().notRequired(),
-      fOperacionesRules: yup.string().notRequired(),
-      plazoPrestamoRules: yup.string().notRequired(),
-      cuotaPrestamoRules: yup.string().notRequired(),
-      iCrediticiaRules: yup.boolean().notRequired(),
+        .required("Direccción del negocio es requerido."),
+      mPrestamoRules: yup.string().required("Monto del prestamo requerido."),
+      departnRules: yup.string().required("Debe escojer un departamento."),
+      municipionRules: yup
+        .string()
+        .trim()
+        .required("Debe escojer un Municipio."),
+      comunidadnRules: yup
+        .string()
+        .trim()
+        .required("Debe escojer una comunidad."),
+      bDirectoRules: yup.string().required("Beneficiario es requerido."),
+      eGeneradoRules: yup.string().required("cantidada de empleo que genera.?"),
+      fOperacionesRules: yup.string().required("Defina una fecha."),
+      plazoPrestamoRules: yup
+        .string()
+        .required("Plazo del prestamo es requerido."),
+      cuotaPrestamoRules: yup
+        .string()
+        .required("Definir una cuota, es requerido."),
+      iCrediticiaRules: yup.object().shape({
+        iCrediticia: yup.string().oneOf(['&#10003;','No'])
+      }),
       departamento: Departamento,
       mp: Municipios,
       comarcas: Comarcas,

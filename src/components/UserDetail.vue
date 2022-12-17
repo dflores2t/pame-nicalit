@@ -39,8 +39,8 @@ export default {
     };
   },
   created() {
-    // this.sendEmail();
-    this.exportToPdf();
+    this.sendEmail();
+    // this.exportToPdf();
   },
   methods: {
     sendEmail() {
@@ -153,7 +153,7 @@ export default {
                 ],
                 [
                   {
-                    text: `Nombre del Ex-Trabajador de Nicalit del cual es familiar: ${this.user.nameFameExTrabajador}`,
+                    text: `Nombre del Ex-Trabajador de Nicalit del cual es familiar: ${this.user.nameFamExTrabajador}`,
                     colSpan: 3,
                   },
                   "",
@@ -174,7 +174,7 @@ export default {
                 ],
                 [
                   `Teléfono 1: ${this.user.phoneHome}`,
-                  `Teléfono 2: ${this.user.phoneMavil}`,
+                  `Teléfono 2: ${this.user.phoneMovil}`,
                   `Correo Electrónico: ${this.user.email}`,
                 ],
                 [
@@ -194,8 +194,8 @@ export default {
                   ``,
                 ],
                 [
-                  `Referencias Personales: ${this.user.refgerenciaPersonal}`,
-                  `Télefono: ${this.user.refenerciaPhone}`,
+                  `Referencias Personales: ${this.user.referenciaPersonal}`,
+                  `Télefono: ${this.user.referenciaPhone}`,
                   ``,
                 ],
                 [" ", " ", " "],
@@ -508,28 +508,28 @@ export default {
                   },
                   "",
                 ],
-                // [
-                //   {
-                //     image: await PameServices.getBase64ImageFromURL(
-                //       this.user.idCardFront
-                //     ),
-                //     colSpan: 2,
-                //     margin: [5, 5],
-                //     fit: [350, 200],
-                //   },
-                //   "",
-                // ],
-                // [
-                //   {
-                //     image: await PameServices.getBase64ImageFromURL(
-                //       this.user.idCardBack
-                //     ),
-                //     colSpan: 2,
-                //     margin: [5, 5],
-                //     fit: [350, 200],
-                //   },
-                //   "",
-                // ],
+                [
+                  {
+                    image: await PameServices.getBase64ImageFromURL(
+                      this.user.idCardFront
+                    ),
+                    colSpan: 2,
+                    margin: [5, 5],
+                    fit: [350, 200],
+                  },
+                  "",
+                ],
+                [
+                  {
+                    image: await PameServices.getBase64ImageFromURL(
+                      this.user.idCardBack
+                    ),
+                    colSpan: 2,
+                    margin: [5, 5],
+                    fit: [350, 200],
+                  },
+                  "",
+                ],
               ],
             },
           },

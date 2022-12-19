@@ -1,27 +1,25 @@
 <template>
   <div class="step-title">Solicitud de Credito y Plan de Negocio!</div>
-<p>Estimado cliente!</p>
-  <p>Con el objetivo de agilizar su proceso de solicitud</p>
-  <p>Llene el siguiente formulario con sus datos correspondiente.</p>
-  <br />
-  <p>Tres Etapas:</p>
+  <p>Estimado cliente!</p>
   <p>
-    <ul>
-      <li>Datos Personales.</li>
-      <li>Datos del Negocio.</li>
-      <li>Datos del Prestamo que Solicita.</li>
-    </ul>
+    Con el objetivo de agilizar el proceso de su solicitud, lea detenidamente
+    antes de responder cada uno de los campos de este formulario.
+  </p>
+  <p>
+    Este formulario consta de 5 etapas, en las cuales deberá colocar sus datos
+    correspondientes los que deberá verificar al llenar cada uno de los campos
+    para poder avanzar a la siguiente etapa.
   </p>
 </template>
 <script>
 export default {
-  name: 'Intro',
+  name: "Intro",
   props: {
     errors: {
       type: Object,
     },
   },
-}
+};
 </script>
 
 <style>

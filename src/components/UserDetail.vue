@@ -3,7 +3,8 @@
     <div class="header">
       <div class="welcome">PAME-NICALIT .::. Solicitudo de Crédito</div>
       <div class="desc">
-        Hemos enviado tu solicitud de crédito con tu información.
+        Estimado {{ user.fullName }} Hemos enviado tu solicitud de crédito con
+        tu información.
       </div>
     </div>
 
@@ -24,7 +25,7 @@
 import emailjs from "emailjs-com";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+// pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import PameServices from "../services/PameServices";
 
 export default {
@@ -39,8 +40,8 @@ export default {
     };
   },
   created() {
-    this.sendEmail();
-    // this.exportToPdf();
+    // this.sendEmail();
+    this.exportToPdf();
   },
   methods: {
     sendEmail() {

@@ -28,10 +28,10 @@
       name="nCedula"
       :rules="nCedulaRules"
       v-model.trim="nCedula"
-      placeholder="001-121084-0002W"
+      placeholder="0011210840002W"
     />
     <label for="nCedula"
-      ><i class="fa-solid fa-id-card"></i> N° de Cédula.</label
+      ><i class="fa-solid fa-id-card"></i> 001-121084-0002W</label
     >
     <ErrorMessage class="text-danger" name="nCedula" />
   </div>
@@ -381,7 +381,7 @@ export default {
         .string()
         .trim()
         .matches(
-          /^\d{3}(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[0-2])\d{6}[a-zA-Z]$/,
+          /^\d{3}-(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[0-2])\d{2}-([0-9])\d{3}[a-zA-Z]$/,
           "Identificación no valida"
         )
         .required("Este campo es requerido"),

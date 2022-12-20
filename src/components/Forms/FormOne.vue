@@ -28,7 +28,7 @@
       name="nCedula"
       :rules="nCedulaRules"
       v-model.trim="nCedula"
-      placeholder="Numero identificacion"
+      placeholder="001-121084-0002W"
     />
     <label for="nCedula"
       ><i class="fa-solid fa-id-card"></i> N° de Cédula.</label
@@ -38,14 +38,15 @@
 
   <div class="form-check form-input">
     <label for="exNicalit" class="form-check-label">
-      <i class="fa-solid fa-square-check"></i> Ex-Trabajador de Nicalit.</label
+      <i class="fa-solid fa-square-check"></i> Ex-Trabajador de Nicalit?</label
     >
-    <input
+    <Field
       :class="inputClassObject('exNicalit')"
       class="form-check-input"
-      type="radio"
-      value="Si"
+      type="checkbox"
+      value="SI"
       id="exNicalit"
+      name="exNicalit"
       :rules="exNicalitRules"
       v-model="exNicalit"
       aria-label="Checkbox for exNicalit label"
@@ -55,12 +56,13 @@
     <label for="famExTrabajador" class="form-check-label">
       <i class="fa-solid fa-square-check"></i> Familiar de Ex-Trabajador?</label
     >
-    <input
+    <Field
       :class="inputClassObject('famExTrabajador')"
       class="form-check-input"
-      type="radio"
-      value="Si"
+      type="checkbox"
+      value="SI"
       id="famExTrabajador"
+      name="famExTrabador"
       :rules="famExTrabajadorRules"
       v-model="famExTrabajador"
       aria-label="Checkbox for following label"
@@ -70,12 +72,13 @@
     <label for="noExTrabajador" class="form-check-label"
       ><i class="fa-solid fa-square-check"></i>No es Ex-Trabajador?</label
     >
-    <input
+    <Field
       :class="inputClassObject('noExTrabajador')"
       class="form-check-input"
-      type="radio"
-      value="No"
+      type="checkbox"
+      value="SI"
       id="noExTrabajador"
+      name="noExTrabajador"
       :rules="noExTrabajadorRules"
       v-model="noExTrabajador"
       aria-label="Checkbox for following label"
@@ -231,10 +234,11 @@
     <label for="rsWhatsapp" class="form-check-label"
       ><i class="fa-brands fa-whatsapp-square"></i> Whatsapp</label
     >
-    <input
+    <Field
       :class="inputClassObject('rsWhatsapp')"
       class="form-check-input"
-      type="radio" value="Si"
+      type="checkbox"
+      value="SI"
       id="rsWhatsapp"
       name="rsWhatsapp"
       :rules="rsWhatsappRules"
@@ -246,10 +250,11 @@
     <label for="rsFacebook" class="form-check-label"
       ><i class="fa-brands fa-facebook-square"> </i> Facebook</label
     >
-    <input
+    <Field
       :class="inputClassObject('rsFacebook')"
       class="form-check-input"
-      type="radio" value="Si"
+      type="checkbox"
+      value="SI"
       id="rsFacebook"
       name="rsFacebook"
       :rules="rsFacebookRules"
@@ -261,16 +266,16 @@
     <label for="none" class="form-check-label"
       ><i class="fa-solid fa-battery-empty"></i> ninguno</label
     >
-    <input
+    <Field
       :class="inputClassObject('none')"
       class="form-check-input"
-      type="radio" value="X"
+      type="checkbox"
+      value="SI"
       id="none"
       name="none"
       :rules="noneRules"
       v-model="none"
       aria-label="Marcar la casilla Ninguno"
-      @click="IsChecked"
     />
   </div>
   <div class="mb-3 mt-3 form-input" v-if="!nonersChecked">
@@ -308,7 +313,7 @@
       placeholder="123-444-333"
     />
     <label for="email"
-      ><i class="fa-solid fa-building-columns"></i> Cuenta Bancaria</label
+      ><i class="fa-solid fa-building-columns"></i> Cuenta Bancaria Bac</label
     >
     <ErrorMessage class="text-danger" name="cuentaBac" />
   </div>
@@ -380,8 +385,8 @@ export default {
           "Identificación no valida"
         )
         .required("Este campo es requerido"),
-      exNicalitRules: yup.boolean().notRequired(),
-      famExTrabajadorRules: yup.boolean().notRequired(),
+      exNicalitRules: yup.string().notRequired(),
+      famExTrabajadorRules: yup.string().notRequired(),
       noExTrabajadorRules: yup.boolean().notRequired(),
       nameFamExTrabajadorRules: yup.string().trim().notRequired(),
       addressRules: yup
@@ -404,16 +409,16 @@ export default {
         .trim()
         .matches(/^\d{4}\d{4}$/, "Número de Celular no valido")
         .required("Número de Celular no valido es requerido"),
-      rsWhatsappRules: yup.boolean().notRequired(),
-      rsFacebookRules: yup.boolean().notRequired(),
+      rsWhatsappRules: yup.string().notRequired(),
+      rsFacebookRules: yup.string().notRequired(),
       emailRules: yup.string().trim().email("Correo no valido").notRequired(),
       noneRules: yup.string().trim().notRequired(),
       otrarrssRules: yup.string().trim().notRequired(),
       cuentaBacRules: yup
         .string()
         .trim()
-        .matches(/^\d{3}\d{3}\d{3}$/, "Número de cuenta no valido")
-        .required("Número de cuenta es requerido"),
+        .matches(/^(?:\d{3}\d{3}\d{3}|)$/, "Número de cuenta no valido")
+        .notRequired("Número de cuenta es requerido"),
       referenciaPersonalRules: yup
         .string()
         .trim()
@@ -436,7 +441,7 @@ export default {
         return this.$store.state.user.fullName;
       },
       set(value) {
-        this.$store.commit("updateFullName", value);
+        this.$store.commit("updateFullName", value.toUpperCase());
       },
     },
     nCedula: {
@@ -444,7 +449,7 @@ export default {
         return this.$store.state.user.nCedula;
       },
       set(value) {
-        this.$store.commit("updatenCedula", value);
+        this.$store.commit("updatenCedula", value.toUpperCase());
       },
     },
     exNicalit: {
@@ -452,6 +457,7 @@ export default {
         return this.$store.state.user.exNicalit;
       },
       set(value) {
+        value = value === "SI" ? "SI" : "NO";
         this.$store.commit("updateExNicalit", value);
       },
     },
@@ -461,6 +467,7 @@ export default {
       },
       set(value) {
         this.isChecked = value;
+        value = value === "SI" ? "SI" : "NO";
         this.$store.commit("updateFamExTrabajador", value);
       },
     },
@@ -469,6 +476,7 @@ export default {
         return this.$store.state.user.noExTrabajador;
       },
       set(value) {
+        value = value === "SI" ? "NO LO SOY" : "SI, LO SOY";
         this.$store.commit("updateNoExTrabajador", value);
       },
     },
@@ -477,7 +485,7 @@ export default {
         return this.$store.state.user.nameFamExTrabajador;
       },
       set(value) {
-        this.$store.commit("updateNameFamExTrabajador", value);
+        this.$store.commit("updateNameFamExTrabajador", value.toUpperCase());
       },
     },
     address: {
@@ -485,7 +493,7 @@ export default {
         return this.$store.state.user.address;
       },
       set(value) {
-        this.$store.commit("updateAddress", value);
+        this.$store.commit("updateAddress", value.toUpperCase());
       },
     },
     depart: {
@@ -493,7 +501,7 @@ export default {
         return this.$store.state.user.depart;
       },
       set(value) {
-        this.$store.commit("updateDepart", value);
+        this.$store.commit("updateDepart", value.toUpperCase());
       },
     },
     municipio: {
@@ -501,7 +509,7 @@ export default {
         return this.$store.state.user.municipio;
       },
       set(value) {
-        this.$store.commit("updateMunicipio", value);
+        this.$store.commit("updateMunicipio", value.toUpperCase());
       },
     },
     comunidad: {
@@ -509,7 +517,7 @@ export default {
         return this.$store.state.user.comunidad;
       },
       set(value) {
-        this.$store.commit("updateComunidad", value);
+        this.$store.commit("updateComunidad", value.toUpperCase());
       },
     },
     phoneHome: {
@@ -517,7 +525,7 @@ export default {
         return this.$store.state.user.phoneHome;
       },
       set(value) {
-        this.$store.commit("updatePhoneHome", value);
+        this.$store.commit("updatePhoneHome", value.toUpperCase());
       },
     },
     phoneMovil: {
@@ -525,7 +533,7 @@ export default {
         return this.$store.state.user.phoneMovil;
       },
       set(value) {
-        this.$store.commit("updatePhoneMovil", value);
+        this.$store.commit("updatePhoneMovil", value.toUpperCase());
       },
     },
     email: {
@@ -533,7 +541,7 @@ export default {
         return this.$store.state.user.email;
       },
       set(value) {
-        this.$store.commit("updateEmail", value);
+        this.$store.commit("updateEmail", value.toUpperCase());
       },
     },
     rsWhatsapp: {
@@ -541,7 +549,8 @@ export default {
         return this.$store.state.user.rsWhatsapp;
       },
       set(value) {
-        this.$store.commit("updateRsWhatsapp", value);
+        value = value === "SI" ? "SI" : "";
+        this.$store.commit("updateRsWhatsapp", value.toUpperCase());
       },
     },
     rsFacebook: {
@@ -549,7 +558,8 @@ export default {
         return this.$store.state.user.rsFacebook;
       },
       set(value) {
-        this.$store.commit("updateRsFacebook", value);
+        value = value === "SI" ? "SI" : "";
+        this.$store.commit("updateRsFacebook", value.toUpperCase());
       },
     },
     none: {
@@ -558,7 +568,8 @@ export default {
       },
       set(value) {
         this.nonersChecked = value;
-        this.$store.commit("updateNone", value);
+        value = value === "SI" ? "X" : "";
+        this.$store.commit("updateNone", value.toUpperCase());
       },
     },
     otrarrss: {
@@ -566,7 +577,7 @@ export default {
         return this.$store.state.user.otrarrss;
       },
       set(value) {
-        this.$store.commit("updateOtrarrss", value);
+        this.$store.commit("updateOtrarrss", value.toUpperCase());
       },
     },
     cuentaBac: {
@@ -574,7 +585,7 @@ export default {
         return this.$store.state.user.cuentaBac;
       },
       set(value) {
-        this.$store.commit("updateCuentaBac", value);
+        this.$store.commit("updateCuentaBac", value.toUpperCase());
       },
     },
     referenciaPersonal: {
@@ -582,7 +593,7 @@ export default {
         return this.$store.state.user.referenciaPersonal;
       },
       set(value) {
-        this.$store.commit("updateReferenciaPersonal", value);
+        this.$store.commit("updateReferenciaPersonal", value.toUpperCase());
       },
     },
     referenciaPhone: {
@@ -590,7 +601,7 @@ export default {
         return this.$store.state.user.referenciaPhone;
       },
       set(value) {
-        this.$store.commit("updateReferenciaPhone", value);
+        this.$store.commit("updateReferenciaPhone", value.toUpperCase());
       },
     },
     options() {

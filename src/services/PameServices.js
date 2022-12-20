@@ -16,8 +16,9 @@ export const Municipios = {
   MASAYA: [{ text: "MASATEPE", value: "MASATEPE" }],
 };
 export const Comarcas = {
-  MANAGUA: [{ text: "sin data", value: "sin data" }],
+  MANAGUA: [{ text: "SIN INFORMACIÓN", value: "SIN INFORMACIÓN" }],
   "SAN RAFAEL DEL SUR": [
+    { text: "CASCO URBANO", value: "CASCO URBANO" },
     { text: "EL SALTO", value: "EL SALTO" },
     { text: "LOS RIZO", value: "LOS RIZO" },
     { text: "MASACHAPA", value: "MASACHAPA" },
@@ -43,8 +44,8 @@ export const Comarcas = {
     { text: "LOS VIVAS", value: "LOS VIVAS" },
     { text: "LA GALLINA", value: "LA GALLINA" },
   ],
-  JINOTEPE: [{ text: "sin data", value: "sin data" }],
-  MASATEPE: [{ text: "sin data", value: "sin data" }],
+  JINOTEPE: [{ text: "SIN INFORMACIÓN", value: "SIN INFORMACIÓN" }],
+  MASATEPE: [{ text: "SIN INFOMACION", value: "SIN INFORMACIÓN" }],
 };
 // LOAN DETAILS-> MONTH OF PAYMENT
 export const DatosPrestamo = ["6 Meses", "12 Meses", "18 Meses", "24 Meses"];

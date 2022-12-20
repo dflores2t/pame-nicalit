@@ -4,9 +4,9 @@ const getDefaultUser = () => {
   return {
     fullName: "",
     nCedula: "",
-    exNicalit: "",
-    famExTrabajador: "",
-    noExTrabajador: "",
+    exNicalit: "NO",
+    famExTrabajador: "NO",
+    noExTrabajador: "NO",
     nameFamExTrabajador: "",
     address: "",
     depart: "",
@@ -15,9 +15,9 @@ const getDefaultUser = () => {
     phoneHome: "",
     phoneMovil: "",
     email: "",
-    rsWhatsapp: "",
-    rsFacebook: "",
-    none: "",
+    rsWhatsapp: "NO",
+    rsFacebook: "NO",
+    none: "X",
     otrarrss: "",
     cuentaBac: "",
     referenciaPersonal: "",
@@ -29,12 +29,12 @@ const getDefaultUser = () => {
     departn: "",
     municipion: "",
     comunidadn: "",
-    bDirecto: "",
-    eGenerado: "",
+    bDirecto: 0,
+    eGenerado: 0,
     fOperaciones: "",
-    mPrestamo: "",
+    mPrestamo: 0,
     plazoPrestamo: "",
-    cuotaPrestamo: "",
+    cuotaPrestamo: 0,
     iCrediticia: "",
     products: [],
     gprendaria: [],
@@ -63,10 +63,10 @@ export default createStore({
       state.user.exNicalit = payload;
     },
     updateFamExTrabajador(state, payload) {
-      state.user.famExTrabajador = payload
+      state.user.famExTrabajador = payload;
     },
     updateNoExTrabajador(state, payload) {
-      state.user.noExTrabajador = payload
+      state.user.noExTrabajador = payload;
     },
     updateNameFamExTrabajador(state, payload) {
       state.user.nameFamExTrabajador = payload;
@@ -96,7 +96,7 @@ export default createStore({
       state.user.rsWhatsapp = payload;
     },
     updateRsFacebook(state, payload) {
-      state.user.rsFacebook = payload
+      state.user.rsFacebook = payload;
     },
     updateNone(state, payload) {
       state.user.none = payload;

@@ -1,11 +1,13 @@
 <template>
-  <div class="step-title">PLAN DE INVERSION</div>
+  <div class="step-title">Subir Identificación</div>
 
   <div class="container mt-3">
     <div class="card">
       <img
         :src="imageFront"
         alt="Front"
+        id="imageFront"
+        name="imageFront"
         class="card-img-top img-fluid img-thumbnail rounded mx-auto d-block"
       />
       <div class="progress">
@@ -17,20 +19,20 @@
         ></progress>
       </div>
       <div class="input-group mb-3 mt-1">
-        <field
+        <Field
           class="form-control"
-          :class="inputClassObject('idCardFront')"
           type="file"
           id="idCardFront"
           name="idCardFront"
-          :rules="idCardFrontRules"
+          :rules="ImageValidatedFront"
+          :class="inputClassObject('idCardFront')"
           @change="handleImageFront"
         />
         <label class="input-group-text" for="idCardFront"
           ><i class="fa-regular fa-id-card"></i
         ></label>
+        <ErrorMessage class="text-danger text-center" name="idCardFront" />
       </div>
-      <!-- <ErrorMessage class="text-danger" name="idCardFront" /> -->
     </div>
   </div>
   <div class="container mt-3">
@@ -55,14 +57,14 @@
           type="file"
           id="idCardBack"
           name="idCardBack"
-          :rules="idCardBackRules"
+          :rules="ImageValidatedBack"
           @change="handleImageBack"
         />
         <label class="input-group-text" for="idCardBack"
           ><i class="fa-regular fa-id-card"></i
         ></label>
+        <ErrorMessage class="text-danger text-center" name="idCardBack" />
       </div>
-      <!-- <ErrorMessage class="text-danger" name="idCardBack" /> -->
     </div>
   </div>
 </template>
@@ -87,12 +89,14 @@ export default {
     return {
       imageFront: defaultImage,
       imageBack: defaultImage,
-      // idCardFrontRules: yup
-      //   .string().notRequired(),
-      //   // .required("Debe subir la foto frontal de la identificacion"),
-      // idCardBackRules: yup
-      //   .string().notRequired(),
-      //   // .required("Suba la foto del reverso de su identificación"),
+      ImageValidatedFront: yup
+        .array()
+        .min(1, "Foto frontal de su Identificación.")
+        .required("Foto frontal de su Identificación."),
+      ImageValidatedBack: yup
+        .array()
+        .min(1, "Foto frontal de su Identificación.")
+        .required("Foto del reverso de su Identificación."),
     };
   },
   computed: {

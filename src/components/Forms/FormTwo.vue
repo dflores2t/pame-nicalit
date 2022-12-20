@@ -1,40 +1,44 @@
 <template>
   <div class="step-title">Datos del Negocio</div>
-  <fieldset>
-    <legend>Tipo de Apoyo Solicitado.</legend>
-    <div class="form-check form-input">
-      <label for="iNegocio" class="form-check-label">Inicio de Nogocio:</label>
-      <input
-        :class="inputClassObject('aSolicitado')"
-        class="form-check-input"
-        maxlength="100"
-        type="radio"
-        id="iNegocio"
-        name="aSolicitado"
-        value="Inicio de Negocio"
-        :rules="aSolicitadoRules"
-        v-model="aSolicitado"
-        aria-label="Marcar la casilla de whatsapp"
-      />
-    </div>
-    <div class="form-check form-input">
-      <label for="cNegocio" class="form-check-label"
-        >Continuidad del Nogocio:</label
-      >
-      <input
-        :class="inputClassObject('aSolicitado')"
-        class="form-check-input"
-        type="radio"
-        id="cNegocio"
-        name="aSolicitado"
-        value="Continuidad del Negocio"
-        :rules="aSolicitadoRules"
-        v-model="aSolicitado"
-        aria-label="Marcar la casilla de whatsapp"
-      />
-    </div>
-    <ErrorMessage class="input-error-msg" name="aSolicitado" />
-  </fieldset>
+  <div class="form-floating mb-3 mt-3 form-input">
+    <fieldset>
+      <legend>Tipo de Apoyo Solicitado.</legend>
+      <div class="form-check form-input">
+        <label for="iNegocio" class="form-check-label"
+          >Inicio de Nogocio:</label
+        >
+        <Field
+          :class="inputClassObject('aSolicitado')"
+          class="form-check-input"
+          maxlength="100"
+          type="radio"
+          id="iNegocio"
+          name="aSolicitado"
+          value="Inicio de Negocio"
+          :rules="aSolicitadoRules"
+          v-model="aSolicitado"
+          autofocus
+        />
+      </div>
+      <div class="form-check form-input">
+        <label for="cNegocio" class="form-check-label"
+          >Continuidad del Nogocio:</label
+        >
+        <Field
+          :class="inputClassObject('aSolicitado')"
+          class="form-check-input"
+          type="radio"
+          id="cNegocio"
+          name="aSolicitado"
+          value="Continuidad del Negocio"
+          :rules="aSolicitadoRules"
+          v-model="aSolicitado"
+          aria-label="Marcar la casilla de whatsapp"
+        />
+      </div>
+      <ErrorMessage class="text-danger" name="aSolicitado" />
+    </fieldset>
+  </div>
   <div class="form-floating mb-3 mt-3 form-input">
     <field
       class="text-uppercase form-control"
@@ -52,29 +56,27 @@
     >
     <ErrorMessage class="text-danger" name="dNegocio" />
   </div>
-  <fieldset>
+  <div class="mb-3 mt-3 form-input">
     <legend>Actividad Económica.</legend>
-    <div class="input-group mb-3 form-input">
-      <Field
-        class="form-select"
-        :class="inputClassObject('aEconomica')"
-        as="select"
-        id="aEconomica"
-        name="aEconomica"
-        :rules="aEconomicaRules"
-        v-model="aEconomica"
-      >
-        <option disabled value="">Elija una Actividad</option>
-        <option>Comercio</option>
-        <option>Servicio</option>
-        <option>Peq. Industria</option>
-        <option>Agropecuario</option>
-        <option>Pesca</option>
-        <option>Otro</option>
-      </Field>
-    </div>
+    <Field
+      class="form-select"
+      :class="inputClassObject('aEconomica')"
+      as="select"
+      id="aEconomica"
+      name="aEconomica"
+      :rules="aEconomicaRules"
+      v-model="aEconomica"
+    >
+      <option disabled value="">Elija una Actividad</option>
+      <option>Comercio</option>
+      <option>Servicio</option>
+      <option>Peq. Industria</option>
+      <option>Agropecuario</option>
+      <option>Pesca</option>
+      <option>Otro</option>
+    </Field>
     <ErrorMessage class="text-danger" name="aEconomica" />
-  </fieldset>
+  </div>
   <div class="form-floating mb-3 mt-3 form-input">
     <field
       class="text-uppercase form-control"
@@ -85,14 +87,14 @@
       name="dirNegocio"
       :rules="dirNegocioRules"
       v-model.trim="dirNegocio"
-      placeholder="Deirección del negocio"
+      placeholder="Dirección del negocio"
     />
     <label for="dirNegocio"
       ><i class="fa-solid fa-signature"></i> Dirección del Negocio</label
     >
     <ErrorMessage class="text-danger" name="dirNegocio" />
   </div>
-  <div class="input-group mb-3 form-input">
+  <div class="mb-3 form-input">
     <Field
       class="form-select"
       :class="inputClassObject('departn')"
@@ -112,9 +114,9 @@
         {{ dpto.text }}
       </option>
     </Field>
+    <ErrorMessage class="text-danger" name="departn" />
   </div>
-  <ErrorMessage class="text-danger" name="departn" />
-  <div class="input-group mb-3 form-input">
+  <div class="mb-3 form-input">
     <Field
       class="form-select"
       :class="inputClassObject('municipion')"
@@ -130,9 +132,9 @@
         {{ muni.text }}
       </option>
     </Field>
+    <ErrorMessage class="text-danger" name="municipion" />
   </div>
-  <ErrorMessage class="text-danger" name="municipion" />
-  <div class="input-group mb-3 form-input">
+  <div class="mb-3 form-input">
     <Field
       class="form-select"
       :class="inputClassObject('comunidadn')"
@@ -147,8 +149,8 @@
         {{ c.text }}
       </option>
     </Field>
+    <ErrorMessage class="text-danger" name="comunidadn" />
   </div>
-  <ErrorMessage class="text-danger" name="comunidadn" />
   <div class="form-floating mb-3 mt-3 form-input">
     <field
       class="text-uppercase form-control"
@@ -163,7 +165,7 @@
     <label for="bDirecto"
       ><i class="fa-solid fa-signature"></i> Beneficiarios Directos</label
     >
-    <ErrorMessage class="text-danger" name="bdirecto" />
+    <ErrorMessage class="text-danger" name="bDirecto" />
   </div>
 
   <div class="form-floating mb-3 mt-3 form-input">
@@ -256,10 +258,11 @@
     <label for="iCrediticia" class="form-check-label"
       >Autorización para Consultar Información Crediticia.</label
     >
-    <input
+    <Field
       :class="inputClassObject('iCrediticia')"
       class="form-check-input"
-      type="radio" value="Si"
+      type="checkbox"
+      value="SI"
       id="iCrediticia"
       name="iCrediticia"
       :rules="iCrediticiaRules"
@@ -293,7 +296,7 @@ export default {
   },
   data() {
     return {
-      aSolicitadoRules: yup.string().trim().required(),
+      aSolicitadoRules: yup.string().required("Debe escoger una opción"),
       dNegocioRules: yup
         .string()
         .max(100, "Maximo de caracteres 100")
@@ -315,8 +318,15 @@ export default {
         .string()
         .trim()
         .required("Debe escojer una comunidad."),
-      bDirectoRules: yup.string().required("Beneficiario es requerido."),
-      eGeneradoRules: yup.string().required("cantidada de empleo que genera.?"),
+      bDirectoRules: yup
+        .number()
+        .min(0, "Minimo una persona 1")
+        .max(10, "Maximo 10.")
+        .required("debe especificar numeros de personas"),
+      eGeneradoRules: yup
+        .number()
+        .min(0, "Minimo de Empleado Generado 0")
+        .max(20, "Maximo Empleado Generado 20"),
       fOperacionesRules: yup.string().required("Defina una fecha."),
       plazoPrestamoRules: yup
         .string()
@@ -324,9 +334,7 @@ export default {
       cuotaPrestamoRules: yup
         .string()
         .required("Definir una cuota, es requerido."),
-      iCrediticiaRules: yup.object().shape({
-        iCrediticia: yup.string().oneOf(['&#10003;','No'])
-      }),
+      iCrediticiaRules: yup.string().required("Debe marcar la casilla"),
       departamento: Departamento,
       mp: Municipios,
       comarcas: Comarcas,
@@ -339,7 +347,7 @@ export default {
         return this.$store.state.user.aSolicitado;
       },
       set(value) {
-        this.$store.commit("updateAsolicitado", value);
+        this.$store.commit("updateAsolicitado", value.toUpperCase());
       },
     },
     dNegocio: {
@@ -347,7 +355,7 @@ export default {
         return this.$store.state.user.dNegocio;
       },
       set(value) {
-        this.$store.commit("updateDnegocio", value);
+        this.$store.commit("updateDnegocio", value.toUpperCase());
       },
     },
     aEconomica: {
@@ -355,7 +363,7 @@ export default {
         return this.$store.state.user.aEconomica;
       },
       set(value) {
-        this.$store.commit("updateAeconomica", value);
+        this.$store.commit("updateAeconomica", value.toUpperCase());
       },
     },
     dirNegocio: {
@@ -363,7 +371,7 @@ export default {
         return this.$store.state.user.dirNegocio;
       },
       set(value) {
-        this.$store.commit("updateDirNegocio", value);
+        this.$store.commit("updateDirNegocio", value.toUpperCase());
       },
     },
     departn: {
@@ -371,7 +379,7 @@ export default {
         return this.$store.state.user.departn;
       },
       set(value) {
-        this.$store.commit("updateDepartN", value);
+        this.$store.commit("updateDepartN", value.toUpperCase());
       },
     },
     municipion: {
@@ -379,7 +387,7 @@ export default {
         return this.$store.state.user.municipion;
       },
       set(value) {
-        this.$store.commit("updateMunicipioN", value);
+        this.$store.commit("updateMunicipioN", value.toUpperCase());
       },
     },
     bDirecto: {
@@ -387,7 +395,7 @@ export default {
         return this.$store.state.user.bDirecto;
       },
       set(value) {
-        this.$store.commit("updateBdirecto", value);
+        this.$store.commit("updateBdirecto", value.toUpperCase());
       },
     },
     eGenerado: {
@@ -411,7 +419,7 @@ export default {
         return this.$store.state.user.comunidadn;
       },
       set(value) {
-        this.$store.commit("updateComunidadN", value);
+        this.$store.commit("updateComunidadN", value.toUpperCase());
       },
     },
     mPrestamo: {
@@ -427,7 +435,7 @@ export default {
         return this.$store.state.user.plazoPrestamo;
       },
       set(value) {
-        this.$store.commit("updatePlazoPrestamo", value);
+        this.$store.commit("updatePlazoPrestamo", value).toUpperCase();
       },
     },
     cuotaPrestamo: {
@@ -443,7 +451,7 @@ export default {
         return this.$store.state.user.iCrediticia;
       },
       set(value) {
-        this.$store.commit("updateInformationCrediticia", value);
+        this.$store.commit("updateInformationCrediticia", value.toUpperCase());
       },
     },
     options() {

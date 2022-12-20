@@ -40,8 +40,7 @@ export default {
     };
   },
   created() {
-    // this.sendEmail();
-    this.exportToPdf();
+    this.sendEmail();
   },
   methods: {
     sendEmail() {

@@ -31,7 +31,7 @@
             @click="toPrevious"
             v-show="!isFirstStep"
             type="button"
-            class="btn-secondarys btn-back"
+            class="btn-secondary btn-back"
           >
             Atras
           </button>
@@ -73,10 +73,10 @@ export default {
       stepsList: [
         "FormIntro",
         "FormOne",
-        // "FormTwo",
-        // "FormThree",
-        // "FormFour",
-        // "FormFive",
+        "FormTwo",
+        "FormThree",
+        "FormFour",
+        "FormFive",
       ],
       showUserDetail: false,
     };

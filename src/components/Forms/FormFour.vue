@@ -8,119 +8,97 @@
         <div class="form-floating mb-3 mt-3 form-input">
           <field
             class="text-uppercase form-control"
-            :class="inputClassObject('description')"
             type="text"
             maxlength="100"
             id="description"
             name="description"
-            :rules="descriptionRules"
             v-model.trim="gPrendariaInput.description"
             placeholder="Descripcion del articulo"
           />
           <label for="description"
             ><i class="fa-solid fa-signature"></i> Descripción</label
           >
-          <ErrorMessage class="text-danger" name="description" />
         </div>
-
         <div class="form-floating mb-3 mt-3 form-input">
           <field
             class="text-uppercase form-control"
-            :class="inputClassObject('brand')"
             type="text"
             maxlength="30"
             id="brand"
             name="brand"
-            :rules="brandRules"
             v-model.trim="gPrendariaInput.brand"
             placeholder="Marca del articulo"
           />
           <label for="brand"><i class="fa-solid fa-signature"></i> Marca</label>
-          <ErrorMessage class="text-danger" name="brand" />
         </div>
 
         <div class="form-floating mb-3 mt-3 form-input">
           <field
             class="text-uppercase form-control"
-            :class="inputClassObject('model')"
             type="text"
             maxlength="30"
             id="model"
             name="model"
-            :rules="modelRules"
             v-model.trim="gPrendariaInput.model"
             placeholder="Modelo del articulo"
           />
           <label for="model"
             ><i class="fa-solid fa-signature"></i> Modelo</label
           >
-          <ErrorMessage class="text-danger" name="model" />
         </div>
 
         <div class="form-floating mb-3 mt-3 form-input">
           <field
             class="text-uppercase form-control"
-            :class="inputClassObject('serie')"
             type="text"
             maxlength="30"
             id="serie"
             name="serie"
-            :rules="serieRules"
             v-model.trim="gPrendariaInput.serie"
             placeholder="Serie del articulo"
           />
           <label for="serie"><i class="fa-solid fa-signature"></i> Serie</label>
-          <ErrorMessage class="text-danger" name="serie" />
         </div>
 
         <div class="form-floating mb-3 mt-3 form-input">
           <field
             class="text-uppercase form-control"
-            :class="inputClassObject('color')"
             type="text"
             maxlength="20"
             id="color"
             name="color"
-            :rules="colorRules"
             v-model.trim="gPrendariaInput.color"
             placeholder="Color del articulo"
           />
           <label for="color"><i class="fa-solid fa-signature"></i> Color</label>
-          <ErrorMessage class="text-danger" name="color" />
         </div>
 
         <div class="form-floating mb-3 mt-3 form-input">
           <field
             class="text-uppercase form-control"
-            :class="inputClassObject('auso')"
             type="number"
             id="auso"
-            name="auso"
-            :rules="ausoRules"
+            name="auso" min="1"
             v-model.trim="gPrendariaInput.auso"
             placeholder="Años de uso del articulo"
           />
           <label for="auso"
             ><i class="fa-solid fa-signature"></i> Años de Uso</label
           >
-          <ErrorMessage class="text-danger" name="auso" />
         </div>
 
         <div class="form-floating mb-3 mt-3 form-input">
           <field
             class="text-uppercase form-control"
-            :class="inputClassObject('vcompra')"
             type="number"
             id="vcompra"
-            name="vcompra"
-            :rules="vcompraRules"
+            name="vcompra" min="1"
             v-model.trim="gPrendariaInput.vcompra"
             placeholder="Valor de Compra"
           />
           <label for="vcompra"
             ><i class="fa-solid fa-signature"></i> Valor De Compra</label
           >
-          <ErrorMessage class="text-danger" name="vcompra" />
         </div>
 
         <!-- <div class="form-floating mb-3 mt-3 form-input d-none">
@@ -170,6 +148,17 @@
       <label class="fs-6 d-block">Valor Compra: {{ articulo.vcompra }}</label>
     </fieldset>
   </div>
+  <div class="mb-3">
+    <Field
+      type="hidden"
+      id="gPrendaria"
+      name="gPrendaria"
+      :class="inputClassObject('description')"
+      :rules="gPrendariaRules"
+      v-model="gPrendaria"
+    />
+    <ErrorMessage class="text-danger" name="gPrendaria" />
+  </div>
 </template>
 
 <script>
@@ -188,33 +177,7 @@ export default {
   },
   data() {
     return {
-      descriptionRules: yup
-        .string()
-        .trim()
-        .max(100)
-        .notRequired("La descripción es requerido."),
-      brandRules: yup
-        .string()
-        .trim()
-        .max(30)
-        .notRequired("La Marca es requerido."),
-      modelRules: yup
-        .string()
-        .trim()
-        .max(30)
-        .notRequired("El Modelo es requerido."),
-      serieRules: yup
-        .string()
-        .trim()
-        .max(30)
-        .notRequired("Serie es requerido."),
-      colorRules: yup
-        .string()
-        .trim()
-        .max(20, "20 maximo de caracteres permitidos")
-        .notRequired("Color es requerido."),
-      ausoRules: yup.string().trim().notRequired("Años de uso es requerido."),
-      vcompraRules: yup.string().notRequired("Valor de compra es requerido."),
+      gPrendariaRules: yup.array().min(1, "Debe Agregar al menos un Articulo."),
       gPrendariaInput: [],
       gPrendaria: this.$store.state.user.gprendaria,
     };

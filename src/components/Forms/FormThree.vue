@@ -7,31 +7,27 @@
         <legend>Datos del Producto:</legend>
         <div class="form-floating mb-3 mt-3 form-input">
           <field
-            class="text-uppercase form-control"
-            :class="inputClassObject('txtDescription')"
+            class="form-control"
             type="text"
             autofocus
             maxlength="100"
             id="txtDescription"
             name="txtDescription"
-            :rules="txtDescriptionRules"
             v-model.trim="productsInput.description"
             placeholder="Descripcion del producto"
+            @input="mayus"
           />
           <label for="txtDescription"
             ><i class="fa-solid fa-signature"></i> Descripción Del
             Producto</label
           >
-          <ErrorMessage class="text-danger" name="txtDescription" />
         </div>
         <div class="input-group mb-3 form-input">
           <Field
             class="form-select"
-            :class="inputClassObject('txtUnidadMedida')"
             as="select"
             id="txtUnidadMedida"
             name="txtUnidadMedida"
-            :rules="txtUnidadMedidaRules"
             v-model="productsInput.unit"
           >
             <option disabled value="">Elija una Medida</option>
@@ -40,40 +36,35 @@
             </option>
           </Field>
         </div>
-        <ErrorMessage class="text-danger" name="txtUnidadMedida" />
 
         <div class="form-floating mb-3 mt-3 form-input">
           <field
-            class="text-uppercase form-control"
-            :class="inputClassObject('txtCantidad')"
+            class="form-control"
             type="number"
             id="txtCantidad"
             name="txtCantidad"
-            :rules="txtCantidadRules"
+            min="1"
+            value="0"
             v-model.trim="productsInput.quantity"
             placeholder="Cantidad"
           />
           <label for="txtCantidad"
             ><i class="fa-solid fa-signature"></i> Cantidad</label
           >
-          <ErrorMessage class="text-danger" name="txtCantidad" />
         </div>
 
         <div class="form-floating mb-3 mt-3 form-input">
           <field
-            class="text-uppercase form-control"
-            :class="inputClassObject('txtCostoUnitario')"
+            class="form-control"
             type="number"
             id="txtCostoUnitario"
             name="txtCostoUnitario"
-            :rules="txtCostoUnitarioRules"
             v-model.trim="productsInput.cu"
             placeholder="Costo Unitario"
           />
           <label for="txtCostoUnitario"
             ><i class="fa-solid fa-signature"></i> Costo Unitario</label
           >
-          <ErrorMessage class="text-danger" name="txtCostoUnitario" />
         </div>
       </fieldset>
     </div>
@@ -106,6 +97,15 @@
   <fieldset class="border mt-1 text-end" v-if="Total > 0">
     <label class="fs-6 d-block">Total: {{ Total }}</label>
   </fieldset>
+  <Field
+    type="hidden"
+    id="products"
+    name="products"
+    :class="inputClassObject('txtDescription')"
+    :rules="productsRules"
+    v-model="products"
+  />
+  <ErrorMessage class="text-danger" name="products" />
 </template>
 
 <script>
@@ -125,24 +125,7 @@ export default {
   },
   data() {
     return {
-      txtDescriptionRules: yup
-        .string()
-        .trim()
-        .max(100, "100 maximo de caracteres")
-        .notRequired("Descripción del producto es requerido."),
-      txtUnidadMedidaRules: yup
-        .string()
-        .notRequired("Unidad de medida es requerido."),
-      txtCantidadRules: yup
-        .string()
-        .trim()
-        .max(10, "Maximo 10 digitos")
-        .notRequired("Cantidad es requerido."),
-      txtCostoUnitarioRules: yup
-        .string()
-        .trim()
-        .max(10, "Maximo 10 digitos")
-        .notRequired("Costo unitario es requerido."),
+      productsRules: yup.array().min(1, "Debe Agregar al menos un Producto."),
       productsInput: [],
       products: this.$store.state.user.products,
       costoTotal: 0,
@@ -161,6 +144,9 @@ export default {
         "input-control": true,
         "has-error": this.errors.hasOwnProperty(name),
       };
+    },
+    mayus(value) {
+      this.productsInput.description = value.target.value.toUpperCase();
     },
     addRows() {
       this.$store.commit("updateProducts", this.productsInput);

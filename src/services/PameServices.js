@@ -18,7 +18,7 @@ export const Municipios = {
 export const Comarcas = {
   MANAGUA: [{ text: "SIN INFORMACIÓN", value: "SIN INFORMACIÓN" }],
   "SAN RAFAEL DEL SUR": [
-    { text: "CASCO URBANO", value: "CASCO URBANO" },
+    { text: "SAN RAFAEL DEL SUR", value: "SAN RAFAEL DEL SUR" },
     { text: "EL SALTO", value: "EL SALTO" },
     { text: "LOS RIZO", value: "LOS RIZO" },
     { text: "MASACHAPA", value: "MASACHAPA" },
@@ -47,8 +47,25 @@ export const Comarcas = {
   JINOTEPE: [{ text: "SIN INFORMACIÓN", value: "SIN INFORMACIÓN" }],
   MASATEPE: [{ text: "SIN INFOMACION", value: "SIN INFORMACIÓN" }],
 };
+//redes sociales
+export const rsociales = [
+  "INSTAGRAM",
+  "YOUTUBE",
+  "LINKEDLN",
+  "TIKTOK",
+  "QUORA",
+];
+//actividades economicas
+export const aeconomica = [
+  "COMERCIO",
+  "SERVICIO",
+  "PEQ. INDUSTRIA",
+  "AGROPECUARIO",
+  "PESCA",
+  "OTRO",
+];
 // LOAN DETAILS-> MONTH OF PAYMENT
-export const DatosPrestamo = ["6 Meses", "12 Meses", "18 Meses", "24 Meses"];
+export const DatosPrestamo = ["6 MESES", "12 MESES", "18 MESES", "24 MESES"];
 
 //UNIT INFORMATION
 export const UnitM = [

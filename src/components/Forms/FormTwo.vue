@@ -68,12 +68,7 @@
       v-model="aEconomica"
     >
       <option disabled value="">Elija una Actividad</option>
-      <option>Comercio</option>
-      <option>Servicio</option>
-      <option>Peq. Industria</option>
-      <option>Agropecuario</option>
-      <option>Pesca</option>
-      <option>Otro</option>
+      <option v-for="ae in aeconomica" :value="ae">{{ ae }}</option>
     </Field>
     <ErrorMessage class="text-danger" name="aEconomica" />
   </div>
@@ -281,6 +276,7 @@ import {
   Municipios,
   Comarcas,
   DatosPrestamo,
+  aeconomica,
 } from "../../services/PameServices";
 
 export default {
@@ -339,6 +335,7 @@ export default {
       mp: Municipios,
       comarcas: Comarcas,
       dPrestamo: DatosPrestamo,
+      aeconomica: aeconomica,
     };
   },
   computed: {
@@ -379,7 +376,7 @@ export default {
         return this.$store.state.user.departn;
       },
       set(value) {
-        this.$store.commit("updateDepartN", value.toUpperCase());
+        this.$store.commit("updateDepartN", value);
       },
     },
     municipion: {
@@ -387,7 +384,7 @@ export default {
         return this.$store.state.user.municipion;
       },
       set(value) {
-        this.$store.commit("updateMunicipioN", value.toUpperCase());
+        this.$store.commit("updateMunicipioN", value);
       },
     },
     bDirecto: {
@@ -395,7 +392,7 @@ export default {
         return this.$store.state.user.bDirecto;
       },
       set(value) {
-        this.$store.commit("updateBdirecto", value.toUpperCase());
+        this.$store.commit("updateBdirecto", value);
       },
     },
     eGenerado: {
@@ -419,7 +416,7 @@ export default {
         return this.$store.state.user.comunidadn;
       },
       set(value) {
-        this.$store.commit("updateComunidadN", value.toUpperCase());
+        this.$store.commit("updateComunidadN", value);
       },
     },
     mPrestamo: {
@@ -435,7 +432,7 @@ export default {
         return this.$store.state.user.plazoPrestamo;
       },
       set(value) {
-        this.$store.commit("updatePlazoPrestamo", value).toUpperCase();
+        this.$store.commit("updatePlazoPrestamo", value);
       },
     },
     cuotaPrestamo: {
@@ -451,7 +448,7 @@ export default {
         return this.$store.state.user.iCrediticia;
       },
       set(value) {
-        this.$store.commit("updateInformationCrediticia", value.toUpperCase());
+        this.$store.commit("updateInformationCrediticia", value);
       },
     },
     options() {

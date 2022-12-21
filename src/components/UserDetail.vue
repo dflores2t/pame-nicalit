@@ -23,9 +23,9 @@
 
 <script>
 import emailjs from "emailjs-com";
+import * as pdfFonts from "pdfmake/build/vfs_fonts";
 import pdfMake from "pdfmake/build/pdfmake";
-import pdfFonts from "pdfmake/build/vfs_fonts";
-// pdfMake.vfs = pdfFonts.pdfMake.vfs;
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import PameServices from "../services/PameServices";
 
 export default {

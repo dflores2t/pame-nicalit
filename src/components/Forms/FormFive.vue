@@ -72,7 +72,8 @@
 <script>
 import { Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
-import defaultImage from "../../assets/img/idcard.jpg";
+import front from "../../assets/img/front.png";
+import back from "../../assets/img/back.png";
 import PameServices from "../../services/PameServices";
 export default {
   name: "FormFive",
@@ -87,8 +88,8 @@ export default {
   },
   data() {
     return {
-      imageFront: defaultImage,
-      imageBack: defaultImage,
+      imageFront: front,
+      imageBack: back,
       ImageValidatedFront: yup
         .array()
         .min(1, "Foto frontal de su Identificación.")

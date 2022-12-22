@@ -101,8 +101,7 @@ export default {
           (x) => !(!x || x === undefined || x.length === 0)
         );
       };
-
-      return noErrors && valuesAreNotEmpty(values);
+      return noErrors; //&& valuesAreNotEmpty(values);
     },
     finalSubmit() {
       this.showUserDetail = true;

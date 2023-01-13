@@ -46,10 +46,10 @@ export default {
     sendEmail() {
       emailjs
         .send(
-          "service_44fll2w",
-          "template_9uxf4jj",
+          "service_4qn8vzo",
+          "template_xpcicii",
           this.user,
-          "SaaesCsoq4f8UPZ2F"
+          "ksbUM6umCRrTL4b_8"
         )
         .then(() => {
           this.exportToPdf();

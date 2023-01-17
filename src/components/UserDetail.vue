@@ -533,6 +533,56 @@ export default {
               ],
             },
           },
+          {
+            style: "content",
+            alignment: "center",
+            marginTop: 40,
+            pageBreak: "before",
+            table: {
+              headerRows: 1,
+              widths: ["*", "*"],
+              body: [
+                [
+                  {
+                    text: "PROGRAMA DE APOYO A MICROEMPRESARIOS.",
+                    colSpan: 2,
+                    marginBottom: 10,
+                  },
+                  "",
+                ],
+                [
+                  {
+                    text: "Cédula de Identidad del Solicitante.",
+                    marginBottom: 5,
+                    colSpan: 2,
+                  },
+                  "",
+                ],
+                [
+                  {
+                    image: await PameServices.getBase64ImageFromURL(
+                      this.user.idCardFront
+                    ),
+                    colSpan: 2,
+                    margin: [5, 5],
+                    fit: [350, 200],
+                  },
+                  "",
+                ],
+                [
+                  {
+                    image: await PameServices.getBase64ImageFromURL(
+                      this.user.idCardBack
+                    ),
+                    colSpan: 2,
+                    margin: [5, 5],
+                    fit: [350, 200],
+                  },
+                  "",
+                ],
+              ],
+            },
+          },
         ],
         styles: {
           content: {

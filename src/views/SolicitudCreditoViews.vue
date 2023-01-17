@@ -72,11 +72,11 @@ export default {
       currentStep: 0,
       stepsList: [
         "FormIntro",
-        // "FormOne",
+        "FormOne",
         "FormTwo",
         "FormThree",
-        // "FormFour",
-        // "FormFive",
+        "FormFour",
+        "FormFive",
       ],
       showUserDetail: false,
     };

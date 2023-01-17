@@ -40,6 +40,8 @@ const getDefaultUser = () => {
     gprendaria: [],
     idCardFront: "",
     idCardBack: "",
+    idCardFrontGuarantor: '',
+    idCardBackGuarantor:'',
     progressStatus: 0,
     tproducts: 0,
     tgprendaria: 0,
@@ -185,6 +187,12 @@ export default createStore({
     },
     updateIdCardBack(state, payload) {
       state.user.idCardBack = payload;
+    },
+    updateIdCardFrontGuarantor(state, payload) {
+      state.user.idCardFrontGuarantor = payload;
+    },
+    updateIdCardBackGuarantor(state,payload){
+  state.user.idCardBackGuarantor = payload;
     },
     updateProgress(state, payload) {
       state.user.progressStatus = payload;

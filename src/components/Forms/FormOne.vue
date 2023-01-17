@@ -76,7 +76,6 @@
       type="checkbox"
       value="NO LO SOY"
       name="noExTrabajador"
-      :rules="noExTrabajadorRules"
       v-model="noExTrabajador"
     />
   </div>
@@ -84,7 +83,6 @@
   <div class="form-floating mb-3 mt-3 form-input" v-if="isChecked">
     <Field
       class="text-uppercase form-control"
-      :class="inputClassObject('nameFamExTrabajador')"
       type="text"
       id="nameFamExTrabajador"
       name="nameFamExTrabajador"
@@ -377,7 +375,10 @@ export default {
       exNicalitRules: yup.string().notRequired(),
       famExTrabajadorRules: yup.string().notRequired(),
       noExTrabajadorRules: yup.string().required(),
-      nameFamExTrabajadorRules: yup.string().trim().notRequired(),
+      nameFamExTrabajadorRules: yup
+        .string()
+        .trim()
+        .notRequired(),
       addressRules: yup
         .string()
         .trim()

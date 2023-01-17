@@ -314,11 +314,7 @@ export default {
         .string()
         .trim()
         .required("Debe escojer una comunidad."),
-      bDirectoRules: yup
-        .number()
-        .min(0, "Minimo una persona 1")
-        .max(10, "Maximo 10.")
-        .required("debe especificar numeros de personas"),
+      bDirectoRules: yup.string().notRequired(),
       eGeneradoRules: yup
         .number()
         .min(0, "Minimo de Empleado Generado 0")

@@ -375,10 +375,7 @@ export default {
       exNicalitRules: yup.string().notRequired(),
       famExTrabajadorRules: yup.string().notRequired(),
       noExTrabajadorRules: yup.string().required(),
-      nameFamExTrabajadorRules: yup
-        .string()
-        .trim()
-        .notRequired(),
+      nameFamExTrabajadorRules: yup.string().trim().notRequired(),
       addressRules: yup
         .string()
         .trim()
@@ -409,15 +406,12 @@ export default {
         .trim()
         .matches(/^(?:\d{3}\d{3}\d{3}|)$/, "Número de cuenta no valido")
         .notRequired("Número de cuenta es requerido"),
-      referenciaPersonalRules: yup
-        .string()
-        .trim()
-        .required("Un Nombre como referencia personal es requerido"),
+      referenciaPersonalRules: yup.string().trim().notRequired(),
       referenciaPhoneRules: yup
         .string()
         .trim()
-        .matches(/^\d{4}\d{4}$/, "Número de Teléfono no valido")
-        .required("Un número de teléfono es requerido."),
+        .matches(/^\d{4}\d{4}|^\s*$/, "Número de Teléfono no valido")
+        .notRequired(),
       isChecked: false,
       nonersChecked: false,
       departamento: Departamento,

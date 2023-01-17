@@ -78,7 +78,8 @@
             class="text-uppercase form-control"
             type="number"
             id="auso"
-            name="auso" min="1"
+            name="auso"
+            min="1"
             v-model.trim="gPrendariaInput.auso"
             placeholder="Años de uso del articulo"
           />
@@ -92,7 +93,8 @@
             class="text-uppercase form-control"
             type="number"
             id="vcompra"
-            name="vcompra" min="1"
+            name="vcompra"
+            min="1"
             v-model.trim="gPrendariaInput.vcompra"
             placeholder="Valor de Compra"
           />
@@ -145,9 +147,14 @@
       <label class="fs-6 d-block">Serie: {{ articulo.serie }}</label>
       <label class="fs-6 d-block">Color: {{ articulo.color }}</label>
       <label class="fs-6 d-block">Años Uso: {{ articulo.auso }}</label>
-      <label class="fs-6 d-block">Valor Compra: {{ articulo.vcompra }}</label>
+      <label class="fs-6 d-block"
+        >Valor Compra: {{ convertMoney(articulo.vcompra) }}</label
+      >
     </fieldset>
   </div>
+  <fieldset class="border mt-1 text-end" v-if="Total != ''">
+    <label class="fs-6 d-block">Total: {{ Total }}</label>
+  </fieldset>
   <div class="mb-3">
     <Field
       type="hidden"
@@ -164,6 +171,7 @@
 <script>
 import { Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
+import { money } from "../../services/PameServices";
 export default {
   name: "FormFour",
   components: {
@@ -180,15 +188,27 @@ export default {
       gPrendariaRules: yup.array().min(1, "Debe Agregar al menos un Articulo."),
       gPrendariaInput: [],
       gPrendaria: this.$store.state.user.gprendaria,
+      costoTotal: 0,
     };
   },
-  computed: {},
+  computed: {
+    Total() {
+      this.costoTotal = money(
+        this.gPrendaria.reduce((acc, cont) => acc + parseFloat(cont.vcompra), 0)
+      );
+      this.$store.commit("updateGtprendaria", this.costoTotal);
+      return this.costoTotal;
+    },
+  },
   methods: {
     inputClassObject(name) {
       return {
         "input-control": true,
         "has-error": this.errors.hasOwnProperty(name),
       };
+    },
+    convertMoney(value) {
+      return money(value);
     },
     addRows() {
       this.$store.commit("addGprendaria", this.gPrendariaInput);
@@ -203,6 +223,7 @@ export default {
     },
     deleteRow(index) {
       this.$store.commit("deleteGprendaria", index);
+      this.costoTotal = 0;
     },
   },
 };

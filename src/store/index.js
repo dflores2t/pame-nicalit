@@ -6,7 +6,7 @@ const getDefaultUser = () => {
     nCedula: "",
     exNicalit: "NO",
     famExTrabajador: "NO",
-    noExTrabajador: '',
+    noExTrabajador: "",
     nameFamExTrabajador: "",
     address: "",
     depart: "",
@@ -29,18 +29,20 @@ const getDefaultUser = () => {
     departn: "",
     municipion: "",
     comunidadn: "",
-    bDirecto: '',
-    eGenerado: '',
+    bDirecto: "",
+    eGenerado: "",
     fOperaciones: "",
-    mPrestamo: '',
+    mPrestamo: "",
     plazoPrestamo: "",
-    cuotaPrestamo: '',
+    cuotaPrestamo: "",
     iCrediticia: "",
     products: [],
     gprendaria: [],
     idCardFront: "",
     idCardBack: "",
     progressStatus: 0,
+    tproducts: 0,
+    tgprendaria: 0,
   };
 };
 
@@ -187,6 +189,12 @@ export default createStore({
     updateProgress(state, payload) {
       state.user.progressStatus = payload;
     },
+    updateTproducts(state, payload) {
+      state.user.tproducts = payload
+    },
+    updateGtprendaria(state, payload) {
+      state.user.tgprendaria = payload;
+    }
   },
   actions: {
     resetUserState({ commit }) {

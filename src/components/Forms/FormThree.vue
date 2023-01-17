@@ -90,11 +90,15 @@
       <label class="fs-6 d-block">Descripcion: {{ product.description }}</label>
       <label class="fs-6 d-block">U Medida: {{ product.unit }}</label>
       <label class="fs-6 d-block">Cantidad: {{ product.quantity }}</label>
-      <label class="fs-6 d-block">Costo Unitario: {{ product.cu }}</label>
-      <label class="fs-6 d-block">Costo Total: {{ product.ct }}</label>
+      <label class="fs-6 d-block"
+        >Costo Unitario: {{ convertMoney(parseFloat(product.cu)) }}</label
+      >
+      <label class="fs-6 d-block"
+        >Costo Total: {{ convertMoney(product.ct) }}</label
+      >
     </fieldset>
   </div>
-  <fieldset class="border mt-1 text-end" v-if="Total > 0">
+  <fieldset class="border mt-1 text-end" v-if="Total != ''">
     <label class="fs-6 d-block">Total: {{ Total }}</label>
   </fieldset>
   <Field
@@ -111,7 +115,7 @@
 <script>
 import { Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
-import { UnitM } from "../../services/PameServices";
+import { UnitM, money } from "../../services/PameServices";
 export default {
   name: "FormThree",
   components: {
@@ -134,7 +138,10 @@ export default {
   },
   computed: {
     Total() {
-      this.costoTotal = this.products.reduce((acc, cont) => acc + cont.ct, 0);
+      this.costoTotal = money(
+        this.products.reduce((acc, cont) => acc + cont.ct, 0)
+      );
+      this.$store.commit("updateTproducts", this.costoTotal);
       return this.costoTotal;
     },
   },
@@ -147,6 +154,9 @@ export default {
     },
     mayus(value) {
       this.productsInput.description = value.target.value.toUpperCase();
+    },
+    convertMoney(value) {
+      return money(value);
     },
     addRows() {
       this.$store.commit("updateProducts", this.productsInput);

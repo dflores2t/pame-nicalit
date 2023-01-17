@@ -65,7 +65,32 @@ export const aeconomica = [
   "OTRO",
 ];
 // LOAN DETAILS-> MONTH OF PAYMENT
-export const DatosPrestamo = ["6 MESES", "12 MESES", "18 MESES", "24 MESES"];
+export const DatosPrestamo = [
+  "1 MESES",
+  "2 MESES",
+  "3 MESES",
+  "4 MESES",
+  "5 MESES",
+  "6 MESES",
+  "7 MESES",
+  "8 MESES",
+  "9 MESES",
+  "10 MESES",
+  "11 MESES",
+  "12 MESES",
+  "13 MESES",
+  "14 MESES",
+  "15 MESES",
+  "16 MESES",
+  "17 MESES",
+  "18 MESES",
+  "19 MESES",
+  "20 MESES",
+  "21 MESES",
+  "22 MESES",
+  "23 MESES",
+  "24 MESES",
+];
 
 //UNIT INFORMATION
 export const UnitM = [
@@ -84,9 +109,9 @@ export const UnitM = [
 ];
 
 //api cloudinary
-const CLOUDINARY_UPLOAD_PRESET = "zfv3t0br";
+const CLOUDINARY_UPLOAD_PRESET = "bwhefoph";
 const apiClient = axios.create({
-  baseURL: "https://api.cloudinary.com/v1_1/propositivapr/image/upload",
+  baseURL: "https://api.cloudinary.com/v1_1/dptw3ohtb/image/upload",
   withCredentials: false,
   headers: {
     Accept: "multipart/form-data",
@@ -132,3 +157,11 @@ export default {
     });
   },
 };
+
+//currency method
+export const money = (value) =>
+  new Intl.NumberFormat("es-NI", {
+    currency: "NIO",
+    style: "currency",
+    maximumSignificantDigits: 2,
+  }).format(value);

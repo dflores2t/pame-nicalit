@@ -77,6 +77,7 @@ export default {
         "FormThree",
         "FormFour",
         "FormFive",
+        "UserDetail",
       ],
       showUserDetail: false,
     };

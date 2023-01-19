@@ -22,7 +22,7 @@
               isFirstStep ? false : !validateCurrentStep(values, errors)
             "
             type="button"
-            class="btn-primarys btn-next"
+            class="btn-primary btn-next"
           >
             {{ isLastStep ? `Enviar` : `Sig.` }}
           </button>
@@ -31,9 +31,9 @@
             @click="toPrevious"
             v-show="!isFirstStep"
             type="button"
-            class="btn-secondary btn-back"
+            class="btn-primary btn-back text-white"
           >
-            Atras
+            Ant.
           </button>
         </div>
       </div>
@@ -77,7 +77,6 @@ export default {
         "FormThree",
         "FormFour",
         "FormFive",
-        "UserDetail",
       ],
       showUserDetail: false,
     };

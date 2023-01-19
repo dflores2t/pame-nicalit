@@ -29,9 +29,10 @@
 import Modal from "./Modal.vue";
 import emailjs from "emailjs-com";
 import * as pdfFonts from "pdfmake/build/vfs_fonts";
-import pdfMake from "pdfmake/build/pdfmake";
+import pdfMake, { q } from "pdfmake/build/pdfmake";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import PameServices from "../services/PameServices";
+import { money } from "../services/PameServices";
 
 export default {
   name: "userDetails",
@@ -86,18 +87,16 @@ export default {
         brand = [],
         model = [],
         serie = [],
+        nplaca = [],
         color = [],
         auso = [],
         vcompra = [];
-      let cTotal = 0;
-      let vTotal = 0;
       this.user.products.forEach((element) => {
         desc.push(element.description);
         um.push(element.unit);
         c.push(element.quantity);
-        cu.push(element.cu);
-        ct.push(element.ct);
-        cTotal += parseFloat(element.ct);
+        cu.push(money(element.cu));
+        ct.push(money(element.ct));
       });
 
       this.user.gprendaria.forEach((element) => {
@@ -105,10 +104,10 @@ export default {
         brand.push(element.brand);
         model.push(element.model);
         serie.push(element.serie);
+        nplaca.push(element.serie);
         color.push(element.color);
         auso.push(element.auso);
-        vcompra.push(element.vcompra);
-        vTotal += parseFloat(element.vcompra);
+        vcompra.push(money(element.vcompra));
       });
 
       let docDefinition = {
@@ -298,7 +297,8 @@ export default {
             layout: "headerLineOnly",
             style: "content",
             alignment: "left",
-            pageBreak: "before",
+            pageBreak: "after",
+            pageOrientation: "landscape",
             table: {
               headerRows: 1,
               widths: ["*", "*", "*"],
@@ -430,14 +430,14 @@ export default {
                 [desc, um, c, cu, ct],
                 [
                   {
-                    text: "Costo Total",
+                    text: "Total",
                     alignment: "right",
                     colSpan: 4,
                   },
                   "",
                   "",
                   "",
-                  `C$${cTotal}`,
+                  `${money(this.user.tproducts)}`,
                 ],
               ],
             },
@@ -448,14 +448,16 @@ export default {
             marginTop: 40,
             table: {
               headerRows: 1,
-              widths: ["*", "*", "*", "*", "*", "*", "*"],
+              widths: ["*", "*", "*", "*", "*", "*", "*", "*", "*"],
               body: [
                 [
                   {
                     text: "PROGRAMA DE APOYO A MICROEMPRESARIOS.",
-                    colSpan: 7,
+                    colSpan: 9,
                     marginBottom: 10,
                   },
+                  "",
+                  "",
                   "",
                   "",
                   "",
@@ -467,8 +469,10 @@ export default {
                   {
                     text: "Garantías Prendarias.",
                     marginBottom: 5,
-                    colSpan: 7,
+                    colSpan: 9,
                   },
+                  "",
+                  "",
                   "",
                   "",
                   "",
@@ -480,24 +484,38 @@ export default {
                   "Descripción",
                   "Marca",
                   "Modelo",
-                  "N° de Serie",
+                  "N° de Serie/Chasis",
+                  "N° de Placa",
                   "Color",
                   "Año de Uso",
                   "Valor de Compra",
+                  "Valor Actual",
                 ],
-                [description, brand, model, serie, color, auso, vcompra],
+                [
+                  description,
+                  brand,
+                  model,
+                  serie,
+                  nplaca,
+                  color,
+                  auso,
+                  vcompra,
+                  "",
+                ],
                 [
                   {
-                    text: "Costo Total",
+                    text: "Total",
                     alignment: "right",
-                    colSpan: 6,
+                    colSpan: 8,
                   },
                   "",
                   "",
                   "",
                   "",
                   "",
-                  `C$${vTotal}`,
+                  "",
+                  "",
+                  `${money(this.user.tgprendaria)}`,
                 ],
               ],
             },
@@ -507,6 +525,7 @@ export default {
             alignment: "center",
             marginTop: 40,
             pageBreak: "before",
+            pageOrientation: "portrait",
             table: {
               headerRows: 1,
               widths: ["*", "*"],

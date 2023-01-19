@@ -315,10 +315,7 @@ export default {
         .trim()
         .required("Debe escojer una comunidad."),
       bDirectoRules: yup.string().notRequired(),
-      eGeneradoRules: yup
-        .number()
-        .min(0, "Minimo de Empleado Generado 0")
-        .max(20, "Maximo Empleado Generado 20"),
+      eGeneradoRules: yup.string().notRequired(),
       fOperacionesRules: yup.string().required("Defina una fecha."),
       plazoPrestamoRules: yup
         .string()

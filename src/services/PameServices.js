@@ -163,5 +163,4 @@ export const money = (value) =>
   new Intl.NumberFormat("es-NI", {
     currency: "NIO",
     style: "currency",
-    maximumSignificantDigits: 2,
   }).format(value);

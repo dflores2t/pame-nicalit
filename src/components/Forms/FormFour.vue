@@ -57,7 +57,24 @@
             v-model.trim="gPrendariaInput.serie"
             placeholder="Serie del articulo"
           />
-          <label for="serie"><i class="fa-solid fa-signature"></i> Serie</label>
+          <label for="serie"
+            ><i class="fa-solid fa-signature"></i> Serie/Chasis</label
+          >
+        </div>
+
+        <div class="form-floating mb-3 mt-3 form-input">
+          <field
+            class="text-uppercase form-control"
+            type="text"
+            maxlength="10"
+            id="nplaca"
+            name="nplaca"
+            v-model.trim="gPrendariaInput.nplaca"
+            placeholder="Número de placa"
+          />
+          <label for="nplaca"
+            ><i class="fas fa-car-side"></i> Número Placa</label
+          >
         </div>
 
         <div class="form-floating mb-3 mt-3 form-input">
@@ -102,22 +119,6 @@
             ><i class="fa-solid fa-signature"></i> Valor De Compra</label
           >
         </div>
-
-        <!-- <div class="form-floating mb-3 mt-3 form-input d-none">
-          <field
-            class="text-uppercase form-control"
-            :class="inputClassObject('vactual')"
-            type="number"
-            id="vactual"
-            name="vactual"
-            v-model.trim="gPrendariaInput.vactual"
-            placeholder="Valor de Actual"
-          />
-          <label for="vactual"
-            ><i class="fa-solid fa-signature"></i> Valor Actual</label
-          >
-          <ErrorMessage class="text-danger" name="vactual" />
-        </div> -->
       </fieldset>
     </div>
     <div class="mb-3">
@@ -139,32 +140,31 @@
           @click="deleteRow(index)"
         ></i>
       </legend>
-      <label class="fs-6 d-block"
-        >Descripción: {{ articulo.description }}</label
-      >
-      <label class="fs-6 d-block">Marca: {{ articulo.brand }}</label>
-      <label class="fs-6 d-block">Modelo: {{ articulo.model }}</label>
-      <label class="fs-6 d-block">Serie: {{ articulo.serie }}</label>
-      <label class="fs-6 d-block">Color: {{ articulo.color }}</label>
-      <label class="fs-6 d-block">Años Uso: {{ articulo.auso }}</label>
-      <label class="fs-6 d-block"
+      <label class="d-block">Descripción: {{ articulo.description }}</label>
+      <label class="d-block">Marca: {{ articulo.brand }}</label>
+      <label class="d-block">Modelo: {{ articulo.model }}</label>
+      <label class="d-block">Serie/Chasis: {{ articulo.serie }}</label>
+      <label class="d-block">N.Placa: {{ articulo.nplaca }}</label>
+      <label class="d-block">Color: {{ articulo.color }}</label>
+      <label class="d-block">Años Uso: {{ articulo.auso }}</label>
+      <label class="d-block"
         >Valor Compra: {{ convertMoney(articulo.vcompra) }}</label
       >
     </fieldset>
   </div>
   <fieldset class="border mt-1 text-end" v-if="Total != ''">
-    <label class="fs-6 d-block">Total: {{ Total }}</label>
+    <label class="fs-6 d-block">Total: {{ convertMoney(Total) }}</label>
   </fieldset>
   <div class="mb-3">
     <Field
       type="hidden"
-      id="gPrendaria"
-      name="gPrendaria"
-      :class="inputClassObject('description')"
+      id="items"
+      name="items"
+      :class="inputClassObject('items')"
       :rules="gPrendariaRules"
-      v-model="gPrendaria"
+      v-model="items"
     />
-    <ErrorMessage class="text-danger" name="gPrendaria" />
+    <ErrorMessage class="text-danger" name="items" />
   </div>
 </template>
 
@@ -172,6 +172,7 @@
 import { Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
 import { money } from "../../services/PameServices";
+
 export default {
   name: "FormFour",
   components: {
@@ -185,18 +186,25 @@ export default {
   },
   data() {
     return {
-      gPrendariaRules: yup.array().min(1, "Debe Agregar al menos un Articulo."),
+      gPrendariaRules: yup
+        .number()
+        .moreThan(1, "Debe Agregar al menos un Articulo"),
       gPrendariaInput: [],
       gPrendaria: this.$store.state.user.gprendaria,
       costoTotal: 0,
+      items: 0,
     };
   },
   computed: {
     Total() {
-      this.costoTotal = money(
-        this.gPrendaria.reduce((acc, cont) => acc + parseFloat(cont.vcompra), 0)
+      this.costoTotal = this.gPrendaria.reduce(
+        (acc, cont) => acc + parseFloat(cont.vcompra),
+        0
       );
-      this.$store.commit("updateGtprendaria", this.costoTotal);
+      this.$store.commit(
+        "updateGtprendaria",
+        parseFloat(this.costoTotal).toFixed(2)
+      );
       return this.costoTotal;
     },
   },
@@ -211,15 +219,42 @@ export default {
       return money(value);
     },
     addRows() {
-      this.$store.commit("addGprendaria", this.gPrendariaInput);
-      this.gPrendariaInput.description = "";
-      this.gPrendariaInput.brand = "";
-      this.gPrendariaInput.model = "";
-      this.gPrendariaInput.serie = "";
-      this.gPrendariaInput.color = "";
-      this.gPrendariaInput.auso = "";
-      this.gPrendariaInput.vcompra = "";
-      this.gPrendariaInput.vactual = "";
+      this.items += Object.keys(this.gPrendariaInput).length; //determina cuantas propiedads tienen valores que no son null, > 1 es valida
+      this.$store.commit("addGprendaria", {
+        description:
+          this.gPrendariaInput.description === undefined
+            ? "--"
+            : this.gPrendariaInput.description.toUpperCase(),
+        model:
+          this.gPrendariaInput.model === undefined
+            ? "--"
+            : this.gPrendariaInput.model.toUpperCase(),
+        color:
+          this.gPrendariaInput.color === undefined
+            ? "--"
+            : this.gPrendariaInput.color.toUpperCase(),
+        serie:
+          this.gPrendariaInput.serie === undefined
+            ? "--"
+            : this.gPrendariaInput.serie.toUpperCase(),
+        nplaca:
+          this.gPrendariaInput.nplaca === undefined
+            ? "--"
+            : this.gPrendariaInput.nplaca.toUpperCase(),
+        brand:
+          this.gPrendariaInput.brand === undefined
+            ? "--"
+            : this.gPrendariaInput.brand.toUpperCase(),
+        auso:
+          this.gPrendariaInput.auso === undefined
+            ? "--"
+            : this.gPrendariaInput.auso,
+        vcompra:
+          this.gPrendariaInput.vcompra === undefined
+            ? "0.00"
+            : this.gPrendariaInput.vcompra,
+      });
+      this.gPrendariaInput = [];
     },
     deleteRow(index) {
       this.$store.commit("deleteGprendaria", index);

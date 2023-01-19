@@ -160,24 +160,13 @@ export default createStore({
       state.user.iCrediticia = payload;
     },
     updateProducts(state, payload) {
-      let { description, unit, quantity, cu, ct } = payload;
-      ct = cu * quantity;
-      state.user.products.push({ description, unit, quantity, cu, ct });
+      state.user.products.push(payload);
     },
     deleteProducts(state, payload) {
       state.user.products.splice(payload, 1);
     },
     addGprendaria(state, payload) {
-      let { description, brand, model, serie, color, auso, vcompra } = payload;
-      state.user.gprendaria.push({
-        description,
-        brand,
-        model,
-        serie,
-        color,
-        auso,
-        vcompra,
-      });
+      state.user.gprendaria.push(payload);
     },
     deleteGprendaria(state, payload) {
       state.user.gprendaria.splice(payload, 1);

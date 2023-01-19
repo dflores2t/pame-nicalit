@@ -87,29 +87,27 @@
           @click="deleteRow(index)"
         ></i>
       </legend>
-      <label class="fs-6 d-block">Descripcion: {{ product.description }}</label>
-      <label class="fs-6 d-block">U Medida: {{ product.unit }}</label>
-      <label class="fs-6 d-block">Cantidad: {{ product.quantity }}</label>
-      <label class="fs-6 d-block"
-        >Costo Unitario: {{ convertMoney(parseFloat(product.cu)) }}</label
+      <label class="d-block">Descripcion: {{ product.description }}</label>
+      <label class="d-block">U Medida: {{ product.unit }}</label>
+      <label class="d-block">Cantidad: {{ product.quantity }}</label>
+      <label class="d-block"
+        >Costo Unitario: {{ convertMoney(product.cu) }}</label
       >
-      <label class="fs-6 d-block"
-        >Costo Total: {{ convertMoney(product.ct) }}</label
-      >
+      <label class="d-block">Costo Total: {{ convertMoney(product.ct) }}</label>
     </fieldset>
   </div>
   <fieldset class="border mt-1 text-end" v-if="Total != ''">
-    <label class="fs-6 d-block">Total: {{ Total }}</label>
+    <label class="fs-6 d-block">Total: {{ convertMoney(Total) }}</label>
   </fieldset>
   <Field
     type="hidden"
-    id="products"
-    name="products"
-    :class="inputClassObject('txtDescription')"
+    id="items"
+    name="items"
+    :class="inputClassObject('items')"
     :rules="productsRules"
-    v-model="products"
+    v-model="items"
   />
-  <ErrorMessage class="text-danger" name="products" />
+  <ErrorMessage class="text-danger" name="items" />
 </template>
 
 <script>
@@ -129,19 +127,26 @@ export default {
   },
   data() {
     return {
-      productsRules: yup.array().min(1, "Debe Agregar al menos un Producto."),
+      productsRules: yup
+        .number()
+        .moreThan(1, "Debe Agregar al menos un Producto."),
       productsInput: [],
       products: this.$store.state.user.products,
       costoTotal: 0,
       unit: UnitM,
+      items: 0,
     };
   },
   computed: {
     Total() {
-      this.costoTotal = money(
-        this.products.reduce((acc, cont) => acc + cont.ct, 0)
+      this.costoTotal = this.products.reduce(
+        (acc, cont) => acc + parseFloat(cont.ct),
+        0
       );
-      this.$store.commit("updateTproducts", this.costoTotal);
+      this.$store.commit(
+        "updateTproducts",
+        parseFloat(this.costoTotal).toFixed(2)
+      );
       return this.costoTotal;
     },
   },
@@ -159,12 +164,37 @@ export default {
       return money(value);
     },
     addRows() {
-      this.$store.commit("updateProducts", this.productsInput);
-      this.productsInput.description = "";
-      this.productsInput.unit = "";
-      this.productsInput.quantity = "";
-      this.productsInput.cu = "";
-      this.productsInput.ct = "";
+      this.items += Object.keys(this.productsInput).length;
+      this.$store.commit("updateProducts", {
+        description:
+          this.productsInput.description !== undefined
+            ? this.productsInput.description.toUpperCase()
+            : "--",
+        unit:
+          this.productsInput.unit !== undefined
+            ? this.productsInput.unit
+            : "--",
+        quantity:
+          this.productsInput.quantity !== undefined
+            ? this.productsInput.quantity
+            : "0",
+        cu:
+          this.productsInput.cu !== undefined
+            ? parseFloat(this.productsInput.cu).toFixed(2)
+            : "0.00",
+        ct:
+          this.productsInput.cu !== undefined
+            ? this.productsInput.quantity !== undefined
+              ? parseFloat(
+                  (Math.round(this.productsInput.cu * 100) / 100).toFixed(2) *
+                    (
+                      Math.round(this.productsInput.quantity * 100) / 100
+                    ).toFixed(2)
+                ).toFixed(2)
+              : "0.0"
+            : "0.0",
+      });
+      this.productsInput = [];
     },
     deleteRow(index) {
       this.$store.commit("deleteProducts", index);

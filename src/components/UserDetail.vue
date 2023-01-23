@@ -339,7 +339,7 @@ export default {
                 ],
                 [
                   {
-                    text: "Autorizo expresamente a Nicalit S.A. para que consulte mi comportamiento y registro crediticio en cualquier empresa de riesgo laboral privado.",
+                    text: "Autorizo expresamente a Nicalit S.A. para que consulte mi comportamiento y registro crediticio en cualquier Central de Riesgo Privada.",
                     colSpan: 3,
                     alignment: "center",
                   },

@@ -118,6 +118,13 @@ const apiClient = axios.create({
     "Content-Type": "multipart/form-data",
   },
 });
+
+//api to connect phpmailer
+const apiSendMail = axios.create({
+  baseURL: "https://pame.propositivapr.com/email/pame.php",
+  withCredentials: false,
+});
+
 const config = {
   onUploadProgress: (event) => {
     store.commit("updateProgress", (event.loaded * 100) / event.total);
@@ -156,6 +163,15 @@ export default {
       img.src = url;
     });
   },
+};
+
+export const sendMail = (email, name, pdf) => {
+  return apiSendMail.post("", {
+    email: email,
+    name: name,
+    message: "Adjunto, Nueva Solicitud de Credito de : ",
+    pdf: pdf,
+  });
 };
 
 //currency method

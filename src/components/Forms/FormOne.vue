@@ -389,7 +389,7 @@ export default {
       phoneHomeRules: yup
         .string()
         .trim()
-        .matches(/^\d{4}\d{4}$/, "Número de Teléfono no valido")
+        .matches(/^(?:\d{4}\d{4})$/, "Número de Teléfono no valido")
         .notRequired(),
       phoneMovilRules: yup
         .string()

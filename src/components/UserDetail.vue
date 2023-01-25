@@ -27,13 +27,10 @@
 
 <script>
 import Modal from "./Modal.vue";
-import emailjs from "emailjs-com";
 import * as pdfFonts from "pdfmake/build/vfs_fonts";
-import pdfMake, { q } from "pdfmake/build/pdfmake";
+import pdfMake from "pdfmake/build/pdfmake";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
-import PameServices from "../services/PameServices";
-import { money } from "../services/PameServices";
-
+import { money, sendMail } from "../services/PameServices";
 export default {
   name: "userDetails",
   components: {
@@ -64,16 +61,7 @@ export default {
     },
     sendEmail() {
       this.ShowModal();
-      emailjs
-        .send(
-          "service_4qn8vzo",
-          "template_xpcicii",
-          this.user,
-          "ksbUM6umCRrTL4b_8"
-        )
-        .then(() => {
-          this.exportToPdf();
-        })
+      this.exportToPdf()
         .then(() => this.disabledModal())
         .catch((err) => console.log(err));
     },
@@ -629,7 +617,13 @@ export default {
           },
         },
       };
-      const pdf = pdfMake.createPdf(docDefinition).download(this.user.fullName);
+      const pdf = pdfMake.createPdf(docDefinition);
+      pdf.download(this.user.fullName);
+      pdf.getBase64(async (data) => {
+        let name =
+          this.user.fullName === "" ? "PAME-NICALIT" : this.user.fullName;
+        const result = await sendMail(this.user.email, name, data);
+      });
     },
   },
   computed: {

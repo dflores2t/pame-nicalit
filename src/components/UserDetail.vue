@@ -114,9 +114,7 @@ export default {
           alignment: "center",
           columns: [
             {
-              image: await PameServices.getBase64ImageFromURL(
-                "https://res.cloudinary.com/dptw3ohtb/image/upload/v1674686644/pame-nicalit/x9jjxgfvwjg46ie4afb8.png"
-              ),
+              svg: '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1920 1080" style="enable-background:new 0 0 1920 1080;" xml:space="preserve"> <style type="text/css">	.st0{fill:#D8E183;}	.st1{fill:#137CC1;}</style><g id="New_Layer"><path class="st0" d="M1643.77,742.42H293.34V326.05c0,0-2.78-60.37,172.1-120.05L888.06,50.55c0,0,66.62-32.62,156.14-1.39l530.87,197.78c0,0,62.46,27.06,68.7,87.44V742.42z"/> <g transform="translate(0.000000,400.000000) scale(0.100000,-0.100000)"><g><path class="st1" d="M8619.71,1742.3C5899.08,600.47,5956.3,623.88,5917.29,665.49c-20.81,20.81-33.81,41.62-26.01,49.42c5.2,5.2,548.81,234.09,1206.86,509.79s1199.06,501.99,1201.66,504.59c2.6,2.6,0,28.61-7.8,59.82c-20.81,72.83-119.65,114.44-210.68,88.43c-78.03-23.41-738.68-278.31-1945.54-751.69c-400.55-156.06-827.12-317.32-949.36-356.34c-431.76-140.45-624.24-275.71-746.48-528l-72.83-148.26l-7.8-1750.47l-7.8-1747.87l1464.36,5.2l1464.36,7.8v1326.51c0,1222.47-2.6,1334.31-46.82,1412.34c-26.01,44.22-67.63,83.23-91.03,83.23c-72.83,0-273.1-137.85-364.14-249.7c-153.46-184.67-169.06-270.5-182.07-951.96c-10.4-587.82-13-619.04-59.82-619.04s-49.42,26.01-49.42,559.21c0,574.82,20.81,759.49,109.24,931.15c130.05,257.5,330.33,390.15,892.14,590.43c426.56,153.46,1599.61,676.26,1776.48,795.9c299.11,197.68,488.99,462.98,468.18,655.45l-7.8,80.63L8723.75,805.95C6773.01-2.96,6710.59-28.97,6671.57-5.56c-18.21,13-33.81,33.81-33.81,46.82c0,10.4,619.04,278.31,1375.92,590.43c754.29,312.12,1446.15,595.63,1534.58,634.64c153.46,65.02,161.26,70.23,189.87,189.87c23.41,104.04,23.41,143.05-10.4,221.08c-20.81,52.02-44.22,93.64-52.02,93.64c-10.4,0-2229.05-897.34-3121.19-1264.08c-265.3-106.64-397.95-127.45-371.94-54.62c5.2,15.61,200.28,106.64,436.97,200.28c234.09,96.24,837.52,340.73,1336.91,543.61c501.99,202.88,1043,423.96,1204.26,488.99c158.66,65.02,291.31,130.05,291.31,143.05c0,52.02-130.05,150.86-200.28,148.26C9212.74,1976.39,8926.63,1869.75,8619.71,1742.3z"/>			<path class="st1" d="M10237.53,1960.79c-18.21-7.8-49.42-44.22-70.23-83.23l-36.41-72.83l590.43-239.29C13226.07,551.05,13431.55,462.62,13402.94,428.8c-41.62-52.02-62.42-46.82-348.53,70.23c-2863.69,1167.85-3144.6,1277.09-3178.41,1230.27c-49.42-70.23-44.22-306.92,13-369.34c23.41-28.61,179.47-109.24,343.33-174.27c954.56-387.55,2694.63-1113.22,2712.83-1128.83c10.4-13,2.6-36.41-18.21-54.62c-33.81-26.01-195.07,31.21-970.17,351.13c-746.48,309.52-1909.13,790.7-2080.79,863.53c-57.22,23.41-39.01-148.26,28.61-291.31c109.24-236.69,325.12-405.75,801.11-637.24c462.98-221.08,1076.81-488.99,1282.29-559.21c72.83-23.41,252.3-91.03,403.15-150.86c236.69-93.64,293.91-127.45,434.37-265.3c135.25-135.25,166.46-187.27,213.28-335.53c49.42-158.66,54.62-241.89,54.62-775.1c0-554.01-2.6-595.63-44.22-587.82c-41.62,7.8-49.42,65.02-62.42,619.04c-15.61,595.63-26.01,689.26-109.24,847.92c-52.02,104.04-244.49,275.71-353.74,322.52c-83.23,33.81-91.03,31.21-148.26-36.41l-62.42-70.23v-1352.52v-1349.91h1456.55h1459.16l-7.8,1763.47l-7.8,1760.87l-59.82,111.84c-88.43,166.46-249.7,330.33-390.15,395.35c-67.63,33.81-249.7,104.04-408.36,156.06c-156.06,54.62-590.43,218.48-962.37,364.14c-1950.74,764.69-1992.36,780.3-2067.79,689.26c-15.61-20.81-26.01-54.62-20.81-78.03c5.2-28.61,392.75-202.88,1191.25-535.8c650.25-270.5,1193.85-504.59,1204.26-515c13-13,2.6-36.41-26.01-49.42c-39.01-20.81-361.54,104.04-1659.43,645.05c-886.94,371.94-1641.23,673.66-1677.64,673.66S10255.74,1968.59,10237.53,1960.79z"/><path class="st1" d="M7457.07-4091.72c-533.2-130.05-892.14-590.43-892.14-1144.44c0-361.54,130.05-668.45,371.94-889.54c166.46-148.26,356.34-239.29,613.83-288.71c197.68-39.02,228.89-39.02,413.56,0c244.49,54.62,429.16,140.45,585.22,278.31l117.04,104.04l-124.85,132.65l-127.45,135.25l-96.24-85.83c-286.11-249.7-723.08-286.11-998.78-83.23c-122.25,91.03-169.06,148.26-254.9,304.32c-62.42,117.04-70.23,156.06-70.23,390.15c0,293.91,41.62,410.96,218.48,593.03c161.26,171.67,267.9,213.28,535.8,213.28c252.3,0,358.94-36.41,559.21-195.07l91.04-72.83l124.85,145.66c122.25,137.85,124.85,145.66,78.03,189.87c-98.84,98.84-358.94,231.49-528,267.9C7862.83-4047.5,7644.34-4047.5,7457.07-4091.72z"/><path class="st1" d="M9543.07-4957.85c-213.28-483.78-442.17-1003.98-509.79-1157.44l-124.85-280.91h202.88h202.88l119.65,280.91l117.04,278.31l556.61,5.2l554.01,7.8l117.04-280.91l117.04-278.31l213.28-7.8l213.28-7.8l-85.83,189.87c-46.82,104.04-278.31,626.84-512.4,1160.04l-423.96,967.57h-187.27h-184.67L9543.07-4957.85z M10318.16-5022.88l195.07-449.97l-392.75-7.8c-213.28-2.6-395.35-2.6-400.55,5.2c-15.61,13,364.14,899.94,384.95,899.94C10115.29-4575.5,10208.92-4778.38,10318.16-5022.88z"/><path class="st1" d="M2975.56-5251.76l-2.6-1144.44h202.88h202.88l-7.8,785.5c-2.6,431.76,0,801.1,7.8,821.91c7.8,23.41,260.1-278.31,652.85-785.5l639.84-821.91h166.46h166.46v1144.44v1144.44h-195.07h-195.07v-780.3c0-429.16-7.8-780.3-18.21-780.3c-13,0-70.23,67.63-130.05,150.86c-59.82,80.63-330.33,429.16-598.23,772.49l-488.99,624.24l-200.28,7.8l-200.28,7.8L2975.56-5251.76z"/><path class="st1" d="M5628.58-5251.76V-6396.2h195.07h195.07v1144.44v1144.44h-195.07h-195.07V-5251.76z"/><path class="st1" d="M11740.9-5251.76V-6396.2h806.31h806.31v182.07v182.07h-611.23h-611.23v962.37v962.37h-195.07h-195.08V-5251.76z"/><path class="st1" d="M13795.69-5251.76V-6396.2h195.08h195.07v1144.44v1144.44h-195.07h-195.08V-5251.76z"/><path class="st1" d="M14680.03-4276.39v-166.46l358.94-7.8l356.34-7.8l7.8-967.57l5.2-970.17h195.07h195.07l5.2,970.17l7.8,967.57l364.14,7.8l364.14,7.8l5.2,166.46l5.2,169.06h-933.76h-936.36V-4276.39z"/></g></g></g><g id="MasterLayer_1"></g></svg>',
               fit: [90, 90],
             },
             "Programa de Apoyo a Microempresarios (PAME) Solicitud de Crédito Plan de Negocio",
@@ -130,260 +128,260 @@ export default {
           },
         },
         content: [
-          // {
-          //   layout: "headerLineOnly",
-          //   style: "content",
-          //   alignment: "left",
-          //   table: {
-          //     headerRows: 1,
-          //     widths: ["*", "*", "*"],
-          //     body: [
-          //       [
-          //         {
-          //           text: "DATOS PERSONALES",
-          //           alignment: "center",
-          //           colSpan: 3,
-          //           marginBottom: 10,
-          //         },
-          //         "",
-          //         "",
-          //       ],
-          //       [" ", " ", " "],
-          //       [
-          //         {
-          //           text: `Nombre y Apellidos: ${this.user.fullName}`,
-          //           colSpan: 2,
-          //         },
-          //         " ",
-          //         "N° de Cédula: " + this.user.nCedula,
-          //       ],
-          //       [
-          //         `Ex Trabajador de Nicalit: ${this.user.exNicalit}`,
-          //         `Familiar de Extrabajador: ${this.user.famExTrabajador}`,
-          //         `No es Extrabajador: ${this.user.noExTrabajador}`,
-          //       ],
-          //       [
-          //         {
-          //           text: `Nombre del Ex-Trabajador de Nicalit del cual es familiar: ${this.user.nameFamExTrabajador}`,
-          //           colSpan: 3,
-          //         },
-          //         "",
-          //         "",
-          //       ],
-          //       [
-          //         {
-          //           text: `Dirección Domiciliar : ${this.user.address}`,
-          //           colSpan: 3,
-          //         },
-          //         "",
-          //         "",
-          //       ],
-          //       [
-          //         `Departamento: ${this.user.depart}`,
-          //         `Municipio: ${this.user.municipio}`,
-          //         `Comuninidad: ${this.user.comunidad}`,
-          //       ],
-          //       [
-          //         `Teléfono 1: ${this.user.phoneHome}`,
-          //         `Teléfono 2: ${this.user.phoneMovil}`,
-          //         `Correo Electrónico: ${this.user.email}`,
-          //       ],
-          //       [
-          //         {
-          //           text: `Redes Sociales que usa para promocionar su negocio: WhatsApp ${this.user.rsWhatsapp}, Facebook: ${this.user.rsFacebook}, Ninguno: ${this.user.none}`,
-          //           colSpan: 3,
-          //         },
-          //         "",
-          //         "",
-          //       ],
-          //       [
-          //         `Otras : ${this.user.otrarrss}`,
-          //         {
-          //           text: `Número de Cuenta Bancaria BAC: ${this.user.cuentaBac}`,
-          //           colSpan: 2,
-          //         },
-          //         ``,
-          //       ],
-          //       [
-          //         `Referencias Personales: ${this.user.referenciaPersonal}`,
-          //         `Télefono: ${this.user.referenciaPhone}`,
-          //         ``,
-          //       ],
-          //       [" ", " ", " "],
-          //     ],
-          //   },
-          // },
-          // {
-          //   layout: "headerLineOnly",
-          //   style: "content",
-          //   alignment: "left",
-          //   table: {
-          //     headerRows: 1,
-          //     widths: ["*", "*", "*"],
-          //     body: [
-          //       [
-          //         {
-          //           text: "DATOS DEL NEGOCIO",
-          //           alignment: "center",
-          //           colSpan: 3,
-          //           marginBottom: 10,
-          //         },
-          //         "",
-          //         "",
-          //       ],
-          //       [" ", " ", " "],
-          //       [
-          //         {
-          //           text: `Tipo de Apoyo Solicitado: ${this.user.aSolicitado}`,
-          //           colSpan: 3,
-          //         },
-          //         " ",
-          //         " ",
-          //       ],
-          //       [
-          //         {
-          //           text: `Descripción del Negocio: ${this.user.dNegocio}`,
-          //           colSpan: 3,
-          //         },
-          //         " ",
-          //         " ",
-          //       ],
-          //       [
-          //         {
-          //           text: `Actividad Económica: ${this.user.aEconomica}`,
-          //           colSpan: 3,
-          //         },
-          //         " ",
-          //         " ",
-          //       ],
-          //       [
-          //         {
-          //           text: `Dirección del Negocio: ${this.user.dirNegocio}`,
-          //           colSpan: 3,
-          //         },
-          //         " ",
-          //         " ",
-          //       ],
-          //       [
-          //         `Departamento: ${this.user.departn}`,
-          //         `Municipio: ${this.user.municipion}`,
-          //         `Comunidad : ${this.user.comunidadn}`,
-          //       ],
-          //       [
-          //         `Beneficiarios Directos: ${this.user.bDirecto}`,
-          //         `Empleados Generados: ${this.user.eGenerado}`,
-          //         "",
-          //       ],
-          //       [
-          //         {
-          //           text: `Cuando Inicío o Iniciará Operaciones el Negocio: ${this.user.fOperaciones}`,
-          //           colSpan: 3,
-          //         },
-          //         "",
-          //         "",
-          //       ],
-          //       ["", "", ""],
-          //     ],
-          //   },
-          // },
-          // {
-          //   layout: "headerLineOnly",
-          //   style: "content",
-          //   alignment: "left",
-          //   pageBreak: "after",
-          //   pageOrientation: "landscape",
-          //   table: {
-          //     headerRows: 1,
-          //     widths: ["*", "*", "*"],
-          //     body: [
-          //       [
-          //         {
-          //           text: "DATOS DEL PRESTAMO QUE SOLICITA",
-          //           alignment: "center",
-          //           colSpan: 3,
-          //           marginBottom: 10,
-          //         },
-          //         "",
-          //         "",
-          //       ],
-          //       [" ", " ", " "],
-          //       [
-          //         `Monto del Préstamo: C$${this.user.mPrestamo}`,
-          //         `Plazo del Préstamo(meses): ${this.user.plazoPrestamo}`,
-          //         "",
-          //       ],
-          //       [
-          //         {
-          //           text: `Monto de cuota mensual que puede pagar: C$${this.user.cuotaPrestamo}`,
-          //           colSpan: 3,
-          //         },
-          //         "",
-          //         "",
-          //       ],
-          //       [
-          //         {
-          //           text: "Autorización para Consultar Información Crediticia.",
-          //           colSpan: 3,
-          //           alignment: "center",
-          //           marginTop: 20,
-          //         },
-          //         "",
-          //         "",
-          //       ],
-          //       [
-          //         {
-          //           text: "Autorizo expresamente a Nicalit S.A. para que consulte mi comportamiento y registro crediticio en cualquier Central de Riesgo Privada.",
-          //           colSpan: 3,
-          //           alignment: "center",
-          //         },
-          //         "",
-          //         "",
-          //       ],
-          //       [
-          //         {
-          //           text: `Acepto: ${this.user.iCrediticia}`,
-          //           colSpan: 3,
-          //           alignment: "center",
-          //         },
-          //         "",
-          //         "",
-          //       ],
-          //       ["", "", ""],
-          //       [
-          //         {
-          //           text: "________________________________",
-          //           colSpan: 3,
-          //           alignment: "center",
-          //           marginTop: 10,
-          //         },
-          //         "",
-          //         "",
-          //       ],
-          //       [
-          //         {
-          //           text: "Firma del Solicitante",
-          //           colSpan: 3,
-          //           alignment: "center",
-          //           marginTop: 2,
-          //         },
-          //         "",
-          //         "",
-          //       ],
-          //       [
-          //         {
-          //           text: "Cualquier información comunicarse con Melina Zamora Tel: 8239-6873 o Roger Gómez 8206-1406",
-          //           colSpan: 3,
-          //           alignment: "center",
-          //           marginTop: 15,
-          //         },
-          //         "",
-          //         "",
-          //       ],
-          //       ["", "", ""],
-          //     ],
-          //   },
-          //   pageBreak: "after",
-          // },
+          {
+            layout: "headerLineOnly",
+            style: "content",
+            alignment: "left",
+            table: {
+              headerRows: 1,
+              widths: ["*", "*", "*"],
+              body: [
+                [
+                  {
+                    text: "DATOS PERSONALES",
+                    alignment: "center",
+                    colSpan: 3,
+                    marginBottom: 10,
+                  },
+                  "",
+                  "",
+                ],
+                [" ", " ", " "],
+                [
+                  {
+                    text: `Nombre y Apellidos: ${this.user.fullName}`,
+                    colSpan: 2,
+                  },
+                  " ",
+                  "N° de Cédula: " + this.user.nCedula,
+                ],
+                [
+                  `Ex Trabajador de Nicalit: ${this.user.exNicalit}`,
+                  `Familiar de Extrabajador: ${this.user.famExTrabajador}`,
+                  `No es Extrabajador: ${this.user.noExTrabajador}`,
+                ],
+                [
+                  {
+                    text: `Nombre del Ex-Trabajador de Nicalit del cual es familiar: ${this.user.nameFamExTrabajador}`,
+                    colSpan: 3,
+                  },
+                  "",
+                  "",
+                ],
+                [
+                  {
+                    text: `Dirección Domiciliar : ${this.user.address}`,
+                    colSpan: 3,
+                  },
+                  "",
+                  "",
+                ],
+                [
+                  `Departamento: ${this.user.depart}`,
+                  `Municipio: ${this.user.municipio}`,
+                  `Comuninidad: ${this.user.comunidad}`,
+                ],
+                [
+                  `Teléfono 1: ${this.user.phoneHome}`,
+                  `Teléfono 2: ${this.user.phoneMovil}`,
+                  `Correo Electrónico: ${this.user.email}`,
+                ],
+                [
+                  {
+                    text: `Redes Sociales que usa para promocionar su negocio: WhatsApp ${this.user.rsWhatsapp}, Facebook: ${this.user.rsFacebook}, Ninguno: ${this.user.none}`,
+                    colSpan: 3,
+                  },
+                  "",
+                  "",
+                ],
+                [
+                  `Otras : ${this.user.otrarrss}`,
+                  {
+                    text: `Número de Cuenta Bancaria BAC: ${this.user.cuentaBac}`,
+                    colSpan: 2,
+                  },
+                  ``,
+                ],
+                [
+                  `Referencias Personales: ${this.user.referenciaPersonal}`,
+                  `Télefono: ${this.user.referenciaPhone}`,
+                  ``,
+                ],
+                [" ", " ", " "],
+              ],
+            },
+          },
+          {
+            layout: "headerLineOnly",
+            style: "content",
+            alignment: "left",
+            table: {
+              headerRows: 1,
+              widths: ["*", "*", "*"],
+              body: [
+                [
+                  {
+                    text: "DATOS DEL NEGOCIO",
+                    alignment: "center",
+                    colSpan: 3,
+                    marginBottom: 10,
+                  },
+                  "",
+                  "",
+                ],
+                [" ", " ", " "],
+                [
+                  {
+                    text: `Tipo de Apoyo Solicitado: ${this.user.aSolicitado}`,
+                    colSpan: 3,
+                  },
+                  " ",
+                  " ",
+                ],
+                [
+                  {
+                    text: `Descripción del Negocio: ${this.user.dNegocio}`,
+                    colSpan: 3,
+                  },
+                  " ",
+                  " ",
+                ],
+                [
+                  {
+                    text: `Actividad Económica: ${this.user.aEconomica}`,
+                    colSpan: 3,
+                  },
+                  " ",
+                  " ",
+                ],
+                [
+                  {
+                    text: `Dirección del Negocio: ${this.user.dirNegocio}`,
+                    colSpan: 3,
+                  },
+                  " ",
+                  " ",
+                ],
+                [
+                  `Departamento: ${this.user.departn}`,
+                  `Municipio: ${this.user.municipion}`,
+                  `Comunidad : ${this.user.comunidadn}`,
+                ],
+                [
+                  `Beneficiarios Directos: ${this.user.bDirecto}`,
+                  `Empleados Generados: ${this.user.eGenerado}`,
+                  "",
+                ],
+                [
+                  {
+                    text: `Cuando Inicío o Iniciará Operaciones el Negocio: ${this.user.fOperaciones}`,
+                    colSpan: 3,
+                  },
+                  "",
+                  "",
+                ],
+                ["", "", ""],
+              ],
+            },
+          },
+          {
+            layout: "headerLineOnly",
+            style: "content",
+            alignment: "left",
+            pageBreak: "after",
+            pageOrientation: "landscape",
+            table: {
+              headerRows: 1,
+              widths: ["*", "*", "*"],
+              body: [
+                [
+                  {
+                    text: "DATOS DEL PRESTAMO QUE SOLICITA",
+                    alignment: "center",
+                    colSpan: 3,
+                    marginBottom: 10,
+                  },
+                  "",
+                  "",
+                ],
+                [" ", " ", " "],
+                [
+                  `Monto del Préstamo: C$${this.user.mPrestamo}`,
+                  `Plazo del Préstamo(meses): ${this.user.plazoPrestamo}`,
+                  "",
+                ],
+                [
+                  {
+                    text: `Monto de cuota mensual que puede pagar: C$${this.user.cuotaPrestamo}`,
+                    colSpan: 3,
+                  },
+                  "",
+                  "",
+                ],
+                [
+                  {
+                    text: "Autorización para Consultar Información Crediticia.",
+                    colSpan: 3,
+                    alignment: "center",
+                    marginTop: 20,
+                  },
+                  "",
+                  "",
+                ],
+                [
+                  {
+                    text: "Autorizo expresamente a Nicalit S.A. para que consulte mi comportamiento y registro crediticio en cualquier Central de Riesgo Privada.",
+                    colSpan: 3,
+                    alignment: "center",
+                  },
+                  "",
+                  "",
+                ],
+                [
+                  {
+                    text: `Acepto: ${this.user.iCrediticia}`,
+                    colSpan: 3,
+                    alignment: "center",
+                  },
+                  "",
+                  "",
+                ],
+                ["", "", ""],
+                [
+                  {
+                    text: "________________________________",
+                    colSpan: 3,
+                    alignment: "center",
+                    marginTop: 10,
+                  },
+                  "",
+                  "",
+                ],
+                [
+                  {
+                    text: "Firma del Solicitante",
+                    colSpan: 3,
+                    alignment: "center",
+                    marginTop: 2,
+                  },
+                  "",
+                  "",
+                ],
+                [
+                  {
+                    text: "Cualquier información comunicarse con Melina Zamora Tel: 8239-6873 o Roger Gómez 8206-1406",
+                    colSpan: 3,
+                    alignment: "center",
+                    marginTop: 15,
+                  },
+                  "",
+                  "",
+                ],
+                ["", "", ""],
+              ],
+            },
+            pageBreak: "after",
+          },
           {
             style: "content",
             alignment: "center",
@@ -435,185 +433,185 @@ export default {
               ],
             },
           },
-          // {
-          //   style: "content",
-          //   alignment: "center",
-          //   marginTop: 40,
-          //   table: {
-          //     headerRows: 1,
-          //     widths: ["*", "*", "*", "*", "*", "*", "*", "*", "*"],
-          //     body: [
-          //       [
-          //         {
-          //           text: "PROGRAMA DE APOYO A MICROEMPRESARIOS.",
-          //           colSpan: 9,
-          //           marginBottom: 10,
-          //         },
-          //         "",
-          //         "",
-          //         "",
-          //         "",
-          //         "",
-          //         "",
-          //         "",
-          //         "",
-          //       ],
-          //       [
-          //         {
-          //           text: "Garantías Prendarias.",
-          //           marginBottom: 5,
-          //           colSpan: 9,
-          //         },
-          //         "",
-          //         "",
-          //         "",
-          //         "",
-          //         "",
-          //         "",
-          //         "",
-          //         "",
-          //       ],
-          //       [
-          //         "Descripción",
-          //         "Marca",
-          //         "Modelo",
-          //         "N° de Serie/Chasis",
-          //         "N° de Placa",
-          //         "Color",
-          //         "Año de Uso",
-          //         "Valor de Compra",
-          //         "Valor Actual",
-          //       ],
-          //       [
-          //         description,
-          //         brand,
-          //         model,
-          //         serie,
-          //         nplaca,
-          //         color,
-          //         auso,
-          //         vcompra,
-          //         "",
-          //       ],
-          //       [
-          //         {
-          //           text: "Total",
-          //           alignment: "right",
-          //           colSpan: 8,
-          //         },
-          //         "",
-          //         "",
-          //         "",
-          //         "",
-          //         "",
-          //         "",
-          //         "",
-          //         `${money(this.user.tgprendaria)}`,
-          //       ],
-          //     ],
-          //   },
-          // },
-          // {
-          //   style: "content",
-          //   alignment: "center",
-          //   marginTop: 40,
-          //   pageBreak: "before",
-          //   pageOrientation: "portrait",
-          //   table: {
-          //     headerRows: 1,
-          //     widths: ["*", "*"],
-          //     body: [
-          //       [
-          //         {
-          //           text: "PROGRAMA DE APOYO A MICROEMPRESARIOS.",
-          //           colSpan: 2,
-          //           marginBottom: 10,
-          //         },
-          //         "",
-          //       ],
-          //       [
-          //         {
-          //           text: "Cédula de Identidad del Solicitante.",
-          //           marginBottom: 5,
-          //           colSpan: 2,
-          //         },
-          //         "",
-          //       ],
-          //       [
-          //         {
-          //           image: await PameServices.getBase64ImageFromURL(
-          //             this.user.idCardFront
-          //           ),
-          //           colSpan: 2,
-          //           margin: [5, 5],
-          //           fit: [350, 200],
-          //         },
-          //         "",
-          //       ],
-          //       [
-          //         {
-          //           image: await PameServices.getBase64ImageFromURL(
-          //             this.user.idCardBack
-          //           ),
-          //           colSpan: 2,
-          //           margin: [5, 5],
-          //           fit: [350, 200],
-          //         },
-          //         "",
-          //       ],
-          //     ],
-          //   },
-          // },
-          // {
-          //   style: "content",
-          //   alignment: "center",
-          //   marginTop: 40,
-          //   pageBreak: "before",
-          //   table: {
-          //     headerRows: 1,
-          //     widths: ["*", "*"],
-          //     body: [
-          //       [
-          //         {
-          //           text: "PROGRAMA DE APOYO A MICROEMPRESARIOS.",
-          //           colSpan: 2,
-          //           marginBottom: 10,
-          //         },
-          //         "",
-          //       ],
-          //       [
-          //         {
-          //           text: "Cédula de Identidad del Fiador.",
-          //           marginBottom: 5,
-          //           colSpan: 2,
-          //         },
-          //         "",
-          //       ],
-          //       [
-          //         {
-          //           image: await PameServices.getBase64ImageFromURL(
-          //             this.user.idCardFrontGuarantor
-          //           ),
-          //           colSpan: 2,
-          //           margin: [5, 5],
-          //           fit: [350, 200],
-          //         },
-          //         "",
-          //       ],
-          //       [
-          //         {
-          //           image: await PameServices.getBase64ImageFromURL(
-          //             this.user.idCardBackGuarantor
-          //           ),
-          //           colSpan: 2,
-          //           margin: [5, 5],
-          //           fit: [350, 200],
-          //         },
-          //         "",
-          //       ],
-          //     ],
-          //   },
-          // },
+          {
+            style: "content",
+            alignment: "center",
+            marginTop: 40,
+            table: {
+              headerRows: 1,
+              widths: ["*", "*", "*", "*", "*", "*", "*", "*", "*"],
+              body: [
+                [
+                  {
+                    text: "PROGRAMA DE APOYO A MICROEMPRESARIOS.",
+                    colSpan: 9,
+                    marginBottom: 10,
+                  },
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                ],
+                [
+                  {
+                    text: "Garantías Prendarias.",
+                    marginBottom: 5,
+                    colSpan: 9,
+                  },
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                ],
+                [
+                  "Descripción",
+                  "Marca",
+                  "Modelo",
+                  "N° de Serie/Chasis",
+                  "N° de Placa",
+                  "Color",
+                  "Año de Uso",
+                  "Valor de Compra",
+                  "Valor Actual",
+                ],
+                [
+                  description,
+                  brand,
+                  model,
+                  serie,
+                  nplaca,
+                  color,
+                  auso,
+                  vcompra,
+                  "",
+                ],
+                [
+                  {
+                    text: "Total",
+                    alignment: "right",
+                    colSpan: 8,
+                  },
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  `${money(this.user.tgprendaria)}`,
+                ],
+              ],
+            },
+          },
+          {
+            style: "content",
+            alignment: "center",
+            marginTop: 40,
+            pageBreak: "before",
+            pageOrientation: "portrait",
+            table: {
+              headerRows: 1,
+              widths: ["*", "*"],
+              body: [
+                [
+                  {
+                    text: "PROGRAMA DE APOYO A MICROEMPRESARIOS.",
+                    colSpan: 2,
+                    marginBottom: 10,
+                  },
+                  "",
+                ],
+                [
+                  {
+                    text: "Cédula de Identidad del Solicitante.",
+                    marginBottom: 5,
+                    colSpan: 2,
+                  },
+                  "",
+                ],
+                [
+                  {
+                    image: await PameServices.getBase64ImageFromURL(
+                      this.user.idCardFront
+                    ),
+                    colSpan: 2,
+                    margin: [5, 5],
+                    fit: [350, 200],
+                  },
+                  "",
+                ],
+                [
+                  {
+                    image: await PameServices.getBase64ImageFromURL(
+                      this.user.idCardBack
+                    ),
+                    colSpan: 2,
+                    margin: [5, 5],
+                    fit: [350, 200],
+                  },
+                  "",
+                ],
+              ],
+            },
+          },
+          {
+            style: "content",
+            alignment: "center",
+            marginTop: 40,
+            pageBreak: "before",
+            table: {
+              headerRows: 1,
+              widths: ["*", "*"],
+              body: [
+                [
+                  {
+                    text: "PROGRAMA DE APOYO A MICROEMPRESARIOS.",
+                    colSpan: 2,
+                    marginBottom: 10,
+                  },
+                  "",
+                ],
+                [
+                  {
+                    text: "Cédula de Identidad del Fiador.",
+                    marginBottom: 5,
+                    colSpan: 2,
+                  },
+                  "",
+                ],
+                [
+                  {
+                    image: await PameServices.getBase64ImageFromURL(
+                      this.user.idCardFrontGuarantor
+                    ),
+                    colSpan: 2,
+                    margin: [5, 5],
+                    fit: [350, 200],
+                  },
+                  "",
+                ],
+                [
+                  {
+                    image: await PameServices.getBase64ImageFromURL(
+                      this.user.idCardBackGuarantor
+                    ),
+                    colSpan: 2,
+                    margin: [5, 5],
+                    fit: [350, 200],
+                  },
+                  "",
+                ],
+              ],
+            },
+          },
         ],
         styles: {
           content: {
@@ -624,11 +622,11 @@ export default {
       };
       const pdf = pdfMake.createPdf(docDefinition);
       pdf.download(this.user.nCedula);
-      // pdf.getBase64(async (data) => {
-      //   let name =
-      //     this.user.nCedula === "" ? "PAME-NICALIT" : this.user.nCedula;
-      //   const result = await sendMail(this.user.email, name, data);
-      // });
+      pdf.getBase64(async (data) => {
+        let name =
+          this.user.nCedula === "" ? "PAME-NICALIT" : this.user.nCedula;
+        const result = await sendMail(this.user.email, name, data);
+      });
     },
   },
   computed: {

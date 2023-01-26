@@ -621,11 +621,15 @@ export default {
         },
       };
       const pdf = pdfMake.createPdf(docDefinition);
-      pdf.download(this.user.nCedula);
+      pdf.download(this.user.fullName);
       pdf.getBase64(async (data) => {
-        let name =
-          this.user.nCedula === "" ? "PAME-NICALIT" : this.user.nCedula;
-        const result = await sendMail(this.user.email, name, data);
+        let customer = {
+          name: this.user.fullName === "" ? "PAME-NICALIT" : this.user.fullName,
+          ncedula: this.user.nCedula,
+          email: this.user.email,
+          data,
+        };
+        const result = await sendMail(customer);
       });
     },
   },

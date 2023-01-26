@@ -121,7 +121,7 @@ const apiClient = axios.create({
 
 //api to connect phpmailer
 const apiSendMail = axios.create({
-  baseURL: "https://pame.propositivapr.com/email/pame.php",
+  baseURL: "https://pame.nicalit.org/email/pame.php",
   withCredentials: false,
 });
 
@@ -165,12 +165,13 @@ export default {
   },
 };
 
-export const sendMail = (email, name, pdf) => {
+export const sendMail = ({ name, ncedula, email, data }) => {
   return apiSendMail.post("", {
-    email: email,
-    name: name,
+    email,
+    name,
+    ncedula,
     message: "Adjunto, Nueva Solicitud de Credito de : ",
-    pdf: pdf,
+    pdf: data,
   });
 };
 

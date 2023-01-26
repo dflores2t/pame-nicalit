@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 src/PdfMail/*
+.htaccess
 
 # Editor directories and files
 .vscode/*

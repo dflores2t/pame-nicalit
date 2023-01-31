@@ -30,7 +30,7 @@ import Modal from "./Modal.vue";
 import * as pdfFonts from "pdfmake/build/vfs_fonts";
 import pdfMake from "pdfmake/build/pdfmake";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
-import { money, sendMail } from "../services/PameServices";
+import { money, sendMail, renderTable } from "../services/PameServices";
 import PameServices from "../services/PameServices";
 import imgLogo from "../assets/img/pamenicalit.png";
 export default {
@@ -67,36 +67,30 @@ export default {
         .catch((err) => console.log(err));
     },
     async exportToPdf() {
-      let desc = [],
-        um = [],
-        c = [],
-        cu = [],
-        ct = [],
-        description = [],
-        brand = [],
-        model = [],
-        serie = [],
-        nplaca = [],
-        color = [],
-        auso = [],
-        vcompra = [];
+      let planInversion = [];
+      let garantiasPrendarias = [];
       this.user.products.forEach((element) => {
-        desc.push(element.description);
-        um.push(element.unit);
-        c.push(element.quantity);
-        cu.push(money(element.cu));
-        ct.push(money(element.ct));
+        planInversion.push({
+          Descripción: element.description,
+          "Unidad Medida": element.unit,
+          Cantidad: element.quantity,
+          "Costo Unitario": money(element.cu),
+          "Costo Total": money(element.ct),
+        });
       });
 
       this.user.gprendaria.forEach((element) => {
-        description.push(element.description);
-        brand.push(element.brand);
-        model.push(element.model);
-        serie.push(element.serie);
-        nplaca.push(element.serie);
-        color.push(element.color);
-        auso.push(element.auso);
-        vcompra.push(money(element.vcompra));
+        garantiasPrendarias.push({
+          Descripción: element.description,
+          Marca: element.brand,
+          Modelo: element.model,
+          "N° de Serie/Chasis": element.serie,
+          "N° de Placa": element.nplaca,
+          Color: element.color,
+          "Año de Uso": element.auso,
+          "Valor de Compra": money(element.vcompra),
+          "Valor Actual": "",
+        });
       });
 
       let docDefinition = {
@@ -382,236 +376,138 @@ export default {
             },
             pageBreak: "after",
           },
-          {
-            style: "content",
-            alignment: "center",
-            table: {
-              headerRows: 1,
-              widths: ["*", "*", "*", "*", "*"],
-              body: [
-                [
-                  {
-                    text: "PROGRAMA DE APOYO A MICROEMPRESARIOS.",
-                    colSpan: 5,
-                    marginBottom: 10,
-                  },
-                  "",
-                  "",
-                  "",
-                  "",
-                ],
-                [
-                  {
-                    text: "Plan De Inversión.",
-                    colSpan: 5,
-                    marginBottom: 5,
-                  },
-                  "",
-                  "",
-                  "",
-                  "",
-                ],
-                [
-                  "Descripción",
-                  "Unidad de Medida",
-                  "Cantidad",
-                  "Costo Unitario",
-                  "Costo Total",
-                ],
-                [desc, um, c, cu, ct],
-                [
-                  {
-                    text: "Total",
-                    alignment: "right",
-                    colSpan: 4,
-                  },
-                  "",
-                  "",
-                  "",
-                  `${money(this.user.tproducts)}`,
-                ],
-              ],
-            },
-          },
-          {
-            style: "content",
-            alignment: "center",
-            marginTop: 40,
-            table: {
-              headerRows: 1,
-              widths: ["*", "*", "*", "*", "*", "*", "*", "*", "*"],
-              body: [
-                [
-                  {
-                    text: "PROGRAMA DE APOYO A MICROEMPRESARIOS.",
-                    colSpan: 9,
-                    marginBottom: 10,
-                  },
-                  "",
-                  "",
-                  "",
-                  "",
-                  "",
-                  "",
-                  "",
-                  "",
-                ],
-                [
-                  {
-                    text: "Garantías Prendarias.",
-                    marginBottom: 5,
-                    colSpan: 9,
-                  },
-                  "",
-                  "",
-                  "",
-                  "",
-                  "",
-                  "",
-                  "",
-                  "",
-                ],
-                [
-                  "Descripción",
-                  "Marca",
-                  "Modelo",
-                  "N° de Serie/Chasis",
-                  "N° de Placa",
-                  "Color",
-                  "Año de Uso",
-                  "Valor de Compra",
-                  "Valor Actual",
-                ],
-                [
-                  description,
-                  brand,
-                  model,
-                  serie,
-                  nplaca,
-                  color,
-                  auso,
-                  vcompra,
-                  "",
-                ],
-                [
-                  {
-                    text: "Total",
-                    alignment: "right",
-                    colSpan: 8,
-                  },
-                  "",
-                  "",
-                  "",
-                  "",
-                  "",
-                  "",
-                  "",
-                  `${money(this.user.tgprendaria)}`,
-                ],
-              ],
-            },
-          },
-          {
-            style: "content",
-            alignment: "center",
-            marginTop: 40,
-            pageBreak: "before",
-            pageOrientation: "portrait",
-            table: {
-              headerRows: 1,
-              widths: ["*", "*"],
-              body: [
-                [
-                  {
-                    text: "PROGRAMA DE APOYO A MICROEMPRESARIOS.",
-                    colSpan: 2,
-                    marginBottom: 10,
-                  },
-                  "",
-                ],
-                [
-                  {
-                    text: "Cédula de Identidad del Solicitante.",
-                    marginBottom: 5,
-                    colSpan: 2,
-                  },
-                  "",
-                ],
-                [
-                  {
-                    image: await PameServices.getBase64ImageFromURL(
-                      this.user.idCardFront
-                    ),
-                    colSpan: 2,
-                    margin: [5, 5],
-                    fit: [350, 200],
-                  },
-                  "",
-                ],
-                [
-                  {
-                    image: await PameServices.getBase64ImageFromURL(
-                      this.user.idCardBack
-                    ),
-                    colSpan: 2,
-                    margin: [5, 5],
-                    fit: [350, 200],
-                  },
-                  "",
-                ],
-              ],
-            },
-          },
-          {
-            style: "content",
-            alignment: "center",
-            marginTop: 40,
-            pageBreak: "before",
-            table: {
-              headerRows: 1,
-              widths: ["*", "*"],
-              body: [
-                [
-                  {
-                    text: "PROGRAMA DE APOYO A MICROEMPRESARIOS.",
-                    colSpan: 2,
-                    marginBottom: 10,
-                  },
-                  "",
-                ],
-                [
-                  {
-                    text: "Cédula de Identidad del Fiador.",
-                    marginBottom: 5,
-                    colSpan: 2,
-                  },
-                  "",
-                ],
-                [
-                  {
-                    image: await PameServices.getBase64ImageFromURL(
-                      this.user.idCardFrontGuarantor
-                    ),
-                    colSpan: 2,
-                    margin: [5, 5],
-                    fit: [350, 200],
-                  },
-                  "",
-                ],
-                [
-                  {
-                    image: await PameServices.getBase64ImageFromURL(
-                      this.user.idCardBackGuarantor
-                    ),
-                    colSpan: 2,
-                    margin: [5, 5],
-                    fit: [350, 200],
-                  },
-                  "",
-                ],
-              ],
-            },
-          },
+
+          renderTable(
+            planInversion,
+            [
+              "Descripción",
+              "Unidad Medida",
+              "Cantidad",
+              "Costo Unitario",
+              "Costo Total",
+            ],
+            this.user.tproducts,
+            "tProducto"
+          ),
+          [{ text: "", margin: 8 }],
+          renderTable(
+            garantiasPrendarias,
+            [
+              "Descripción",
+              "Marca",
+              "Modelo",
+              "N° de Serie/Chasis",
+              "N° de Placa",
+              "Color",
+              "Año de Uso",
+              "Valor de Compra",
+              "Valor Actual",
+            ],
+            this.user.tgprendaria,
+            "gPrendaria"
+          ),
+          // {
+          //   style: "content",
+          //   alignment: "center",
+          //   marginTop: 40,
+          //   pageBreak: "before",
+          //   pageOrientation: "portrait",
+          //   table: {
+          //     headerRows: 1,
+          //     widths: ["*", "*"],
+          //     body: [
+          //       [
+          //         {
+          //           text: "PROGRAMA DE APOYO A MICROEMPRESARIOS.",
+          //           colSpan: 2,
+          //           marginBottom: 10,
+          //         },
+          //         "",
+          //       ],
+          //       [
+          //         {
+          //           text: "Cédula de Identidad del Solicitante.",
+          //           marginBottom: 5,
+          //           colSpan: 2,
+          //         },
+          //         "",
+          //       ],
+          //       [
+          //         {
+          //           image: await PameServices.getBase64ImageFromURL(
+          //             this.user.idCardFront
+          //           ),
+          //           colSpan: 2,
+          //           margin: [5, 5],
+          //           fit: [350, 200],
+          //         },
+          //         "",
+          //       ],
+          //       [
+          //         {
+          //           image: await PameServices.getBase64ImageFromURL(
+          //             this.user.idCardBack
+          //           ),
+          //           colSpan: 2,
+          //           margin: [5, 5],
+          //           fit: [350, 200],
+          //         },
+          //         "",
+          //       ],
+          //     ],
+          //   },
+          // },
+          // {
+          //   style: "content",
+          //   alignment: "center",
+          //   marginTop: 40,
+          //   pageBreak: "before",
+          //   table: {
+          //     headerRows: 1,
+          //     widths: ["*", "*"],
+          //     body: [
+          //       [
+          //         {
+          //           text: "PROGRAMA DE APOYO A MICROEMPRESARIOS.",
+          //           colSpan: 2,
+          //           marginBottom: 10,
+          //         },
+          //         "",
+          //       ],
+          //       [
+          //         {
+          //           text: "Cédula de Identidad del Fiador.",
+          //           marginBottom: 5,
+          //           colSpan: 2,
+          //         },
+          //         "",
+          //       ],
+          //       [
+          //         {
+          //           image: await PameServices.getBase64ImageFromURL(
+          //             this.user.idCardFrontGuarantor
+          //           ),
+          //           colSpan: 2,
+          //           margin: [5, 5],
+          //           fit: [350, 200],
+          //         },
+          //         "",
+          //       ],
+          //       [
+          //         {
+          //           image: await PameServices.getBase64ImageFromURL(
+          //             this.user.idCardBackGuarantor
+          //           ),
+          //           colSpan: 2,
+          //           margin: [5, 5],
+          //           fit: [350, 200],
+          //         },
+          //         "",
+          //       ],
+          //     ],
+          //   },
+          // },
+          ,
         ],
         styles: {
           content: {
@@ -621,16 +517,17 @@ export default {
         },
       };
       const pdf = pdfMake.createPdf(docDefinition);
-      pdf.download(this.user.fullName);
-      pdf.getBase64(async (data) => {
-        let customer = {
-          name: this.user.fullName === "" ? "PAME-NICALIT" : this.user.fullName,
-          ncedula: this.user.nCedula,
-          email: this.user.email,
-          data,
-        };
-        const result = await sendMail(customer);
-      });
+      // pdf.download(this.user.fullName);
+      pdf.open();
+      // pdf.getBase64(async (data) => {
+      //   let customer = {
+      //     name: this.user.fullName === "" ? "PAME-NICALIT" : this.user.fullName,
+      //     ncedula: this.user.nCedula,
+      //     email: this.user.email,
+      //     data,
+      //   };
+      //   const result = await sendMail(customer);
+      // });
     },
   },
   computed: {

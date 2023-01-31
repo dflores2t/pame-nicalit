@@ -181,3 +181,129 @@ export const money = (value) =>
     currency: "NIO",
     style: "currency",
   }).format(value);
+
+// made table
+
+export const renderTable = (data, columns, total, tname) => {
+  return {
+    table: {
+      headerRows: 1,
+      widths:
+        tname === "tProducto"
+          ? ["auto", "*", "*", "*", "*"]
+          : ["auto", "*", "*", "*", "*", "*", "*", "*", "*"],
+      body: buildTableHeader(data, columns, total, tname),
+    },
+  };
+};
+
+//build header pdf
+const buildTableHeader = (data, columns, total, tname) => {
+  if (tname === "tProducto") {
+    let body = [];
+    body.push([
+      {
+        text: "PROGRAMA DE APOYO A MICROEMPRESARIOS.",
+        colSpan: 5,
+        margin: 5,
+        alignment: "center",
+      },
+      "",
+      "",
+      "",
+      "",
+    ]);
+    body.push([
+      {
+        text: "Plan De Inversión.",
+        colSpan: 5,
+        margin: 5,
+        alignment: "center",
+      },
+      "",
+      "",
+      "",
+      "",
+    ]);
+    buildTableBody(data, columns, body);
+    body.push([
+      {
+        text: "Total",
+        alignment: "right",
+        colSpan: 4,
+      },
+      "",
+      "",
+      "",
+      { text: `${money(total)}`, alignment: "center" },
+    ]);
+    return body;
+  } else {
+    let body = [];
+    body.push([
+      {
+        text: "PROGRAMA DE APOYO A MICROEMPRESARIOS.",
+        colSpan: 9,
+        margin: 5,
+        alignment: "center",
+      },
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+    ]);
+    body.push([
+      {
+        text: "Garantías Prendarias.",
+        colSpan: 9,
+        margin: 5,
+        alignment: "center",
+      },
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+    ]);
+    buildTableBody(data, columns, body);
+    body.push([
+      {
+        text: "Total",
+        alignment: "right",
+        colSpan: 8,
+      },
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      { text: `${money(total)}`, alignment: "center" },
+    ]);
+    return body;
+  }
+};
+
+const buildTableBody = (data, columns, body) => {
+  let header = [];
+  columns.forEach((e) => header.push({ text: `${e}`, alignment: "center" }));
+  body.push(header);
+  data.forEach(function (row) {
+    var dataRow = [];
+    columns.forEach(function (column) {
+      dataRow.push({
+        text: `${row[column].toString()}`,
+        alignment: "center",
+      });
+    });
+    body.push(dataRow);
+  });
+};

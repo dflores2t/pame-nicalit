@@ -10,7 +10,7 @@
               role="status"
               aria-hidden="true"
             ></span>
-            Creando PDF...
+            Por favor, espere...enviando la información!.
           </button></slot
         >
       </div>
@@ -45,7 +45,7 @@ export default {
   padding: 20px 30px;
   transition: all 0.3s ease;
 }
-.modal-content{
+.modal-content {
   background-color: transparent;
   border: none;
 }

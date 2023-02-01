@@ -183,7 +183,6 @@ export const money = (value) =>
   }).format(value);
 
 // made table
-
 export const renderTable = (data, columns, total, tname) => {
   return {
     table: {
@@ -291,7 +290,7 @@ const buildTableHeader = (data, columns, total, tname) => {
     return body;
   }
 };
-
+//build body table
 const buildTableBody = (data, columns, body) => {
   let header = [];
   columns.forEach((e) => header.push({ text: `${e}`, alignment: "center" }));

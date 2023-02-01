@@ -53,6 +53,8 @@ import FormTwo from "../components/Forms/FormTwo.vue";
 import FormThree from "../components/Forms/FormThree.vue";
 import FormFour from "../components/Forms/FormFour.vue";
 import FormFive from "../components/Forms/FormFive.vue";
+import FormSix from "../components/Forms/FormSix.vue";
+import FormSeven from '../components/Forms/FormSeven.vue';
 import UserDetail from "../components/UserDetail.vue";
 export default {
   name: "SolicitudDeCreditoViews",
@@ -65,6 +67,8 @@ export default {
     FormThree,
     FormFour,
     FormFive,
+    FormSix,
+    FormSeven,
     UserDetail,
   },
   data() {
@@ -77,6 +81,8 @@ export default {
         "FormThree",
         "FormFour",
         "FormFive",
+        "FormSix",
+        'FormSeven'
       ],
       showUserDetail: false,
     };

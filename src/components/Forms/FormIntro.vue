@@ -6,7 +6,7 @@
     antes de responder cada uno de los campos de este formulario.
   </p>
   <p>
-    Este formulario consta de 6 etapas, en las cuales deberá colocar sus datos
+    Este formulario consta de 7 etapas, en las cuales deberá colocar sus datos
     correspondientes los que deberá verificar al llenar cada uno de los campos
     para poder avanzar a la siguiente etapa.
   </p>

@@ -518,16 +518,15 @@ export default {
       };
       const pdf = pdfMake.createPdf(docDefinition);
       pdf.download(this.user.fullName);
-      // pdf.open();
-      pdf.getBase64(async (data) => {
-        let customer = {
-          name: this.user.fullName === "" ? "PAME-NICALIT" : this.user.fullName,
-          ncedula: this.user.nCedula,
-          email: this.user.email,
-          data,
-        };
-        const result = await sendMail(customer);
-      });
+      // pdf.getBase64(async (data) => {
+      //   let customer = {
+      //     name: this.user.fullName === "" ? "PAME-NICALIT" : this.user.fullName,
+      //     ncedula: this.user.nCedula,
+      //     email: this.user.email,
+      //     data,
+      //   };
+      //   const result = await sendMail(customer);
+      // });
     },
   },
   computed: {

@@ -11,13 +11,17 @@
         class="card-img-top img-fluid img-thumbnail rounded mx-auto d-block"
       />
       <div class="progress">
-        <progress
-          id="progress"
-          :value="Progress"
-          max="100"
-          style="width: 100%; margin: 10px 0"
-        ></progress>
+        <div
+          class="progress-bar bg-success"
+          role="progressbar"
+          aria-label="Success example"
+          :style="{ width: ProgressIdCardFront + '%' }"
+          aria-valuenow="50"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
       </div>
+
       <div class="input-group mb-3 mt-1">
         <Field
           class="form-control"
@@ -44,12 +48,15 @@
         class="card-img-top img-fluid img-thumbnail rounded mx-auto d-block"
       />
       <div class="progress">
-        <progress
-          id="progress"
-          :value="Progress"
-          max="100"
-          style="width: 100%; margin: 10px 0"
-        ></progress>
+        <div
+          class="progress-bar bg-success"
+          role="progressbar"
+          aria-label="Success example"
+          :style="{ width: ProgressIdCardBack + '%' }"
+          aria-valuenow="50"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
       </div>
       <div class="input-group mb-3 mt-1">
         <field
@@ -120,8 +127,11 @@ export default {
         this.$store.commit("updateIdCardBack", value);
       },
     },
-    Progress() {
-      return this.$store.state.user.progressStatus;
+    ProgressIdCardFront() {
+      return this.$store.state.user.idCardFrontProgressStatus;
+    },
+    ProgressIdCardBack() {
+      return this.$store.state.user.idCardBackProgressStatus;
     },
   },
   methods: {
@@ -132,13 +142,20 @@ export default {
       };
     },
     async handleImageFront(e) {
-      this.imageFront = URL.createObjectURL(e.target.files[0]);
+      const res = await PameServices.uploadId(e.target.id, e.target.files[0]);
+      this.imageFront = res.data.secure_url;
       this.idCardFront = await PameServices.getBase64ImageFromURL(
         this.imageFront
       );
+      // this.imageFront = URL.createObjectURL(e.target.files[0]);
+      // this.idCardFront = await PameServices.getBase64ImageFromURL(
+      //   this.imageFront
+      // );
     },
     async handleImageBack(e) {
-      this.imageBack = URL.createObjectURL(e.target.files[0]);
+      const res = await PameServices.uploadId(e.target.id, e.target.files[0]);
+      this.imageBack = res.data.secure_url;
+      // this.imageBack = URL.createObjectURL(e.target.files[0]);
       this.idCardBack = await PameServices.getBase64ImageFromURL(
         this.imageBack
       );

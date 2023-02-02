@@ -54,20 +54,20 @@ import FormThree from "../components/Forms/FormThree.vue";
 import FormFour from "../components/Forms/FormFour.vue";
 import FormFive from "../components/Forms/FormFive.vue";
 import FormSix from "../components/Forms/FormSix.vue";
-import FormSeven from '../components/Forms/FormSeven.vue';
+import FormSeven from "../components/Forms/FormSeven.vue";
 import UserDetail from "../components/UserDetail.vue";
 export default {
   name: "SolicitudDeCreditoViews",
   components: {
     Form,
     HeaderForm,
-    FormIntro,
-    FormOne,
-    FormTwo,
-    FormThree,
+    // FormIntro,
+    // FormOne,
+    // FormTwo,
+    // FormThree,
     FormFour,
-    FormFive,
-    FormSix,
+    // FormFive,
+    // FormSix,
     FormSeven,
     UserDetail,
   },
@@ -75,14 +75,14 @@ export default {
     return {
       currentStep: 0,
       stepsList: [
-        "FormIntro",
-        "FormOne",
-        "FormTwo",
-        "FormThree",
+        // "FormIntro",
+        // "FormOne",
+        // "FormTwo",
+        // "FormThree",
         "FormFour",
-        "FormFive",
-        "FormSix",
-        'FormSeven'
+        // "FormFive",
+        // "FormSix",
+        "FormSeven",
       ],
       showUserDetail: false,
     };

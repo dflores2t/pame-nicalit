@@ -1,5 +1,6 @@
 import store from "../store";
 import axios from "axios";
+import imageCompression from "browser-image-compression";
 
 export const Departamento = [
   { text: "MANAGUA", value: "MANAGUA" },
@@ -132,11 +133,29 @@ const config = {
 };
 
 export default {
-  uploadId(image) {
-    const formData = new FormData(); //creacion objeto form
-    formData.append("file", image); //creacion control tipo file
-    formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET); //creacion control con el misma variable de cloudinary
-    return apiClient.post("", formData, config);
+  async uploadId(inputId, image) {
+    const file = image;
+    if (!file) {
+      return;
+    }
+    const options = {
+      maxSizeMB: 1,
+      maxWidthOrHeight: 350,
+      useWebWorker: true,
+      onProgress: (progress) => {
+        store.commit(`${inputId}updateProgress`, progress);
+      },
+    };
+    try {
+      const compressFile = imageCompression(file, options);
+      const formData = new FormData();
+      formData.append("file", await compressFile);
+      formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+      // return apiClient.post("", formData, config);
+      return apiClient.post("", formData);
+    } catch (error) {
+      console.log(error);
+    }
   },
   getBase64ImageFromURL(url) {
     return new Promise((resolve, reject) => {
@@ -189,8 +208,18 @@ export const renderTable = (data, columns, total, tname) => {
       headerRows: 1,
       widths:
         tname === "tProducto"
-          ? ["auto", "*", "*", "*", "*"]
-          : ["auto", "*", "*", "*", "*", "*", "*", "*", "*"],
+          ? ["auto", "auto", "auto", "auto", "auto"]
+          : [
+              "auto",
+              "auto",
+              "auto",
+              "auto",
+              "auto",
+              "auto",
+              "auto",
+              "auto",
+              "auto",
+            ],
       body: buildTableHeader(data, columns, total, tname),
     },
   };

@@ -8,12 +8,15 @@
         class="card-img-top img-fluid img-thumbnail rounded mx-auto d-block"
       />
       <div class="progress">
-        <progress
-          id="progress"
-          :value="Progress"
-          max="100"
-          style="width: 100%; margin: 10px 0"
-        ></progress>
+        <div
+          class="progress-bar bg-success"
+          role="progressbar"
+          aria-label="Success example"
+          :style="{ width: ProgressIdCardFrontGuarantor + '%' }"
+          aria-valuenow="50"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
       </div>
       <div class="input-group mb-3 mt-1">
         <field
@@ -44,12 +47,15 @@
         class="card-img-top img-fluid img-thumbnail rounded mx-auto d-block"
       />
       <div class="progress">
-        <progress
-          id="progress"
-          :value="Progress"
-          max="100"
-          style="width: 100%; margin: 10px 0"
-        ></progress>
+        <div
+          class="progress-bar bg-success"
+          role="progressbar"
+          aria-label="Success example"
+          :style="{ width: ProgressIdCardBackGuarantor + '%' }"
+          aria-valuenow="50"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
       </div>
       <div class="input-group mb-3 mt-1">
         <field
@@ -123,8 +129,11 @@ export default {
         return this.$store.commit("updateIdCardBackGuarantor", value);
       },
     },
-    Progress() {
-      return this.$store.state.user.progressStatus;
+    ProgressIdCardFrontGuarantor() {
+      return this.$store.state.user.idCardFrontGuarantorProgressStatus;
+    },
+    ProgressIdCardBackGuarantor() {
+      return this.$store.state.user.idCardBackGuarantorProgressStatus;
     },
   },
   methods: {
@@ -135,13 +144,17 @@ export default {
       };
     },
     async handleImageFrontGuarantor(e) {
-      this.imageFrontGuarantor = URL.createObjectURL(e.target.files[0]);
+      const res = await PameServices.uploadId(e.target.id,e.target.files[0]);
+      this.imageFrontGuarantor = res.data.secure_url;
+      // this.imageFrontGuarantor = URL.createObjectURL(e.target.files[0]);
       this.idCardFrontGuarantor = await PameServices.getBase64ImageFromURL(
         this.imageFrontGuarantor
       );
     },
     async handleImageBackGuarantor(e) {
-      this.imageBackGuarantor = URL.createObjectURL(e.target.files[0]);
+      const res = await PameServices.uploadId(e.target.id,e.target.files[0]);
+      this.imageBackGuarantor = res.data.secure_url;
+      // this.imageBackGuarantor = URL.createObjectURL(e.target.files[0]);
       this.idCardBackGuarantor = await PameServices.getBase64ImageFromURL(
         this.imageBackGuarantor
       );

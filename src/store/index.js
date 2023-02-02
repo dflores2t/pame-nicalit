@@ -42,7 +42,10 @@ const getDefaultUser = () => {
     idCardBack: "",
     idCardFrontGuarantor: "",
     idCardBackGuarantor: "",
-    progressStatus: 0,
+    idCardFrontProgressStatus: 0,
+    idCardBackProgressStatus:0,
+    idCardFrontGuarantorProgressStatus: 0,
+    idCardBackGuarantorProgressStatus: 0,
     tproducts: 0,
     tgprendaria: 0,
   };
@@ -183,8 +186,17 @@ export default createStore({
     updateIdCardBackGuarantor(state, payload) {
       state.user.idCardBackGuarantor = payload;
     },
-    updateProgress(state, payload) {
-      state.user.progressStatus = payload;
+    idCardFrontupdateProgress(state, payload) {
+      state.user.idCardFrontProgressStatus = payload;
+    },
+    idCardBackupdateProgress(state, payload) {
+      state.user.idCardBackProgressStatus = payload;
+    },
+    idCardFrontGuarantorupdateProgress(state, payload) {
+      state.user.idCardFrontGuarantorProgressStatus = payload;
+    },
+    idCardBackGuarantorupdateProgress(state, payload) {
+      state.user.idCardBackGuarantorProgressStatus = payload;
     },
     updateTproducts(state, payload) {
       state.user.tproducts = payload;

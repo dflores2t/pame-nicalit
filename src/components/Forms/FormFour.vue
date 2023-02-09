@@ -6,7 +6,7 @@
       <fieldset>
         <legend>Datos De Los Articulos</legend>
         <div class="form-floating mb-3 mt-3 form-input">
-          <field
+          <field tabindex="0"
             class="text-uppercase form-control"
             type="text"
             maxlength="100"
@@ -20,7 +20,7 @@
           >
         </div>
         <div class="form-floating mb-3 mt-3 form-input">
-          <field
+          <field tabindex="1"
             class="text-uppercase form-control"
             type="text"
             maxlength="30"
@@ -33,7 +33,7 @@
         </div>
 
         <div class="form-floating mb-3 mt-3 form-input">
-          <field
+          <field tabindex="2"
             class="text-uppercase form-control"
             type="text"
             maxlength="30"
@@ -48,7 +48,7 @@
         </div>
 
         <div class="form-floating mb-3 mt-3 form-input">
-          <field
+          <field tabindex="3"
             class="text-uppercase form-control"
             type="text"
             maxlength="30"
@@ -63,7 +63,7 @@
         </div>
 
         <div class="form-floating mb-3 mt-3 form-input">
-          <field
+          <field tabindex="4"
             class="text-uppercase form-control"
             type="text"
             maxlength="10"
@@ -78,7 +78,7 @@
         </div>
 
         <div class="form-floating mb-3 mt-3 form-input">
-          <field
+          <field tabindex="5"
             class="text-uppercase form-control"
             type="text"
             maxlength="20"
@@ -91,7 +91,7 @@
         </div>
 
         <div class="form-floating mb-3 mt-3 form-input">
-          <field
+          <field tabindex="6"
             class="text-uppercase form-control"
             type="number"
             id="auso"
@@ -106,7 +106,7 @@
         </div>
 
         <div class="form-floating mb-3 mt-3 form-input">
-          <field
+          <field tabindex="7"
             class="text-uppercase form-control"
             type="number"
             id="vcompra"
@@ -122,7 +122,7 @@
       </fieldset>
     </div>
     <div class="mb-3">
-      <a class="btn btn-info" @click="addRows"
+      <a class="btn btn-info" @click="addRows" tabindex="8"
         >Agregar <i class="fa-solid fa-cart-plus"></i
       ></a>
     </div>

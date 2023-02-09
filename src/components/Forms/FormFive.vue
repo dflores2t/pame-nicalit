@@ -23,7 +23,7 @@
       </div>
 
       <div class="input-group mb-3 mt-1">
-        <Field
+        <Field tabindex="0"
           class="form-control"
           type="file"
           id="idCardFront"
@@ -59,7 +59,7 @@
         ></div>
       </div>
       <div class="input-group mb-3 mt-1">
-        <field
+        <field tabindex="1"
           class="form-control"
           :class="inputClassObject('idCardBack')"
           type="file"

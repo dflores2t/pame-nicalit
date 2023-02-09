@@ -6,7 +6,7 @@
       <fieldset>
         <legend>Datos del Producto:</legend>
         <div class="form-floating mb-3 mt-3 form-input">
-          <field
+          <field tabindex="0"
             class="form-control"
             type="text"
             autofocus
@@ -23,7 +23,7 @@
           >
         </div>
         <div class="input-group mb-3 form-input">
-          <Field
+          <Field tabindex="1"
             class="form-select"
             as="select"
             id="txtUnidadMedida"
@@ -38,7 +38,7 @@
         </div>
 
         <div class="form-floating mb-3 mt-3 form-input">
-          <field
+          <field tabindex="2"
             class="form-control"
             type="number"
             id="txtCantidad"
@@ -54,7 +54,7 @@
         </div>
 
         <div class="form-floating mb-3 mt-3 form-input">
-          <field
+          <field tabindex="3"
             class="form-control"
             type="number"
             id="txtCostoUnitario"
@@ -69,7 +69,7 @@
       </fieldset>
     </div>
     <div class="mb-3">
-      <a class="btn btn-info" @click="addRows"
+      <a class="btn btn-info" @click="addRows" tabindex="4"
         >Agregar <i class="fa-solid fa-cart-plus"></i
       ></a>
     </div>

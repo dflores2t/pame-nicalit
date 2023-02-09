@@ -7,7 +7,7 @@
         <label for="iNegocio" class="form-check-label"
           >Inicio de Nogocio:</label
         >
-        <Field
+        <Field tabindex="0"
           :class="inputClassObject('aSolicitado')"
           class="form-check-input"
           maxlength="100"
@@ -24,7 +24,7 @@
         <label for="cNegocio" class="form-check-label"
           >Continuidad del Nogocio:</label
         >
-        <Field
+        <Field tabindex="1"
           :class="inputClassObject('aSolicitado')"
           class="form-check-input"
           type="radio"
@@ -40,7 +40,7 @@
     </fieldset>
   </div>
   <div class="form-floating mb-3 mt-3 form-input">
-    <field
+    <field tabindex="2"
       class="text-uppercase form-control"
       :class="inputClassObject('dNegocio')"
       type="text"
@@ -58,7 +58,7 @@
   </div>
   <div class="mb-3 mt-3 form-input">
     <legend>Actividad Económica.</legend>
-    <Field
+    <Field tabindex="3"
       class="form-select"
       :class="inputClassObject('aEconomica')"
       as="select"
@@ -73,7 +73,7 @@
     <ErrorMessage class="text-danger" name="aEconomica" />
   </div>
   <div class="form-floating mb-3 mt-3 form-input">
-    <field
+    <field tabindex="4"
       class="text-uppercase form-control"
       :class="inputClassObject('dirNegocio')"
       type="text"
@@ -90,7 +90,7 @@
     <ErrorMessage class="text-danger" name="dirNegocio" />
   </div>
   <div class="mb-3 form-input">
-    <Field
+    <Field tabindex="5"
       class="form-select"
       :class="inputClassObject('departn')"
       as="select"
@@ -112,7 +112,7 @@
     <ErrorMessage class="text-danger" name="departn" />
   </div>
   <div class="mb-3 form-input">
-    <Field
+    <Field tabindex="6"
       class="form-select"
       :class="inputClassObject('municipion')"
       as="select"
@@ -130,7 +130,7 @@
     <ErrorMessage class="text-danger" name="municipion" />
   </div>
   <div class="mb-3 form-input">
-    <Field
+    <Field tabindex="7"
       class="form-select"
       :class="inputClassObject('comunidadn')"
       as="select"
@@ -147,7 +147,7 @@
     <ErrorMessage class="text-danger" name="comunidadn" />
   </div>
   <div class="form-floating mb-3 mt-3 form-input">
-    <field
+    <field tabindex="8"
       class="text-uppercase form-control"
       :class="inputClassObject('bDirecto')"
       type="number"
@@ -164,7 +164,7 @@
   </div>
 
   <div class="form-floating mb-3 mt-3 form-input">
-    <field
+    <field tabindex="9"
       class="text-uppercase form-control"
       :class="inputClassObject('fOperaciones')"
       type="date"
@@ -180,7 +180,7 @@
     <ErrorMessage class="text-danger" name="bdirecto" />
   </div>
   <div class="form-floating mb-3 mt-3 form-input">
-    <field
+    <field tabindex="10"
       class="text-uppercase form-control"
       :class="inputClassObject('eGenerado')"
       type="number"
@@ -198,7 +198,7 @@
   <div class="step-title">Datos del Préstamo que Solicita.</div>
 
   <div class="form-floating mb-3 mt-3 form-input">
-    <field
+    <field tabindex="11"
       class="text-uppercase form-control"
       :class="inputClassObject('mPrestamo')"
       type="number"
@@ -216,7 +216,7 @@
 
   <div class="mb-3 mt-3 form-input">
     <label for="plazoPrestamo"> Plazo del Préstamo</label>
-    <Field
+    <Field tabindex="12"
       :class="inputClassObject('plazoPrestamo')"
       as="select"
       id="plazoPrestamo"
@@ -232,7 +232,7 @@
   </div>
 
   <div class="form-floating mb-3 mt-3 form-input">
-    <field
+    <field tabindex="13"
       class="text-uppercase form-control"
       :class="inputClassObject('cuotaPrestamo')"
       type="number"
@@ -253,7 +253,7 @@
     <label for="iCrediticia" class="form-check-label"
       >Autorización para Consultar Información Crediticia.</label
     >
-    <Field
+    <Field tabindex="14"
       :class="inputClassObject('iCrediticia')"
       class="form-check-input"
       type="checkbox"

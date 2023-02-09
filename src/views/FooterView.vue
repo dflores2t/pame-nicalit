@@ -5,7 +5,7 @@
       <i class="fa-regular fa-copyright"></i>2022 PAME .::. Developed by
       <a href="https://www.propositivapr.com/" target="_blank"
         >propositivapr.com</a
-      ><i class="fas fa-code-branch">0.1.1</i>
+      ><i class="fas fa-code-branch">0.1.2</i>
     </div>
     <!-- Copyright -->
   </footer>

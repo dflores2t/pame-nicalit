@@ -122,12 +122,12 @@ const apiClient = axios.create({
 
 //api to connect phpmailer
 const apiSendMail = axios.create({
-  baseURL: "https://nicalit.propositivapr.com/email/pame.php",
+  baseURL: "https://pame.nicalit.org/email/pame.php",
   withCredentials: false,
 });
 //api error mail
 const apiErrMail = axios.create({
-  baseURL: "https://nicalit.propositivapr.com/email/err.php",
+  baseURL: "https://pame.nicalit.org/email/err.php",
   withCredentials: false,
 });
 

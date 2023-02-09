@@ -27,8 +27,10 @@
 
 <script>
 import Modal from "./Modal.vue";
+import pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from "pdfmake/build/vfs_fonts";
-import pdfMake, { async } from "pdfmake/build/pdfmake";
+import imgCard from "../assets/img/front.png";
+import imgCardBack from "../assets/img/back.png";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { money, sendMail, renderTable } from "../services/PameServices";
 import PameServices from "../services/PameServices";
@@ -87,7 +89,7 @@ export default {
           "Valor Actual": "",
         });
       });
-
+      console.log(this.user.idCardFront);
       let docDefinition = {
         info: {
           title: "Solicitud de Credito",
@@ -409,43 +411,41 @@ export default {
             pageOrientation: "portrait",
             table: {
               headerRows: 1,
-              widths: ["*", "*"],
+              widths: ["*"],
               body: [
                 [
                   {
                     text: "PROGRAMA DE APOYO A MICROEMPRESARIOS.",
-                    colSpan: 2,
                     marginBottom: 10,
                   },
-                  "",
                 ],
                 [
                   {
                     text: "Cédula de Identidad del Solicitante.",
                     marginBottom: 5,
-                    colSpan: 2,
                   },
-                  "",
                 ],
                 [
                   {
-                    image: this.user.idCardFront,
-                    colSpan: 2,
+                    image:
+                      this.user.idCardFront === ""
+                        ? await PameServices.getBase64ImageFromURL(imgCard)
+                        : this.user.idCardFront,
                     margin: [5, 5],
                     width: 350,
-                    height:200,
+                    height: 200,
                   },
-                  "",
                 ],
                 [
                   {
-                    image: this.user.idCardBack,
-                    colSpan: 2,
+                    image:
+                      this.user.idCardBack === ""
+                        ? await PameServices.getBase64ImageFromURL(imgCardBack)
+                        : this.user.idCardBack,
                     margin: [5, 5],
                     width: 350,
-                    height:200,
+                    height: 200,
                   },
-                  "",
                 ],
               ],
             },
@@ -457,48 +457,45 @@ export default {
             pageBreak: "before",
             table: {
               headerRows: 1,
-              widths: ["*", "*"],
+              widths: ["*"],
               body: [
                 [
                   {
                     text: "PROGRAMA DE APOYO A MICROEMPRESARIOS.",
-                    colSpan: 2,
                     marginBottom: 10,
                   },
-                  "",
                 ],
                 [
                   {
                     text: "Cédula de Identidad del Fiador.",
                     marginBottom: 5,
-                    colSpan: 2,
                   },
-                  "",
                 ],
                 [
                   {
-                    image: this.user.idCardFrontGuarantor,
-                    colSpan: 2,
+                    image:
+                      this.user.idCardFrontGuarantor === ""
+                        ? await PameServices.getBase64ImageFromURL(imgCard)
+                        : this.user.idCardFrontGuarantor,
                     margin: [5, 5],
                     width: 350,
-                    height:200,
+                    height: 200,
                   },
-                  "",
                 ],
                 [
                   {
-                    image: this.user.idCardBackGuarantor,
-                    colSpan: 2,
+                    image:
+                      this.user.idCardBackGuarantor === ""
+                        ? await PameServices.getBase64ImageFromURL(imgCardBack)
+                        : this.user.idCardBackGuarantor,
                     margin: [5, 5],
                     width: 350,
-                    height:200,
+                    height: 200,
                   },
-                  "",
                 ],
               ],
             },
           },
-          ,
         ],
         styles: {
           content: {
@@ -509,16 +506,16 @@ export default {
       };
       const pdf = pdfMake.createPdf(docDefinition);
       pdf.open();
-      pdf.download(this.user.fullName);
-      pdf.getBase64(async (data) => {
-        let customer = {
-          name: this.user.fullName === "" ? "PAME-NICALIT" : this.user.fullName,
-          ncedula: this.user.nCedula,
-          email: this.user.email,
-          data,
-        };
-        const result = await sendMail(customer);
-      });
+      // pdf.download(this.user.fullName);
+      // pdf.getBase64(async (data) => {
+      //   let customer = {
+      //     name: this.user.fullName === "" ? "PAME-NICALIT" : this.user.fullName,
+      //     ncedula: this.user.nCedula,
+      //     email: this.user.email,
+      //     data,
+      //   };
+      //   const result = await sendMail(customer);
+      // });
       this.disabledModal();
     },
   },

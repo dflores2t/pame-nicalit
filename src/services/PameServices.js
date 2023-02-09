@@ -208,9 +208,9 @@ export const renderTable = (data, columns, total, tname) => {
       headerRows: 1,
       widths:
         tname === "tProducto"
-          ? ["auto", "auto", "auto", "auto", "auto"]
+          ? ["*", "auto", "auto", "auto", "auto"]
           : [
-              "auto",
+              "*",
               "auto",
               "auto",
               "auto",

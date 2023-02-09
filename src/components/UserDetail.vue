@@ -401,99 +401,103 @@ export default {
             this.user.tgprendaria,
             "gPrendaria"
           ),
-          // {
-          //   style: "content",
-          //   alignment: "center",
-          //   marginTop: 40,
-          //   pageBreak: "before",
-          //   pageOrientation: "portrait",
-          //   table: {
-          //     headerRows: 1,
-          //     widths: ["*", "*"],
-          //     body: [
-          //       [
-          //         {
-          //           text: "PROGRAMA DE APOYO A MICROEMPRESARIOS.",
-          //           colSpan: 2,
-          //           marginBottom: 10,
-          //         },
-          //         "",
-          //       ],
-          //       [
-          //         {
-          //           text: "Cédula de Identidad del Solicitante.",
-          //           marginBottom: 5,
-          //           colSpan: 2,
-          //         },
-          //         "",
-          //       ],
-          //       [
-          //         {
-          //           image: this.user.idCardFront,
-          //           colSpan: 2,
-          //           margin: [5, 5],
-          //           fit: [350, 200],
-          //         },
-          //         "",
-          //       ],
-          //       [
-          //         {
-          //           image: this.user.idCardBack,
-          //           colSpan: 2,
-          //           margin: [5, 5],
-          //           fit: [350, 200],
-          //         },
-          //         "",
-          //       ],
-          //     ],
-          //   },
-          // },
-          // {
-          //   style: "content",
-          //   alignment: "center",
-          //   marginTop: 40,
-          //   pageBreak: "before",
-          //   table: {
-          //     headerRows: 1,
-          //     widths: ["*", "*"],
-          //     body: [
-          //       [
-          //         {
-          //           text: "PROGRAMA DE APOYO A MICROEMPRESARIOS.",
-          //           colSpan: 2,
-          //           marginBottom: 10,
-          //         },
-          //         "",
-          //       ],
-          //       [
-          //         {
-          //           text: "Cédula de Identidad del Fiador.",
-          //           marginBottom: 5,
-          //           colSpan: 2,
-          //         },
-          //         "",
-          //       ],
-          //       [
-          //         {
-          //           image: this.user.idCardFrontGuarantor,
-          //           colSpan: 2,
-          //           margin: [5, 5],
-          //           fit: [350, 200],
-          //         },
-          //         "",
-          //       ],
-          //       [
-          //         {
-          //           image: this.user.idCardBackGuarantor,
-          //           colSpan: 2,
-          //           margin: [5, 5],
-          //           fit: [350, 200],
-          //         },
-          //         "",
-          //       ],
-          //     ],
-          //   },
-          // },
+          {
+            style: "content",
+            alignment: "center",
+            marginTop: 40,
+            pageBreak: "before",
+            pageOrientation: "portrait",
+            table: {
+              headerRows: 1,
+              widths: ["*", "*"],
+              body: [
+                [
+                  {
+                    text: "PROGRAMA DE APOYO A MICROEMPRESARIOS.",
+                    colSpan: 2,
+                    marginBottom: 10,
+                  },
+                  "",
+                ],
+                [
+                  {
+                    text: "Cédula de Identidad del Solicitante.",
+                    marginBottom: 5,
+                    colSpan: 2,
+                  },
+                  "",
+                ],
+                [
+                  {
+                    image: this.user.idCardFront,
+                    colSpan: 2,
+                    margin: [5, 5],
+                    width: 350,
+                    height:200,
+                  },
+                  "",
+                ],
+                [
+                  {
+                    image: this.user.idCardBack,
+                    colSpan: 2,
+                    margin: [5, 5],
+                    width: 350,
+                    height:200,
+                  },
+                  "",
+                ],
+              ],
+            },
+          },
+          {
+            style: "content",
+            alignment: "center",
+            marginTop: 40,
+            pageBreak: "before",
+            table: {
+              headerRows: 1,
+              widths: ["*", "*"],
+              body: [
+                [
+                  {
+                    text: "PROGRAMA DE APOYO A MICROEMPRESARIOS.",
+                    colSpan: 2,
+                    marginBottom: 10,
+                  },
+                  "",
+                ],
+                [
+                  {
+                    text: "Cédula de Identidad del Fiador.",
+                    marginBottom: 5,
+                    colSpan: 2,
+                  },
+                  "",
+                ],
+                [
+                  {
+                    image: this.user.idCardFrontGuarantor,
+                    colSpan: 2,
+                    margin: [5, 5],
+                    width: 350,
+                    height:200,
+                  },
+                  "",
+                ],
+                [
+                  {
+                    image: this.user.idCardBackGuarantor,
+                    colSpan: 2,
+                    margin: [5, 5],
+                    width: 350,
+                    height:200,
+                  },
+                  "",
+                ],
+              ],
+            },
+          },
           ,
         ],
         styles: {
@@ -505,16 +509,16 @@ export default {
       };
       const pdf = pdfMake.createPdf(docDefinition);
       pdf.open();
-      // pdf.download(this.user.fullName);
-      // pdf.getBase64(async (data) => {
-      //   let customer = {
-      //     name: this.user.fullName === "" ? "PAME-NICALIT" : this.user.fullName,
-      //     ncedula: this.user.nCedula,
-      //     email: this.user.email,
-      //     data,
-      //   };
-      //   const result = await sendMail(customer);
-      // });
+      pdf.download(this.user.fullName);
+      pdf.getBase64(async (data) => {
+        let customer = {
+          name: this.user.fullName === "" ? "PAME-NICALIT" : this.user.fullName,
+          ncedula: this.user.nCedula,
+          email: this.user.email,
+          data,
+        };
+        const result = await sendMail(customer);
+      });
       this.disabledModal();
     },
   },

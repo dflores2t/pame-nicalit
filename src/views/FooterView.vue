@@ -34,4 +34,8 @@ footer {
 .copyright a:hover {
   color: #fa9100;
 }
+i {
+  margin-left: 0.3rem;
+  font-size: 0.6rem;
+}
 </style>

@@ -2,7 +2,8 @@
   <div class="step-title">Datos Personales</div>
 
   <div class="form-floating mb-3 mt-3 form-input">
-    <field tabindex="0"
+    <field
+      tabindex="1"
       class="text-uppercase form-control"
       :class="inputClassObject('fullName')"
       type="text"
@@ -20,7 +21,8 @@
   </div>
 
   <div class="form-floating mb-3 mt-3 form-input">
-    <Field tabindex="1"
+    <Field
+      tabindex="2"
       class="text-uppercase form-control"
       :class="inputClassObject('nCedula')"
       type="text"
@@ -40,7 +42,8 @@
     <label for="exNicalit" class="form-check-label">
       <i class="fa-solid fa-square-check"></i> Ex-Trabajador de Nicalit?</label
     >
-    <Field tabindex="2"
+    <Field
+      tabindex="3"
       :class="inputClassObject('exNicalit')"
       class="form-check-input"
       type="checkbox"
@@ -55,7 +58,8 @@
     <label for="famExTrabajador" class="form-check-label">
       <i class="fa-solid fa-square-check"></i> Familiar de Ex-Trabajador?</label
     >
-    <Field tabindex="3"
+    <Field
+      tabindex="4"
       :class="inputClassObject('famExTrabajador')"
       class="form-check-input"
       type="checkbox"
@@ -70,7 +74,8 @@
     <label for="noExTrabajador" class="form-check-label"
       ><i class="fa-solid fa-square-check"></i>No es Ex-Trabajador?</label
     >
-    <Field tabindex="4"
+    <Field
+      tabindex="5"
       :class="inputClassObject('noExTrabajador')"
       class="form-check-input"
       type="checkbox"
@@ -81,7 +86,8 @@
   </div>
 
   <div class="form-floating mb-3 mt-3 form-input" v-if="isChecked">
-    <Field tabindex="5"
+    <Field
+      tabindex="6"
       class="text-uppercase form-control"
       type="text"
       id="nameFamExTrabajador"
@@ -97,7 +103,8 @@
     <ErrorMessage class="text-danger" name="nameFamExTrabajador" />
   </div>
   <div class="form-floating mb-3 mt-3 form-input">
-    <Field tabindex="6"
+    <Field
+      tabindex="7"
       class="text-uppercase form-control"
       :class="inputClassObject('address')"
       type="text"
@@ -114,7 +121,8 @@
   </div>
 
   <div class="input-group mb-3 form-input">
-    <Field tabindex="7"
+    <Field
+      tabindex="8"
       class="form-select"
       :class="inputClassObject('depart')"
       as="select"
@@ -136,7 +144,8 @@
   </div>
   <ErrorMessage class="text-danger" name="depart" />
   <div class="input-group mb-3 form-input">
-    <Field tabindex="8"
+    <Field
+      tabindex="9"
       class="form-select"
       :class="inputClassObject('municipio')"
       as="select"
@@ -154,7 +163,8 @@
   </div>
   <ErrorMessage class="text-danger" name="municipio" />
   <div class="input-group mb-3 form-input">
-    <Field tabindex="9"
+    <Field
+      tabindex="10"
       class="form-select"
       :class="inputClassObject('comunidad')"
       as="select"
@@ -172,7 +182,8 @@
   <ErrorMessage class="text-danger" name="comunidad" />
 
   <div class="form-floating mb-3 mt-3 form-input">
-    <Field tabindex="10"
+    <Field
+      tabindex="11"
       :class="inputClassObject('phoneHome')"
       type="tel"
       id="phoneHome"
@@ -188,7 +199,8 @@
     <ErrorMessage class="text-danger" name="phoneHome" />
   </div>
   <div class="form-floating mb-3 mt-3 form-input">
-    <Field tabindex="11"
+    <Field
+      tabindex="12"
       :class="inputClassObject('phoneMovil')"
       type="tel"
       id="phoneMovil"
@@ -204,7 +216,8 @@
     <ErrorMessage class="text-danger" name="phoneMovil" />
   </div>
   <div class="form-floating mb-3 mt-3 form-input">
-    <Field tabindex="12"
+    <Field
+      tabindex="13"
       :class="inputClassObject('email')"
       type="email"
       id="email"
@@ -228,7 +241,8 @@
     <label for="rsWhatsapp" class="form-check-label"
       ><i class="fa-brands fa-whatsapp-square"></i> Whatsapp</label
     >
-    <Field tabindex="13"
+    <Field
+      tabindex="14"
       :class="inputClassObject('rsWhatsapp')"
       class="form-check-input"
       type="checkbox"
@@ -243,7 +257,8 @@
     <label for="rsFacebook" class="form-check-label"
       ><i class="fa-brands fa-facebook-square"> </i> Facebook</label
     >
-    <Field tabindex="14"
+    <Field
+      tabindex="15"
       :class="inputClassObject('rsFacebook')"
       class="form-check-input"
       type="checkbox"
@@ -258,7 +273,8 @@
     <label for="none" class="form-check-label"
       ><i class="fa-solid fa-battery-empty"></i> ninguno</label
     >
-    <Field tabindex="15"
+    <Field
+      tabindex="16"
       :class="inputClassObject('none')"
       class="form-check-input"
       type="checkbox"
@@ -273,7 +289,8 @@
     <label for="otrarrss"
       ><i class="fa-solid fa-rss"></i> Otra Redes Sociales</label
     >
-    <Field tabindex="16"
+    <Field
+      tabindex="17"
       :class="inputClassObject('otrarrss')"
       as="select"
       id="otrarrss"
@@ -288,7 +305,8 @@
     <ErrorMessage class="text-danger" name="otrarrss" />
   </div>
   <div class="form-floating mb-3 mt-3 form-input">
-    <Field tabindex="17"
+    <Field
+      tabindex="18"
       :class="inputClassObject('cuentaBac')"
       type="text"
       id="cuentaBac"
@@ -304,7 +322,8 @@
     <ErrorMessage class="text-danger" name="cuentaBac" />
   </div>
   <div class="form-floating mb-3 mt-3 form-input">
-    <Field tabindex="18"
+    <Field
+      tabindex="19"
       :class="inputClassObject('referenciaPersonal')"
       type="text"
       id="referenciaPersonal"
@@ -320,7 +339,8 @@
     <ErrorMessage class="text-danger" name="referenciaPersonal" />
   </div>
   <div class="form-floating mb-3 mt-3 form-input">
-    <Field tabindex="19"
+    <Field
+      tabindex="20"
       :class="inputClassObject('referenciaPhone')"
       type="tel"
       id="referenciaPhone"

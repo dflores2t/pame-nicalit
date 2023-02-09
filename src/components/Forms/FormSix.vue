@@ -19,7 +19,7 @@
         ></div>
       </div>
       <div class="input-group mb-3 mt-1">
-        <field tabindex="0"
+        <field tabindex="1"
           class="form-control"
           :class="inputClassObject('idCardFrontGuarantor')"
           type="file"
@@ -58,7 +58,7 @@
         ></div>
       </div>
       <div class="input-group mb-3 mt-1">
-        <field tabindex="1"
+        <field tabindex="2"
           class="form-control"
           :class="inputClassObject('idCardBackGuarantor')"
           type="file"

@@ -514,7 +514,6 @@ export default {
           alert("Error, favor intente de nuevo!");
         }
       });
-      pdf.download("pame");
     },
   },
   computed: {

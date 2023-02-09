@@ -27,12 +27,17 @@
 
 <script>
 import Modal from "./Modal.vue";
-import pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from "pdfmake/build/vfs_fonts";
+import pdfMake from "pdfmake/build/pdfmake";
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import imgCard from "../assets/img/front.png";
 import imgCardBack from "../assets/img/back.png";
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
-import { money, sendMail, renderTable } from "../services/PameServices";
+import {
+  money,
+  sendMail,
+  errMail,
+  renderTable,
+} from "../services/PameServices";
 import PameServices from "../services/PameServices";
 import imgLogo from "../assets/img/pamenicalit.png";
 export default {
@@ -89,7 +94,6 @@ export default {
           "Valor Actual": "",
         });
       });
-      console.log(this.user.idCardFront);
       let docDefinition = {
         info: {
           title: "Solicitud de Credito",
@@ -338,26 +342,9 @@ export default {
                   "",
                 ],
                 ["", "", ""],
-                [
-                  {
-                    text: "________________________________",
-                    colSpan: 3,
-                    alignment: "center",
-                    marginTop: 10,
-                  },
-                  "",
-                  "",
-                ],
-                [
-                  {
-                    text: "Firma del Solicitante",
-                    colSpan: 3,
-                    alignment: "center",
-                    marginTop: 2,
-                  },
-                  "",
-                  "",
-                ],
+                ["", "", ""],
+                ["", "", ""],
+                ["", "", ""],
                 [
                   {
                     text: "Cualquier información comunicarse con Melina Zamora Tel: 8239-6873 o Roger Gómez 8206-1406",
@@ -505,18 +492,29 @@ export default {
         },
       };
       const pdf = pdfMake.createPdf(docDefinition);
-      pdf.open();
-      // pdf.download(this.user.fullName);
-      // pdf.getBase64(async (data) => {
-      //   let customer = {
-      //     name: this.user.fullName === "" ? "PAME-NICALIT" : this.user.fullName,
-      //     ncedula: this.user.nCedula,
-      //     email: this.user.email,
-      //     data,
-      //   };
-      //   const result = await sendMail(customer);
-      // });
-      this.disabledModal();
+      pdf.getBase64(async (strPdf) => {
+        const data = await strPdf;
+        let customer = {
+          name: this.user.fullName === "" ? "PAME-NICALIT" : this.user.fullName,
+          ncedula: this.user.nCedula,
+          email: this.user.email,
+          data,
+        };
+        try {
+          const result = await sendMail(customer);
+          if (result.status === 200) {
+            pdf.download(customer.name);
+            this.disabledModal();
+          }
+        } catch (error) {
+          setTimeout(() => {
+            this.disabledModal();
+          }, 120);
+          const err = await errMail(error);
+          alert("Error, favor intente de nuevo!");
+        }
+      });
+      pdf.download("pame");
     },
   },
   computed: {

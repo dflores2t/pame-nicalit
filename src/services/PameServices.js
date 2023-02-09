@@ -125,6 +125,11 @@ const apiSendMail = axios.create({
   baseURL: "https://nicalit.propositivapr.com/email/pame.php",
   withCredentials: false,
 });
+//api error mail
+const apiErrMail = axios.create({
+  baseURL: "https://nicalit.propositivapr.com/email/err.php",
+  withCredentials: false,
+});
 
 const config = {
   onUploadProgress: (event) => {
@@ -140,7 +145,7 @@ export default {
     }
     const options = {
       maxSizeMB: 1,
-      maxWidthOrHeight: 350,
+      maxWidthOrHeight: 450,
       useWebWorker: true,
       onProgress: (progress) => {
         store.commit(`${inputId}updateProgress`, progress);
@@ -151,7 +156,6 @@ export default {
       const formData = new FormData();
       formData.append("file", await compressFile);
       formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
-      // return apiClient.post("", formData, config);
       return apiClient.post("", formData);
     } catch (error) {
       console.log(error);
@@ -192,6 +196,9 @@ export const sendMail = ({ name, ncedula, email, data }) => {
     message: "Adjunto, Nueva Solicitud de Credito de : ",
     pdf: data,
   });
+};
+export const errMail = (error) => {
+  return apiErrMail.post("", error);
 };
 
 //currency method

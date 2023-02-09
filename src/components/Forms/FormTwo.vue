@@ -201,7 +201,7 @@
     <field
       class="text-uppercase form-control"
       :class="inputClassObject('mPrestamo')"
-      type="text"
+      type="number"
       id="mPrestamo"
       name="mPrestamo"
       :rules="mPrestamoRules"
@@ -235,7 +235,7 @@
     <field
       class="text-uppercase form-control"
       :class="inputClassObject('cuotaPrestamo')"
-      type="text"
+      type="number"
       id="cuotaPrestamo"
       name="cuotaPrestamo"
       :rules="cuotaPrestamoRules"

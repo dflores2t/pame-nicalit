@@ -147,15 +147,10 @@ export default {
       this.idCardFront = await PameServices.getBase64ImageFromURL(
         this.imageFront
       );
-      // this.imageFront = URL.createObjectURL(e.target.files[0]);
-      // this.idCardFront = await PameServices.getBase64ImageFromURL(
-      //   this.imageFront
-      // );
     },
     async handleImageBack(e) {
       const res = await PameServices.uploadId(e.target.id, e.target.files[0]);
       this.imageBack = res.data.secure_url;
-      // this.imageBack = URL.createObjectURL(e.target.files[0]);
       this.idCardBack = await PameServices.getBase64ImageFromURL(
         this.imageBack
       );

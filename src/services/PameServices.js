@@ -217,15 +217,15 @@ export const renderTable = (data, columns, total, tname) => {
         tname === "tProducto"
           ? ["*", "auto", "auto", "auto", "auto"]
           : [
+              "auto",
+              "auto",
+              "auto",
+              "auto",
+              "auto",
+              "auto",
+              "auto",
+              "auto",
               "*",
-              "auto",
-              "auto",
-              "auto",
-              "auto",
-              "auto",
-              "auto",
-              "auto",
-              "auto",
             ],
       body: buildTableHeader(data, columns, total, tname),
     },
@@ -312,7 +312,7 @@ const buildTableHeader = (data, columns, total, tname) => {
       {
         text: "Total",
         alignment: "right",
-        colSpan: 8,
+        colSpan: 7,
       },
       "",
       "",
@@ -320,8 +320,8 @@ const buildTableHeader = (data, columns, total, tname) => {
       "",
       "",
       "",
-      "",
       { text: `${money(total)}`, alignment: "center" },
+      "C$",
     ]);
     return body;
   }

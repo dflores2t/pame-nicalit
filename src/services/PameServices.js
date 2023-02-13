@@ -321,7 +321,7 @@ const buildTableHeader = (data, columns, total, tname) => {
       "",
       "",
       { text: `${money(total)}`, alignment: "center" },
-      "C$",
+      { text: "C$", alignment: "left" },
     ]);
     return body;
   }

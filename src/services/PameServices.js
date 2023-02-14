@@ -1,6 +1,7 @@
 import store from "../store";
 import axios from "axios";
 import imageCompression from "browser-image-compression";
+import { SERVER_INFO } from "./ServerInfo";
 
 export const Departamento = [
   { text: "MANAGUA", value: "MANAGUA" },
@@ -122,12 +123,12 @@ const apiClient = axios.create({
 
 //api to connect phpmailer
 const apiSendMail = axios.create({
-  baseURL: "https://pame.nicalit.org/email/pame.php",
+  baseURL: SERVER_INFO.serverPame,
   withCredentials: false,
 });
 //api error mail
 const apiErrMail = axios.create({
-  baseURL: "https://pame.nicalit.org/email/err.php",
+  baseURL: SERVER_INFO.serverPameError,
   withCredentials: false,
 });
 
@@ -140,6 +141,7 @@ const config = {
 export default {
   async uploadId(inputId, image) {
     const file = image;
+    store.commit(`${inputId}updateProgress`, 0);
     if (!file) {
       return;
     }
@@ -153,10 +155,11 @@ export default {
     };
     try {
       const compressFile = imageCompression(file, options);
-      const formData = new FormData();
-      formData.append("file", await compressFile);
-      formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
-      return apiClient.post("", formData);
+      //const formData = new FormData();
+      // formData.append("file", await compressFile);
+      // formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+      // return apiClient.post("", formData);
+      return await compressFile;
     } catch (error) {
       console.log(error);
     }

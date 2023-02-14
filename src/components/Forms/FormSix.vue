@@ -19,7 +19,8 @@
         ></div>
       </div>
       <div class="input-group mb-3 mt-1">
-        <field tabindex="1"
+        <field
+          tabindex="1"
           class="form-control"
           :class="inputClassObject('idCardFrontGuarantor')"
           type="file"
@@ -58,7 +59,8 @@
         ></div>
       </div>
       <div class="input-group mb-3 mt-1">
-        <field tabindex="2"
+        <field
+          tabindex="2"
           class="form-control"
           :class="inputClassObject('idCardBackGuarantor')"
           type="file"
@@ -144,17 +146,15 @@ export default {
       };
     },
     async handleImageFrontGuarantor(e) {
-      const res = await PameServices.uploadId(e.target.id,e.target.files[0]);
-      this.imageFrontGuarantor = res.data.secure_url;
-      // this.imageFrontGuarantor = URL.createObjectURL(e.target.files[0]);
+      const res = await PameServices.uploadId(e.target.id, e.target.files[0]);
+      this.imageFrontGuarantor = URL.createObjectURL(res); //res.data.secure_url;
       this.idCardFrontGuarantor = await PameServices.getBase64ImageFromURL(
         this.imageFrontGuarantor
       );
     },
     async handleImageBackGuarantor(e) {
-      const res = await PameServices.uploadId(e.target.id,e.target.files[0]);
-      this.imageBackGuarantor = res.data.secure_url;
-      // this.imageBackGuarantor = URL.createObjectURL(e.target.files[0]);
+      const res = await PameServices.uploadId(e.target.id, e.target.files[0]);
+      this.imageBackGuarantor = URL.createObjectURL(res); // res.data.secure_url;
       this.idCardBackGuarantor = await PameServices.getBase64ImageFromURL(
         this.imageBackGuarantor
       );
@@ -163,4 +163,10 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.container img {
+  width: 350px;
+  height: 200px;
+  object-fit: cover;
+}
+</style>

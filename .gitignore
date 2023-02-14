@@ -24,3 +24,4 @@ src/PdfMail/*
 *.njsproj
 *.sln
 *.sw?
+.env

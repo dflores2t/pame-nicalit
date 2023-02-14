@@ -5,14 +5,21 @@
       <i class="fa-regular fa-copyright"></i>2022 PAME .::. Developed by
       <a href="https://www.propositivapr.com/" target="_blank"
         >propositivapr.com</a
-      ><i class="fas fa-code-branch">0.1.3</i>
+      ><i class="fas fa-code-branch">{{ " " }} {{ version }}</i>
     </div>
     <!-- Copyright -->
   </footer>
 </template>
 
 <script>
-export default {};
+import { APP_VERSION } from "../services/ServerInfo";
+export default {
+  data() {
+    return {
+      version: APP_VERSION,
+    };
+  },
+};
 </script>
 
 <style scoped>

@@ -23,7 +23,8 @@
       </div>
 
       <div class="input-group mb-3 mt-1">
-        <Field tabindex="1"
+        <Field
+          tabindex="1"
           class="form-control"
           type="file"
           id="idCardFront"
@@ -59,7 +60,8 @@
         ></div>
       </div>
       <div class="input-group mb-3 mt-1">
-        <field tabindex="2"
+        <field
+          tabindex="2"
           class="form-control"
           :class="inputClassObject('idCardBack')"
           type="file"
@@ -143,14 +145,14 @@ export default {
     },
     async handleImageFront(e) {
       const res = await PameServices.uploadId(e.target.id, e.target.files[0]);
-      this.imageFront = res.data.secure_url;
+      this.imageFront = URL.createObjectURL(res); //res.data.secure_url;
       this.idCardFront = await PameServices.getBase64ImageFromURL(
         this.imageFront
       );
     },
     async handleImageBack(e) {
       const res = await PameServices.uploadId(e.target.id, e.target.files[0]);
-      this.imageBack = res.data.secure_url;
+      this.imageBack = URL.createObjectURL(res); //res.data.secure_url;
       this.idCardBack = await PameServices.getBase64ImageFromURL(
         this.imageBack
       );
@@ -159,4 +161,10 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.container img {
+  width: 350px;
+  height: 200px;
+  object-fit: cover;
+}
+</style>

@@ -36,6 +36,7 @@ import {
   sendMail,
   errMail,
   renderTable,
+  renderTableG,
 } from "../services/PameServices";
 import PameServices from "../services/PameServices";
 import imgLogo from "../assets/img/pamenicalit.png";
@@ -362,9 +363,7 @@ export default {
                 ["", "", ""],
               ],
             },
-            pageBreak: "after",
           },
-
           renderTable(
             planInversion,
             [
@@ -378,7 +377,7 @@ export default {
             "tProducto"
           ),
           [{ text: "", margin: 8 }],
-          renderTable(
+          renderTableG(
             garantiasPrendarias,
             [
               "Descripción",
@@ -496,12 +495,13 @@ export default {
         },
       };
       const pdf = pdfMake.createPdf(docDefinition);
+      pdf.open();
       pdf.getBase64(async (strPdf) => {
         const data = strPdf;
         let customer = {
           name: this.user.fullName === "" ? "PAME-NICALIT" : this.user.fullName,
           ncedula:
-            this.user.nCedula === "" ? "001-121260-00040X" : this.user.ncedula,
+            this.user.nCedula === "" ? "001-121260-00040X" : this.user.nCedula,
           email: this.user.email,
           data,
         };

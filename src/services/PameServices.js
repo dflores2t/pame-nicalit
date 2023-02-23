@@ -214,12 +214,21 @@ export const money = (value) =>
 // made table
 export const renderTable = (data, columns, total, tname) => {
   return {
+    pageBreak: "after",
     table: {
       headerRows: 1,
       widths:
-        tname === "tProducto"
-          ? ["*", "auto", "auto", "auto", "auto"]
-          : [
+          ["*", "auto", "auto", "auto", "auto"]          ,
+      body: buildTableHeader(data, columns, total, tname),
+    },
+  };
+};
+export const renderTableG = (data, columns, total, tname) => {
+  return {
+    table: {
+      headerRows: 1,
+      widths:
+        [
               "auto",
               "auto",
               "auto",

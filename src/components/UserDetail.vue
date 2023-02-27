@@ -184,12 +184,28 @@ export default {
                 [
                   `Teléfono 1: ${this.user.phoneHome}`,
                   `Teléfono 2: ${this.user.phoneMovil}`,
-                  `Correo Electrónico: ${this.user.email}`,
+                  ``,
                 ],
                 [
                   {
-                    text: `Redes Sociales que usa para promocionar su negocio: WhatsApp ${this.user.rsWhatsapp}, Facebook: ${this.user.rsFacebook}, Ninguno: ${this.user.none}`,
+                    text: `Correo Electrónico: ${this.user.email}`,
                     colSpan: 3,
+                  },
+                  ``,
+                  ``,
+                ],
+                [
+                  {
+                    text: `Redes Sociales que usa para promocionar su negocio: WhatsApp: ${this.user.rsWhatsapp}. - Facebook: ${this.user.rsFacebook}. - Ninguno: ${this.user.none}`,
+                    colSpan: 3,
+                  },
+                  "",
+                  "",
+                ],
+                [
+                  {
+                    text: `Titular de Cuenta Bancaria: ${this.user.nameTitularCuenta}`,
+                    colSpan: 2,
                   },
                   "",
                   "",
@@ -495,7 +511,6 @@ export default {
         },
       };
       const pdf = pdfMake.createPdf(docDefinition);
-      pdf.open();
       pdf.getBase64(async (strPdf) => {
         const data = strPdf;
         let customer = {

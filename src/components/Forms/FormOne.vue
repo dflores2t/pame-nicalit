@@ -321,6 +321,25 @@
     >
     <ErrorMessage class="text-danger" name="cuentaBac" />
   </div>
+
+  <div class="form-floating mb-3 mt-3 form-input" v-if="nameAccount">
+    <Field
+      tabindex="19"
+      class="text-uppercase form-control"
+      type="text"
+      id="nameTitularCuenta"
+      name="nameTitularCuenta"
+      :rules="nameTitularCuentaRules"
+      v-model.trim="nameTitularCuenta"
+      placeholder="Nombre Titular"
+    />
+    <label for="nameTitularcuenta"
+      ><i class="fa-solid fa-building-columns"></i> Nombre del Titular de
+      Cuenta</label
+    >
+    <ErrorMessage class="text-danger" name="nameTitularCuenta" />
+  </div>
+
   <div class="form-floating mb-3 mt-3 form-input">
     <Field
       tabindex="19"
@@ -426,6 +445,7 @@ export default {
         .trim()
         .matches(/^(?:\d{3}\d{3}\d{3}|)$/, "Número de cuenta no valido")
         .notRequired("Número de cuenta es requerido"),
+      nameTitularCuentaRules: yup.string().trim().notRequired(),
       referenciaPersonalRules: yup.string().trim().notRequired(),
       referenciaPhoneRules: yup
         .string()
@@ -433,6 +453,7 @@ export default {
         .matches(/^\d{4}\d{4}|^\s*$/, "Número de Teléfono no valido")
         .notRequired(),
       isChecked: false,
+      nameAccount: false,
       nonersChecked: false,
       departamento: Departamento,
       mp: Municipios,
@@ -589,7 +610,16 @@ export default {
         return this.$store.state.user.cuentaBac;
       },
       set(value) {
+        this.nameAccount = value.length === 9 ? true : false;
         this.$store.commit("updateCuentaBac", value);
+      },
+    },
+    nameTitularCuenta: {
+      get() {
+        return this.$store.state.user.nameTitularCuenta;
+      },
+      set(value) {
+        this.$store.commit("updateNameTitularCuenta", value.toUpperCase());
       },
     },
     referenciaPersonal: {

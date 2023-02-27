@@ -20,6 +20,7 @@ const getDefaultUser = () => {
     none: "X",
     otrarrss: "",
     cuentaBac: "",
+    nameTitularCuenta:'',
     referenciaPersonal: "",
     referenciaPhone: "",
     aSolicitado: "",
@@ -110,6 +111,9 @@ export default createStore({
     },
     updateOtrarrss(state, payload) {
       state.user.otrarrss = payload;
+    },
+    updateNameTitularCuenta(state, payload) {
+      state.user.nameTitularCuenta = payload
     },
     updateCuentaBac(state, payload) {
       state.user.cuentaBac = payload;

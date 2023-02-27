@@ -203,20 +203,20 @@ export default {
                   "",
                 ],
                 [
-                  {
-                    text: `Titular de Cuenta Bancaria: ${this.user.nameTitularCuenta}`,
-                    colSpan: 2,
-                  },
-                  "",
-                  "",
-                ],
-                [
                   `Otras : ${this.user.otrarrss}`,
                   {
                     text: `Número de Cuenta Bancaria BAC: ${this.user.cuentaBac}`,
                     colSpan: 2,
                   },
                   ``,
+                ],
+                [
+                  {
+                    text: `Titular de Cuenta Bancaria: ${this.user.nameTitularCuenta}`,
+                    colSpan: 2,
+                  },
+                  "",
+                  "",
                 ],
                 [
                   `Referencias Personales: ${this.user.referenciaPersonal}`,

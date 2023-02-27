@@ -4,7 +4,7 @@ const getDefaultUser = () => {
   return {
     fullName: "",
     nCedula: "",
-    exNicalit: "NO",
+    exNicalit: "",
     famExTrabajador: "NO",
     noExTrabajador: "",
     nameFamExTrabajador: "",

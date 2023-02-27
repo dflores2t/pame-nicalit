@@ -79,7 +79,7 @@
       :class="inputClassObject('noExTrabajador')"
       class="form-check-input"
       type="checkbox"
-      value="NO LO SOY"
+      value="NO"
       name="noExTrabajador"
       v-model="noExTrabajador"
     />
@@ -462,7 +462,7 @@ export default {
         return this.$store.state.user.exNicalit;
       },
       set(value) {
-        value = value === "SI" ? "NO SOY" : "-";
+        value = value === "SI" ? "SI" : "NO";
         this.$store.commit("updateExNicalit", value);
       },
     },

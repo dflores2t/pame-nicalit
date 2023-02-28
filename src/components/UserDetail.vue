@@ -37,6 +37,7 @@ import {
   errMail,
   renderTable,
   renderTableG,
+  toTitleCase,
 } from "../services/PameServices";
 import PameServices from "../services/PameServices";
 import imgLogo from "../assets/img/pamenicalit.png";
@@ -149,37 +150,37 @@ export default {
                 [" ", " ", " "],
                 [
                   {
-                    text: `Nombre y Apellidos: ${this.user.fullName}`,
+                    text: `Nombre y Apellidos: ${toTitleCase(this.user.fullName)}`,
                     colSpan: 2,
                   },
                   " ",
                   "N° de Cédula: " + this.user.nCedula,
                 ],
                 [
-                  `Ex Trabajador de Nicalit: ${this.user.exNicalit}`,
-                  `Familiar de Extrabajador: ${this.user.famExTrabajador}`,
-                  `No es Extrabajador: ${this.user.noExTrabajador}`,
+                  `Ex Trabajador de Nicalit: ${toTitleCase(this.user.exNicalit)}`,
+                  `Familiar de Extrabajador: ${toTitleCase(this.user.famExTrabajador)}`,
+                  `No es Extrabajador: ${toTitleCase(this.user.noExTrabajador)}`,
                 ],
                 [
                   {
-                    text: `Nombre del Ex-Trabajador de Nicalit del cual es familiar: ${this.user.nameFamExTrabajador}`,
+                    text: `Nombre del Ex-Trabajador de Nicalit del cual es familiar: ${toTitleCase(this.user.nameFamExTrabajador)}`,
+                    colSpan: 3,
+                  },
+                  "",
+                  '',
+                ],
+                [
+                  {
+                    text: `Dirección Domiciliar : ${toTitleCase(this.user.address)}`,
                     colSpan: 3,
                   },
                   "",
                   "",
                 ],
                 [
-                  {
-                    text: `Dirección Domiciliar : ${this.user.address}`,
-                    colSpan: 3,
-                  },
-                  "",
-                  "",
-                ],
-                [
-                  `Departamento: ${this.user.depart}`,
-                  `Municipio: ${this.user.municipio}`,
-                  `Comuninidad: ${this.user.comunidad}`,
+                  `Departamento: ${toTitleCase(this.user.depart)}`,
+                  `Municipio: ${toTitleCase(this.user.municipio)}`,
+                  `Comuninidad: ${toTitleCase(this.user.comunidad)}`,
                 ],
                 [
                   `Teléfono 1: ${this.user.phoneHome}`,
@@ -188,7 +189,7 @@ export default {
                 ],
                 [
                   {
-                    text: `Correo Electrónico: ${this.user.email}`,
+                    text: `Correo Electrónico: ${this.user.email.toLowerCase()}`,
                     colSpan: 3,
                   },
                   ``,
@@ -196,14 +197,14 @@ export default {
                 ],
                 [
                   {
-                    text: `Redes Sociales que usa para promocionar su negocio: WhatsApp: ${this.user.rsWhatsapp}. - Facebook: ${this.user.rsFacebook}. - Ninguno: ${this.user.none}`,
+                    text: `Redes Sociales que usa para promocionar su negocio: WhatsApp: ${toTitleCase(this.user.rsWhatsapp)}. - Facebook: ${toTitleCase(this.user.rsFacebook)}. - Ninguno: ${toTitleCase(this.user.none)}`,
                     colSpan: 3,
                   },
                   "",
                   "",
                 ],
                 [
-                  `Otras : ${this.user.otrarrss}`,
+                  `Otras : ${toTitleCase(this.user.otrarrss)}`,
                   {
                     text: `Número de Cuenta Bancaria BAC: ${this.user.cuentaBac}`,
                     colSpan: 2,
@@ -212,14 +213,14 @@ export default {
                 ],
                 [
                   {
-                    text: `Titular de Cuenta Bancaria: ${this.user.nameTitularCuenta}`,
+                    text: `Titular de Cuenta Bancaria: ${toTitleCase(this.user.nameTitularCuenta)}`,
                     colSpan: 2,
                   },
                   "",
                   "",
                 ],
                 [
-                  `Referencias Personales: ${this.user.referenciaPersonal}`,
+                  `Referencias Personales: ${toTitleCase(this.user.referenciaPersonal)}`,
                   `Télefono: ${this.user.referenciaPhone}`,
                   ``,
                 ],
@@ -248,7 +249,7 @@ export default {
                 [" ", " ", " "],
                 [
                   {
-                    text: `Tipo de Apoyo Solicitado: ${this.user.aSolicitado}`,
+                    text: `Tipo de Apoyo Solicitado: ${toTitleCase(this.user.aSolicitado)}`,
                     colSpan: 3,
                   },
                   " ",
@@ -256,7 +257,7 @@ export default {
                 ],
                 [
                   {
-                    text: `Descripción del Negocio: ${this.user.dNegocio}`,
+                    text: `Descripción del Negocio: ${toTitleCase(this.user.dNegocio)}`,
                     colSpan: 3,
                   },
                   " ",
@@ -264,7 +265,7 @@ export default {
                 ],
                 [
                   {
-                    text: `Actividad Económica: ${this.user.aEconomica}`,
+                    text: `Actividad Económica: ${toTitleCase(this.user.aEconomica)}`,
                     colSpan: 3,
                   },
                   " ",
@@ -272,16 +273,16 @@ export default {
                 ],
                 [
                   {
-                    text: `Dirección del Negocio: ${this.user.dirNegocio}`,
+                    text: `Dirección del Negocio: ${toTitleCase(this.user.dirNegocio)}`,
                     colSpan: 3,
                   },
                   " ",
                   " ",
                 ],
                 [
-                  `Departamento: ${this.user.departn}`,
-                  `Municipio: ${this.user.municipion}`,
-                  `Comunidad : ${this.user.comunidadn}`,
+                  `Departamento: ${toTitleCase(this.user.departn)}`,
+                  `Municipio: ${toTitleCase(this.user.municipion)}`,
+                  `Comunidad : ${toTitleCase(this.user.comunidadn)}`,
                 ],
                 [
                   `Beneficiarios Directos: ${this.user.bDirecto}`,
@@ -355,7 +356,7 @@ export default {
                 ],
                 [
                   {
-                    text: `Acepto: ${this.user.iCrediticia}`,
+                    text: `Acepto: ${toTitleCase(this.user.iCrediticia)}`,
                     colSpan: 3,
                     alignment: "center",
                   },

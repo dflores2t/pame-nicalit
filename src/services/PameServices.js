@@ -217,8 +217,7 @@ export const renderTable = (data, columns, total, tname) => {
     pageBreak: "after",
     table: {
       headerRows: 1,
-      widths:
-          ["*", "auto", "auto", "auto", "auto"]          ,
+      widths: ["*", "auto", "auto", "auto", "auto"],
       body: buildTableHeader(data, columns, total, tname),
     },
   };
@@ -227,18 +226,17 @@ export const renderTableG = (data, columns, total, tname) => {
   return {
     table: {
       headerRows: 1,
-      widths:
-        [
-              "auto",
-              "auto",
-              "auto",
-              "auto",
-              "auto",
-              "auto",
-              "auto",
-              "auto",
-              "*",
-            ],
+      widths: [
+        "auto",
+        "auto",
+        "auto",
+        "auto",
+        "auto",
+        "auto",
+        "auto",
+        "auto",
+        "*",
+      ],
       body: buildTableHeader(data, columns, total, tname),
     },
   };
@@ -353,4 +351,12 @@ const buildTableBody = (data, columns, body) => {
     });
     body.push(dataRow);
   });
+};
+
+//Capitalize first letter of each word
+export const toTitleCase = (phrase) => {
+  return phrase
+    .toLowerCase()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
 };

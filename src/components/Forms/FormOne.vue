@@ -70,7 +70,7 @@
       v-model="famExTrabajador"
     />
   </div>
-  <div class="form-check form-input">
+  <!-- <div class="form-check form-input">
     <label for="noExTrabajador" class="form-check-label"
       ><i class="fa-solid fa-square-check"></i>No es Ex-Trabajador?</label
     >
@@ -83,7 +83,7 @@
       name="noExTrabajador"
       v-model="noExTrabajador"
     />
-  </div>
+  </div> -->
 
   <div class="form-floating mb-3 mt-3 form-input" v-if="isChecked">
     <Field
@@ -377,80 +377,80 @@
 </template>
 
 <script>
-import { Field, ErrorMessage } from "vee-validate";
-import * as yup from "yup";
+import { Field, ErrorMessage } from 'vee-validate'
+import * as yup from 'yup'
 import {
   Departamento,
   Municipios,
   Comarcas,
-  rsociales,
-} from "../../services/PameServices";
+  rsociales
+} from '../../services/PameServices'
 
 export default {
-  name: "FormOne",
+  name: 'FormOne',
   components: {
     Field,
-    ErrorMessage,
+    ErrorMessage
   },
   props: {
     errors: {
-      type: Object,
-    },
+      type: Object
+    }
   },
   data() {
     return {
       fullNameRules: yup
         .string()
         .trim()
-        .required("Debe escribir su nombre completo!"),
+        .required('Debe escribir su nombre completo!'),
       nCedulaRules: yup
         .string()
         .trim()
         .matches(
           /^\d{3}-(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[0-2])\d{2}-([0-9])\d{3}[a-zA-Z]$/,
-          "Identificación no valida"
+          'Identificación no valida'
         )
-        .required("Este campo es requerido"),
+        .required('Este campo es requerido'),
       exNicalitRules: yup.string().notRequired(),
       famExTrabajadorRules: yup.string().notRequired(),
-      noExTrabajadorRules: yup.string().required(),
+      // noExTrabajadorRules: yup.string().required(),
       nameFamExTrabajadorRules: yup.string().trim().notRequired(),
       addressRules: yup
         .string()
         .trim()
-        .required("Debe escribir su direccion domiciliar"),
-      departRules: yup.string().required("Debe escojer un departamento"),
-      municipioRules: yup.string().trim().required("Debe escojer un Municipio"),
+        .required('Debe escribir su direccion domiciliar'),
+      departRules: yup.string().required('Debe escojer un departamento'),
+      municipioRules: yup.string().trim().required('Debe escojer un Municipio'),
       comunidadRules: yup
         .string()
         .trim()
-        .required("Debe escojer una comunidad"),
+        .required('Debe escojer una comunidad'),
       phoneHomeRules: yup
         .string()
         .trim()
-        .matches(/^(?:\d{4}\d{4}|)$/, "Número de Teléfono no valido")
+        .matches(/^(?:\d{4}\d{4}|)$/, 'Número de Teléfono no valido')
         .notRequired(),
       phoneMovilRules: yup
         .string()
         .trim()
-        .matches(/^\d{4}\d{4}$/, "Número de Celular no valido")
-        .required("Número de Celular no valido es requerido"),
+        .matches(/^\d{4}\d{4}$/, 'Número de Celular no valido')
+        .required('Número de Celular no valido es requerido'),
       rsWhatsappRules: yup.string().notRequired(),
       rsFacebookRules: yup.string().notRequired(),
-      emailRules: yup.string().email("Correo no valido").notRequired(),
+      emailRules: yup.string().email('Correo no valido').notRequired(),
       noneRules: yup.string().trim().notRequired(),
       otrarrssRules: yup.string().trim().notRequired(),
       cuentaBacRules: yup
         .string()
         .trim()
-        .matches(/^(?:\d{3}\d{3}\d{3}|)$/, "Número de cuenta no valido")
-        .notRequired("Número de cuenta es requerido"),
+        .matches(/^(?:\d{3}\d{3}\d{3}|)$/, 'Número de cuenta no valido')
+        .notRequired('Número de cuenta es requerido'),
       nameTitularCuentaRules: yup.string().trim().notRequired(),
       referenciaPersonalRules: yup.string().trim().notRequired(),
       referenciaPhoneRules: yup
         .string()
         .trim()
-        .matches(/^\d{4}\d{4}|^\s*$/, "Número de Teléfono no valido")
+        .matches(/^\d{4}\d{4}|^\s*$/, 'Número de Teléfono no valido')
         .notRequired(),
       isChecked: false,
       nameAccount: false,
@@ -458,239 +458,239 @@ export default {
       departamento: Departamento,
       mp: Municipios,
       comarcas: Comarcas,
-      rrss: rsociales,
-    };
+      rrss: rsociales
+    }
   },
   computed: {
     fullName: {
       get() {
-        return this.$store.state.user.fullName;
+        return this.$store.state.user.fullName
       },
       set(value) {
-        this.$store.commit("updateFullName", value.toUpperCase());
-      },
+        this.$store.commit('updateFullName', value.toUpperCase())
+      }
     },
     nCedula: {
       get() {
-        return this.$store.state.user.nCedula;
+        return this.$store.state.user.nCedula
       },
       set(value) {
-        this.$store.commit("updatenCedula", value.toUpperCase());
-      },
+        this.$store.commit('updatenCedula', value.toUpperCase())
+      }
     },
     exNicalit: {
       get() {
-        return this.$store.state.user.exNicalit;
+        return this.$store.state.user.exNicalit
       },
       set(value) {
-        value = value === "SI" ? "SI" : "NO";
-        this.$store.commit("updateExNicalit", value);
-      },
+        value = value === 'SI' ? 'SI' : 'NO'
+        this.$store.commit('updateExNicalit', value)
+      }
     },
     famExTrabajador: {
       get() {
-        return this.$store.state.user.famExTrabajador;
+        return this.$store.state.user.famExTrabajador
       },
       set(value) {
-        this.isChecked = value;
-        value = value === "SI" ? "SI" : "NO";
-        this.$store.commit("updateFamExTrabajador", value);
-      },
+        this.isChecked = value
+        value = value === 'SI' ? 'SI' : 'NO'
+        this.$store.commit('updateFamExTrabajador', value)
+      }
     },
-    noExTrabajador: {
-      get() {
-        return this.$store.state.user.noExTrabajador;
-      },
-      set(value) {
-        this.$store.commit("updateNoExTrabajador", value);
-      },
-    },
+    // noExTrabajador: {
+    //   get() {
+    //     return this.$store.state.user.noExTrabajador;
+    //   },
+    //   set(value) {
+    //     this.$store.commit("updateNoExTrabajador", value);
+    //   },
+    // },
     nameFamExTrabajador: {
       get() {
-        return this.$store.state.user.nameFamExTrabajador;
+        return this.$store.state.user.nameFamExTrabajador
       },
       set(value) {
-        this.$store.commit("updateNameFamExTrabajador", value.toUpperCase());
-      },
+        this.$store.commit('updateNameFamExTrabajador', value.toUpperCase())
+      }
     },
     address: {
       get() {
-        return this.$store.state.user.address;
+        return this.$store.state.user.address
       },
       set(value) {
-        this.$store.commit("updateAddress", value.toUpperCase());
-      },
+        this.$store.commit('updateAddress', value.toUpperCase())
+      }
     },
     depart: {
       get() {
-        return this.$store.state.user.depart;
+        return this.$store.state.user.depart
       },
       set(value) {
-        this.$store.commit("updateDepart", value);
-      },
+        this.$store.commit('updateDepart', value)
+      }
     },
     municipio: {
       get() {
-        return this.$store.state.user.municipio;
+        return this.$store.state.user.municipio
       },
       set(value) {
-        this.$store.commit("updateMunicipio", value);
-      },
+        this.$store.commit('updateMunicipio', value)
+      }
     },
     comunidad: {
       get() {
-        return this.$store.state.user.comunidad;
+        return this.$store.state.user.comunidad
       },
       set(value) {
-        this.$store.commit("updateComunidad", value);
-      },
+        this.$store.commit('updateComunidad', value)
+      }
     },
     phoneHome: {
       get() {
-        return this.$store.state.user.phoneHome;
+        return this.$store.state.user.phoneHome
       },
       set(value) {
-        this.$store.commit("updatePhoneHome", value);
-      },
+        this.$store.commit('updatePhoneHome', value)
+      }
     },
     phoneMovil: {
       get() {
-        return this.$store.state.user.phoneMovil;
+        return this.$store.state.user.phoneMovil
       },
       set(value) {
-        this.$store.commit("updatePhoneMovil", value);
-      },
+        this.$store.commit('updatePhoneMovil', value)
+      }
     },
     email: {
       get() {
-        return this.$store.state.user.email;
+        return this.$store.state.user.email
       },
       set(value) {
-        this.$store.commit("updateEmail", value.toUpperCase());
-      },
+        this.$store.commit('updateEmail', value.toUpperCase())
+      }
     },
     rsWhatsapp: {
       get() {
-        return this.$store.state.user.rsWhatsapp;
+        return this.$store.state.user.rsWhatsapp
       },
       set(value) {
-        value = value === "SI" ? "SI" : "";
-        this.$store.commit("updateRsWhatsapp", value);
-      },
+        value = value === 'SI' ? 'SI' : ''
+        this.$store.commit('updateRsWhatsapp', value)
+      }
     },
     rsFacebook: {
       get() {
-        return this.$store.state.user.rsFacebook;
+        return this.$store.state.user.rsFacebook
       },
       set(value) {
-        value = value === "SI" ? "SI" : "";
-        this.$store.commit("updateRsFacebook", value);
-      },
+        value = value === 'SI' ? 'SI' : ''
+        this.$store.commit('updateRsFacebook', value)
+      }
     },
     none: {
       get() {
-        return this.$store.state.user.none;
+        return this.$store.state.user.none
       },
       set(value) {
-        this.nonersChecked = value;
-        value = value === "SI" ? "X" : "";
-        this.$store.commit("updateNone", value);
-      },
+        this.nonersChecked = value
+        value = value === 'SI' ? 'X' : ''
+        this.$store.commit('updateNone', value)
+      }
     },
     otrarrss: {
       get() {
-        return this.$store.state.user.otrarrss;
+        return this.$store.state.user.otrarrss
       },
       set(value) {
-        this.$store.commit("updateOtrarrss", value);
-      },
+        this.$store.commit('updateOtrarrss', value)
+      }
     },
     cuentaBac: {
       get() {
-        return this.$store.state.user.cuentaBac;
+        return this.$store.state.user.cuentaBac
       },
       set(value) {
-        this.nameAccount = value.length === 9 ? true : false;
-        this.$store.commit("updateCuentaBac", value);
-      },
+        this.nameAccount = value.length === 9 ? true : false
+        this.$store.commit('updateCuentaBac', value)
+      }
     },
     nameTitularCuenta: {
       get() {
-        return this.$store.state.user.nameTitularCuenta;
+        return this.$store.state.user.nameTitularCuenta
       },
       set(value) {
-        this.$store.commit("updateNameTitularCuenta", value.toUpperCase());
-      },
+        this.$store.commit('updateNameTitularCuenta', value.toUpperCase())
+      }
     },
     referenciaPersonal: {
       get() {
-        return this.$store.state.user.referenciaPersonal;
+        return this.$store.state.user.referenciaPersonal
       },
       set(value) {
-        this.$store.commit("updateReferenciaPersonal", value.toUpperCase());
-      },
+        this.$store.commit('updateReferenciaPersonal', value.toUpperCase())
+      }
     },
     referenciaPhone: {
       get() {
-        return this.$store.state.user.referenciaPhone;
+        return this.$store.state.user.referenciaPhone
       },
       set(value) {
-        this.$store.commit("updateReferenciaPhone", value);
-      },
+        this.$store.commit('updateReferenciaPhone', value)
+      }
     },
     options() {
-      let option = "";
+      let option = ''
       switch (this.depart) {
-        case "MANAGUA":
-          option = this.mp.MANAGUA;
-          break;
-        case "CARAZO":
-          option = this.mp.CARAZO;
-          break;
-        case "MASAYA":
-          option = this.mp.MASAYA;
-          break;
+        case 'MANAGUA':
+          option = this.mp.MANAGUA
+          break
+        case 'CARAZO':
+          option = this.mp.CARAZO
+          break
+        case 'MASAYA':
+          option = this.mp.MASAYA
+          break
         default:
-          option = this.mp.MANAGUA;
-          break;
+          option = this.mp.MANAGUA
+          break
       }
-      return option;
+      return option
     },
     cOptions() {
-      let option = "";
+      let option = ''
       switch (this.municipio) {
-        case "MANAGUA":
-          option = this.comarcas.MANAGUA;
-          break;
-        case "SAN RAFAEL DEL SUR":
-          option = this.comarcas["SAN RAFAEL DEL SUR"];
-          break;
-        case "JINOTEPE":
-          option = this.comarcas.JINOTEPE;
-          break;
-        case "MASATEPE":
-          option = this.comarcas.MASATEPE;
-          break;
+        case 'MANAGUA':
+          option = this.comarcas.MANAGUA
+          break
+        case 'SAN RAFAEL DEL SUR':
+          option = this.comarcas['SAN RAFAEL DEL SUR']
+          break
+        case 'JINOTEPE':
+          option = this.comarcas.JINOTEPE
+          break
+        case 'MASATEPE':
+          option = this.comarcas.MASATEPE
+          break
         default:
-          option = this.comarcas.MANAGUA;
-          break;
+          option = this.comarcas.MANAGUA
+          break
       }
-      return option;
-    },
+      return option
+    }
   },
   methods: {
     inputClassObject(name) {
       return {
-        "input-control": true,
-        "has-error": this.errors.hasOwnProperty(name),
-      };
+        'input-control': true,
+        'has-error': this.errors.hasOwnProperty(name)
+      }
     },
     onChange() {
-      this.options;
+      this.options
     },
     onChangeMunicipio() {
-      this.cOptions;
-    },
-  },
-};
+      this.cOptions
+    }
+  }
+}
 </script>

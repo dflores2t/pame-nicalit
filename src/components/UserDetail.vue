@@ -158,8 +158,8 @@ export default {
                 ],
                 [
                   `Ex Trabajador de Nicalit: ${toTitleCase(this.user.exNicalit)}`,
-                  `Familiar de Extrabajador: ${toTitleCase(this.user.famExTrabajador)}`,
-                  `No es Extrabajador: ${toTitleCase(this.user.noExTrabajador)}`,
+                  `Familiar de Extrabajador: ${toTitleCase(this.user.famExTrabajador)}`,'',
+                  // `No es Extrabajador: ${toTitleCase(this.user.noExTrabajador)}`,
                 ],
                 [
                   {
@@ -180,7 +180,7 @@ export default {
                 [
                   `Departamento: ${toTitleCase(this.user.depart)}`,
                   `Municipio: ${toTitleCase(this.user.municipio)}`,
-                  `Comuninidad: ${toTitleCase(this.user.comunidad)}`,
+                  `Comunidad: ${toTitleCase(this.user.comunidad)}`,
                 ],
                 [
                   `Teléfono 1: ${this.user.phoneHome}`,

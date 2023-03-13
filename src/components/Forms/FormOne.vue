@@ -70,21 +70,6 @@
       v-model="famExTrabajador"
     />
   </div>
-  <!-- <div class="form-check form-input">
-    <label for="noExTrabajador" class="form-check-label"
-      ><i class="fa-solid fa-square-check"></i>No es Ex-Trabajador?</label
-    >
-    <Field
-      tabindex="5"
-      :class="inputClassObject('noExTrabajador')"
-      class="form-check-input"
-      type="checkbox"
-      value="NO"
-      name="noExTrabajador"
-      v-model="noExTrabajador"
-    />
-  </div> -->
-
   <div class="form-floating mb-3 mt-3 form-input" v-if="isChecked">
     <Field
       tabindex="6"
@@ -497,14 +482,6 @@ export default {
         this.$store.commit('updateFamExTrabajador', value)
       }
     },
-    // noExTrabajador: {
-    //   get() {
-    //     return this.$store.state.user.noExTrabajador;
-    //   },
-    //   set(value) {
-    //     this.$store.commit("updateNoExTrabajador", value);
-    //   },
-    // },
     nameFamExTrabajador: {
       get() {
         return this.$store.state.user.nameFamExTrabajador

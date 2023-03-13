@@ -6,7 +6,6 @@ const getDefaultUser = () => {
     nCedula: '',
     exNicalit: 'NO',
     famExTrabajador: 'NO',
-    // noExTrabajador: "",
     nameFamExTrabajador: '',
     address: '',
     depart: '',
@@ -73,9 +72,6 @@ export default createStore({
     updateFamExTrabajador(state, payload) {
       state.user.famExTrabajador = payload
     },
-    // updateNoExTrabajador(state, payload) {
-    //   state.user.noExTrabajador = payload;
-    // },
     updateNameFamExTrabajador(state, payload) {
       state.user.nameFamExTrabajador = payload
     },

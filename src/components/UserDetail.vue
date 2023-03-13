@@ -166,7 +166,6 @@ export default {
                     this.user.famExTrabajador
                   )}`,
                   ''
-                  // `No es Extrabajador: ${toTitleCase(this.user.noExTrabajador)}`,
                 ],
                 [
                   {

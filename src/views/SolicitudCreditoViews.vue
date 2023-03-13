@@ -22,7 +22,7 @@
               isFirstStep ? false : !validateCurrentStep(values, errors)
             "
             type="button"
-            class="btn-primarys btn-next"
+            class="btn-primary btn-next"
           >
             {{ isLastStep ? `Enviar` : `Sig.` }}
           </button>
@@ -31,9 +31,9 @@
             @click="toPrevious"
             v-show="!isFirstStep"
             type="button"
-            class="btn-secondarys btn-back"
+            class="btn-primary btn-back text-white"
           >
-            Atras
+            Ant.
           </button>
         </div>
       </div>
@@ -50,15 +50,40 @@ import HeaderForm from "../components/HeaderForm.vue";
 import FormIntro from "../components/Forms/FormIntro.vue";
 import FormOne from "../components/Forms/FormOne.vue";
 import FormTwo from "../components/Forms/FormTwo.vue";
+import FormThree from "../components/Forms/FormThree.vue";
+import FormFour from "../components/Forms/FormFour.vue";
+import FormFive from "../components/Forms/FormFive.vue";
+import FormSix from "../components/Forms/FormSix.vue";
+import FormSeven from "../components/Forms/FormSeven.vue";
 import UserDetail from "../components/UserDetail.vue";
-
 export default {
   name: "SolicitudDeCreditoViews",
-  components: { Form, HeaderForm, FormIntro, FormOne, FormTwo, UserDetail },
+  components: {
+    Form,
+    HeaderForm,
+    FormIntro,
+    FormOne,
+    FormTwo,
+    FormThree,
+    FormFour,
+    FormFive,
+    FormSix,
+    FormSeven,
+    UserDetail,
+  },
   data() {
     return {
       currentStep: 0,
-      stepsList: ["FormIntro", "FormOne", "FormTwo"],
+      stepsList: [
+        "FormIntro",
+        "FormOne",
+        "FormTwo",
+        "FormThree",
+        "FormFour",
+        "FormFive",
+        "FormSix",
+        "FormSeven",
+      ],
       showUserDetail: false,
     };
   },
@@ -82,8 +107,7 @@ export default {
           (x) => !(!x || x === undefined || x.length === 0)
         );
       };
-
-      return noErrors && valuesAreNotEmpty(values);
+      return noErrors; //&& valuesAreNotEmpty(values);
     },
     finalSubmit() {
       this.showUserDetail = true;
@@ -196,18 +220,27 @@ export default {
   margin-bottom: 15px;
 }
 
-.form-input label {
+.form-input label,
+label {
   font-weight: 600;
+  color: rgb(19, 124, 193);
+  font-size: 0.8rem;
+}
+option,
+.form-select {
+  color: rgb(19, 124, 193) !important;
+  font-size: 0.8rem !important;
 }
 
 .form-input span {
   color: #ff2626;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   display: block;
 }
 
 .form-input .input-control[type="text"],
-.form-input .input-control[type="email"] {
+.form-input .input-control[type="email"],
+.form-input .input-control[type="tel"] {
   height: 45px;
   padding: 10px;
   width: 100%;

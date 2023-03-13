@@ -3,7 +3,6 @@ import { createRouter, createWebHistory } from "vue-router";
 
 // views import from folder views
 import HomeViews from "../views/HomeViews.vue";
-import ServicesViews from "../views/ServicesViews.vue";
 import scredito from "../views/SolicitudCreditoViews.vue";
 
 //create an obje to contain reutes
@@ -14,11 +13,6 @@ const routes = [
     component: HomeViews,
   },
   {
-    path: "/api/services",
-    name: "services",
-    component: ServicesViews,
-  },
-  {
     path: "/api/scredito",
     name: "solicitudcredito",
     component: scredito,
@@ -26,8 +20,13 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes,
+  scrollBehavior() {
+    return new Promise((resolve) => {
+      resolve({ left: 0, top: 0 });
+    });
+  },
 });
 
 export default router;

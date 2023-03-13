@@ -24,7 +24,7 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
             </li>
             <li class="nav-item dropdown">
@@ -49,7 +49,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link disabled">Disabled</a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
@@ -59,12 +59,8 @@
 </template>
 
 <script>
-import BannerViews from "./BannerViews.vue";
-
 export default {
-  components: {
-    BannerViews,
-  },
+  components: {},
   data() {
     return {
       // isCollapsed: true,

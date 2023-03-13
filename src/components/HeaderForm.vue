@@ -1,6 +1,6 @@
 <template>
   <header class="text-center">
-    <h5>Programa de Apoyo a Microempresarios PAME &#x1f1f3;&#x1f1ee</h5>
+    <h5 >Programa de Apoyo a Microempresarios PAME &#x1f1f3;&#x1f1ee</h5>
   </header>
 </template>
 

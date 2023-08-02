@@ -71,6 +71,6 @@ input[type="tel"] {
   font-family: "Ibarra Real Nova", serif;
 }
 main {
-  min-height: 90vh;
+  min-height: 91vh;
 }
 </style>
